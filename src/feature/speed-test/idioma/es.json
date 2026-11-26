@@ -1,0 +1,29 @@
+{
+  "pageTitle": "Speed Test · Core Web Vitals & PageSpeed",
+  "pageDesc": "Mide Performance, LCP, FCP, CLS, TBT y oportunidades de velocidad con Google PageSpeed Insights v5.",
+  "titleStart": "Speed ",
+  "titleAccent": "Test",
+  "titleRest": "· Core Web Vitals",
+  "sub": "Analiza el rendimiento real de cualquier web en Móvil o Desktop, Core Web Vitals y diagnóstico Gemini AI",
+  "urlPlaceholder": "https://tu-sitio.com",
+  "mobile": "Móvil",
+  "desktop": "Desktop",
+  "runBtn": "Medir Velocidad",
+  "runningBtn": "Midiendo...",
+  "aiBtn": "Plan Gemini AI",
+  "aiRunning": "Analizando...",
+  "saveJsonBtn": "Guardar JSON",
+  "settingsLink": "Ajustes",
+  "progressSteps": [
+    "1. Conectando con Google PageSpeed Insights v5...",
+    "2. Midiendo LCP, FCP, CLS, TBT y captura real...",
+    "3. Calculando oportunidades de velocidad..."
+  ],
+  "vitalsTitle": "Core Web Vitals & Tiempos",
+  "oppsTitle": "Oportunidades de Mejora",
+  "shotTitle": "Captura de Carga",
+  "aiTitle": "Plan de Optimización Gemini AI",
+  "emptyMsg": "Ingresa una URL arriba y presiona Medir Velocidad para obtener el reporte completo.",
+  "rateLimitMsg": "Límite gratuito (3/día) alcanzado. Agrega tu API key en Ajustes o espera a mañana.",
+  "errGeneric": "No se pudo completar el análisis. Verifica la URL."
+}

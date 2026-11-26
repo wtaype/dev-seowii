@@ -1,0 +1,134 @@
+---
+// src/feature/speed-test/SpeedTestPage.astro
+import './speed-test.css';
+import { getFeatureLang, buildRuta, langPrincipal, type Idioma } from '@idioma';
+
+interface Props {
+  idioma?: Idioma;
+}
+
+const { idioma = langPrincipal } = Astro.props;
+const locales = import.meta.glob<Record<string, any>>('./idioma/*.json', {
+  eager: true,
+  import: 'default'
+});
+const t = getFeatureLang(locales, idioma);
+
+const i18nPayload = JSON.stringify({
+  idioma,
+  runBtn: t.runBtn,
+  runningBtn: t.runningBtn,
+  aiBtn: t.aiBtn,
+  aiRunning: t.aiRunning,
+  progressSteps: t.progressSteps,
+  rateLimitMsg: t.rateLimitMsg,
+  errGeneric: t.errGeneric,
+  emptyMsg: t.emptyMsg
+});
+---
+
+<section class="dv-spd-wrap" id="dvSpeedView" data-i18n-msg={i18nPayload}>
+  <article class="dv-card">
+    <header class="dv-card-head">
+      <div class="dv-card-title">
+        <span class="dv-card-ico"><i class="fa-solid fa-gauge-high"></i></span>
+        <div>
+          <h1 class="dv-spd-title">
+            {t.titleStart}<span class="dv-spd-grad">{t.titleAccent}</span> {t.titleRest}
+          </h1>
+          <p class="dv-spd-sub">{t.sub}</p>
+        </div>
+      </div>
+      <a href={buildRuta('/ajustes', idioma)} class="dv-btn dv-btn-sm">
+        <i class="fa-solid fa-sliders"></i>
+        <span>{t.settingsLink}</span>
+      </a>
+    </header>
+
+    <div class="dv-seo-urlbar">
+      <input
+        id="dvSpd_url"
+        type="url"
+        class="dv-input"
+        value="https://seowii.com"
+        placeholder={t.urlPlaceholder}
+      />
+      <div class="dv-seo-tabs">
+        <button type="button" class="dv-seo-tab active" data-spd-strat="mobile">{t.mobile}</button>
+        <button type="button" class="dv-seo-tab" data-spd-strat="desktop">{t.desktop}</button>
+      </div>
+      <button type="button" class="dv-btn dv-btn-primary" id="dvSpd_btnRun">
+        <i class="fa-solid fa-bolt"></i>
+        <span>{t.runBtn}</span>
+      </button>
+      <button type="button" class="dv-btn" id="dvSpd_btnAi" disabled>
+        <i class="fa-solid fa-wand-magic-sparkles"></i>
+        <span>{t.aiBtn}</span>
+      </button>
+      <button type="button" class="dv-btn" id="dvSpd_btnSaveJson" disabled>
+        <i class="fa-solid fa-download"></i>
+        <span>{t.saveJsonBtn}</span>
+      </button>
+    </div>
+
+    <div class="dv-seo-progress dv-spd-hidden" id="dvSpd_progressBox">
+      <div class="dv-seo-progress-head">
+        <span id="dvSpd_progressTxt">{t.progressSteps?.[0]}</span>
+        <strong id="dvSpd_progressPct">0%</strong>
+      </div>
+      <div class="dv-seo-progress-track">
+        <div class="dv-seo-progress-fill" id="dvSpd_progressFill"></div>
+      </div>
+      <div class="dv-prog-lines">
+        {(t.progressSteps || []).map((step: string, i: number) => (
+          <span class="dv-prog-line" data-spd-step={i}>{step}</span>
+        ))}
+      </div>
+    </div>
+
+    <div id="dvSpd_err" class="dv-aj-status dv-spd-hidden" data-state="err"></div>
+
+    <div class="dv-seo-scores">
+      <div class="dv-seo-kpi" id="dvSpd_kpiPerf" data-state="ok">
+        <strong id="dvSpd_valPerf">--</strong>
+        <span>Performance</span>
+      </div>
+      <div class="dv-seo-kpi" id="dvSpd_kpiA11y" data-state="ok">
+        <strong id="dvSpd_valA11y">--</strong>
+        <span>Accessibility</span>
+      </div>
+      <div class="dv-seo-kpi" id="dvSpd_kpiBp" data-state="ok">
+        <strong id="dvSpd_valBp">--</strong>
+        <span>Best Practices</span>
+      </div>
+      <div class="dv-seo-kpi" id="dvSpd_kpiSeo" data-state="ok">
+        <strong id="dvSpd_valSeo">--</strong>
+        <span>SEO</span>
+      </div>
+    </div>
+  </article>
+
+  <div class="dv-grid dv-grid-2">
+    <article class="dv-card">
+      <span class="dv-seo-label-row">{t.vitalsTitle}</span>
+      <div class="dv-spd-vitals" id="dvSpd_vitals">
+        <p class="dv-sub">{t.emptyMsg}</p>
+      </div>
+
+      <span class="dv-seo-label-row">{t.oppsTitle}</span>
+      <div class="dv-spd-opps" id="dvSpd_opps"></div>
+    </article>
+
+    <article class="dv-card">
+      <span class="dv-seo-label-row">{t.shotTitle}</span>
+      <div class="dv-seo-shot-box" id="dvSpd_shotBox">
+        <p class="dv-sub">{t.emptyMsg}</p>
+      </div>
+
+      <span class="dv-seo-label-row">{t.aiTitle}</span>
+      <div class="dv-seo-ai-box" id="dvSpd_aiBox">
+        <p class="dv-sub">{t.emptyMsg}</p>
+      </div>
+    </article>
+  </div>
+</section>

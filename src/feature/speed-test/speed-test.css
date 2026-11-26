@@ -1,0 +1,93 @@
+/* src/feature/speed-test/speed-test.css */
+/* Estilos independientes de Speed Test · 100% tokens de witema.css */
+
+.dv-spd-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4vh;
+  min-height: 94vh;
+}
+
+.dv-spd-title {
+  font-size: var(--fz_m3);
+  font-weight: 700;
+  color: var(--tx1);
+}
+
+.dv-spd-grad {
+  background: var(--gradient-btn);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dv-spd-sub {
+  font-size: var(--fz_s2);
+  color: var(--tx3);
+}
+
+.dv-spd-vitals {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.9vh;
+}
+
+.dv-spd-vital {
+  padding: 1.1vh 1.2vh;
+  border-radius: var(--r_m);
+  background: var(--bg1);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.3vh;
+}
+
+.dv-spd-vital span {
+  font-size: var(--fz_s1);
+  color: var(--tx3);
+  font-weight: 600;
+}
+
+.dv-spd-vital strong {
+  font-size: var(--fz_m2);
+  color: var(--tx1);
+}
+
+.dv-spd-vital[data-state="ok"] strong { color: var(--success); }
+.dv-spd-vital[data-state="warn"] strong { color: var(--warning); }
+.dv-spd-vital[data-state="err"] strong { color: var(--error); }
+
+.dv-spd-opps {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65vh;
+}
+
+.dv-spd-opp {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1vh;
+  padding: 0.85vh 1.1vh;
+  border-radius: var(--r_m);
+  border: 1px solid var(--border);
+  background: var(--bg1);
+  font-size: var(--fz_s2);
+  color: var(--tx2);
+}
+
+.dv-spd-opp strong {
+  color: var(--warning);
+  font-size: var(--fz_s1);
+  flex-shrink: 0;
+}
+
+.dv-spd-hidden {
+  display: none !important;
+}
+
+@media (max-width: 760px) {
+  .dv-spd-vitals {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "pageTitle": "SEO Test · Analisa el SEO & Metas",
+  "pageDesc": "Audita cualquier URL con Google Lighthouse SEO, mira su captura real, analiza con Gemini AI y simula SERP/_headers.",
+  "titleStart": "SEO ",
+  "titleAccent": "Test",
+  "titleRest": "· Auditoría URL & Metas",
+  "sub": "Analiza el SEO real de cualquier web con captura en vivo, diagnóstico Gemini AI y simulador SERP/_headers",
+  "scoreLabel": "Puntaje SEO",
+  "modeLive": "Analisa el SEO",
+  "modeSim": "Analisa las Metas",
+  "settingsLink": "Ajustes",
+  "urlPlaceholder": "https://tu-sitio.com",
+  "mobile": "Móvil",
+  "desktop": "Desktop",
+  "runBtn": "Analizar SEO",
+  "runningBtn": "Analizando...",
+  "aiBtn": "Analizar SEO con IA",
+  "aiRunning": "Analizando IA...",
+  "saveJsonBtn": "JSON",
+  "gaugeTitle": "Medidor SEO & Velocidad",
+  "gaugePerfect": "¡SEO Óptimo!",
+  "gaugeWarn": "Mejorable",
+  "gaugeBad": "Crítico",
+  "shotTitle": "Captura Real de la Web",
+  "shotEmpty": "Ingresa una URL arriba y presiona Analizar SEO para ver la captura y auditorías reales.",
+  "scoresTitle": "Calificación General (0–100)",
+  "auditsTitle": "Auditorías SEO de Google",
+  "auditsEmpty": "Aquí verás cada criterio SEO evaluado por Google Lighthouse con su nota 0/10 y explicación.",
+  "metaRealTitle": "Datos Extraídos de la Página",
+  "progressSteps": [
+    "1. Conectando con Google Lighthouse y leyendo la URL...",
+    "2. Evaluando etiquetas SEO, enlaces y captura real...",
+    "3. Consolidando puntajes y preparando reporte..."
+  ],
+  "auditMap": {
+    "is-crawlable": {
+      "title": "La página permite indexación en Google",
+      "tip": "Verifica que no exista una etiqueta noindex o bloqueo que impida aparecer en Google."
+    },
+    "document-title": {
+      "title": "Tiene etiqueta <title> definida",
+      "tip": "El título es el factor on-page más visible en Google y define de qué trata la página."
+    },
+    "meta-description": {
+      "title": "Tiene Meta Description para resultados",
+      "tip": "Resume tu propuesta en Google para mejorar el porcentaje de clics (CTR)."
+    },
+    "http-status-code": {
+      "title": "Código de respuesta HTTP válido (200)",
+      "tip": "Asegura que la URL cargue correctamente y no devuelva errores 4xx o 5xx."
+    },
+    "link-text": {
+      "title": "Enlaces con texto descriptivo",
+      "tip": "Evita textos genéricos como 'haz clic aquí'; usa palabras clave claras en tus enlaces."
+    },
+    "crawlable-anchors": {
+      "title": "Enlaces rastreables con href válido",
+      "tip": "Los botones/enlaces deben usar <a href='...'> reales para que Google descubra otras rutas."
+    },
+    "robots-txt": {
+      "title": "Archivo robots.txt válido",
+      "tip": "Confirma que robots.txt no tenga errores de sintaxis ni bloquee el rastreo."
+    },
+    "image-alt": {
+      "title": "Imágenes con atributo alt descriptivo",
+      "tip": "Ayuda a Google Imágenes a entender tus fotos y mejora la accesibilidad."
+    },
+    "hreflang": {
+      "title": "Etiquetas hreflang de idioma válidas",
+      "tip": "Indica a Google qué versión de idioma (ES, EN, etc.) mostrar según el país del usuario."
+    },
+    "canonical": {
+      "title": "URL canónica (rel=canonical) válida",
+      "tip": "Evita contenido duplicado señalando cuál es la URL principal oficial."
+    },
+    "viewport": {
+      "title": "Meta viewport configurado para móviles",
+      "tip": "Permite que la web se adapte correctamente a pantallas de celular."
+    },
+    "structured-data": {
+      "title": "Datos estructurados (Schema JSON-LD)",
+      "tip": "Ayuda a mostrar resultados enriquecidos (estrellas, FAQs, negocio) en Google."
+    }
+  },
+  "rateLimitMsg": "Límite gratuito (3/día) alcanzado. Agrega tu API key en Ajustes o espera a mañana.",
+  "errGeneric": "No se pudo completar el análisis. Verifica la URL.",
+  "lblTitle": "Meta Title",
+  "lblDesc": "Meta Description",
+  "lblUrl": "URL Canónica",
+  "lblH1": "Encabezado H1",
+  "lblOg": "Imagen OG (URL)",
+  "lblRobots": "Directiva Robots",
+  "serpTitle": "Vista Previa Google (SERP)",
+  "ogTitle": "Vista Previa Social / WhatsApp",
+  "tabMeta": "Meta Tags HTML",
+  "tabHeaders": "Cloudflare _headers",
+  "copyBtn": "Copiar",
+  "copiedMsg": "¡Copiado!",
+  "resetBtn": "Ejemplo",
+  "checks": {
+    "titleOk": "Title entre 30 y 60 caracteres",
+    "descOk": "Description entre 110 y 160 caracteres",
+    "urlOk": "URL canónica con HTTPS",
+    "h1Ok": "Encabezado H1 definido",
+    "ogOk": "Imagen Open Graph configurada"
+  }
+}

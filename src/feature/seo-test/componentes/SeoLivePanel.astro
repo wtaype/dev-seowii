@@ -1,0 +1,126 @@
+---
+// src/feature/seo-test/componentes/SeoLivePanel.astro
+interface Props {
+  t: Record<string, any>;
+}
+
+const { t } = Astro.props;
+---
+
+<div id="dvSeo_livePane" class="dv-seo-wrap">
+  <article class="dv-card">
+    <div class="dv-seo-urlbar">
+      <input
+        id="dvSeo_liveUrl"
+        type="url"
+        class="dv-input"
+        value="https://seowii.com"
+        placeholder={t.urlPlaceholder}
+      />
+      <button type="button" class="dv-btn dv-btn-primary" id="dvSeo_btnRun">
+        <i class="fa-solid fa-bolt"></i>
+        <span>{t.runBtn}</span>
+      </button>
+      <button type="button" class="dv-btn" id="dvSeo_btnAi" disabled>
+        <i class="fa-solid fa-wand-magic-sparkles"></i>
+        <span>{t.aiBtn}</span>
+      </button>
+    </div>
+
+    <div class="dv-seo-progress dv-seo-hidden" id="dvSeo_progressBox">
+      <div class="dv-seo-progress-head">
+        <span id="dvSeo_progressTxt">{t.progressSteps?.[0]}</span>
+        <strong id="dvSeo_progressPct">0%</strong>
+      </div>
+      <div class="dv-seo-progress-track">
+        <div class="dv-seo-progress-fill" id="dvSeo_progressFill"></div>
+      </div>
+      <div class="dv-prog-lines" id="dvSeo_progLines">
+        {(t.progressSteps || []).map((step: string, i: number) => (
+          <span class="dv-prog-line" data-prog-step={i}>{step}</span>
+        ))}
+      </div>
+    </div>
+
+    <div id="dvSeo_aiBox" class="dv-seo-ai-short dv-seo-hidden"></div>
+    <div id="dvSeo_liveErr" class="dv-aj-status dv-seo-hidden" data-state="err"></div>
+  </article>
+
+  <div class="dv-grid dv-grid-2 dv-seo-grid">
+    <article class="dv-card dv-seo-panel">
+      <div class="dv-seo-label-row">
+        <span>{t.auditsTitle}</span>
+        <span class="dv-pill-status" id="dvSeo_auditsCount">0</span>
+      </div>
+
+      <div class="dv-seo-meta-real dv-seo-hidden" id="dvSeo_metaRealBox"></div>
+
+      <div class="dv-seo-checks dv-seo-audits-scroll" id="dvSeo_liveAudits">
+        <p class="dv-sub">{t.auditsEmpty}</p>
+      </div>
+    </article>
+
+    <article class="dv-card dv-seo-panel">
+      <div class="dv-seo-label-row">
+        <span>{t.shotTitle}</span>
+        <div class="dv-seo-tabs">
+          <button type="button" class="dv-seo-tab active" data-seo-strat="mobile">
+            <i class="fa-solid fa-mobile-screen-button"></i> {t.mobile}
+          </button>
+          <button type="button" class="dv-seo-tab" data-seo-strat="desktop">
+            <i class="fa-solid fa-desktop"></i> {t.desktop}
+          </button>
+          <button type="button" class="dv-seo-tab" id="dvSeo_btnSaveJson" disabled>
+            <i class="fa-solid fa-download"></i> {t.saveJsonBtn}
+          </button>
+        </div>
+      </div>
+
+      <div class="dv-seo-shot-box" id="dvSeo_shotBox">
+        <p class="dv-sub">{t.shotEmpty}</p>
+      </div>
+
+      <div class="dv-seo-label-row">
+        <span>{t.scoresTitle}</span>
+      </div>
+      <div class="dv-seo-scores">
+        <div class="dv-seo-kpi" id="dvSeo_kpiSeo" data-state="ok">
+          <strong id="dvSeo_valSeo">--</strong>
+          <span>SEO</span>
+        </div>
+        <div class="dv-seo-kpi" id="dvSeo_kpiPerf" data-state="ok">
+          <strong id="dvSeo_valPerf">--</strong>
+          <span>Performance</span>
+        </div>
+        <div class="dv-seo-kpi" id="dvSeo_kpiA11y" data-state="ok">
+          <strong id="dvSeo_valA11y">--</strong>
+          <span>Accessibility</span>
+        </div>
+        <div class="dv-seo-kpi" id="dvSeo_kpiBp" data-state="ok">
+          <strong id="dvSeo_valBp">--</strong>
+          <span>Best Practices</span>
+        </div>
+      </div>
+
+      <div class="dv-gauge-box">
+        <svg class="dv-gauge-svg" viewBox="0 0 200 115" aria-hidden="true">
+          <defs>
+            <linearGradient id="dvGaugeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="var(--error)" />
+              <stop offset="50%" stop-color="var(--warning)" />
+              <stop offset="100%" stop-color="var(--success)" />
+            </linearGradient>
+          </defs>
+          <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="var(--bg3)" stroke-width="14" stroke-linecap="round" />
+          <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="url(#dvGaugeGrad)" stroke-width="14" stroke-linecap="round" />
+          <g class="dv-gauge-needle" id="dvSeo_needle" style="transform: rotate(-90deg);">
+            <line x1="100" y1="100" x2="100" y2="30" stroke="var(--primary)" stroke-width="3.5" stroke-linecap="round" />
+            <circle cx="100" cy="100" r="6" fill="var(--primary)" />
+          </g>
+        </svg>
+        <div class="dv-gauge-score" id="dvSeo_gaugeScore">--</div>
+        <span class="dv-pill-status" id="dvSeo_gaugeBadge" data-state="ok">{t.gaugeTitle}</span>
+      </div>
+    </article>
+  </div>
+</div>

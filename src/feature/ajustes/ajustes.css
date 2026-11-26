@@ -1,0 +1,97 @@
+/* src/feature/ajustes/ajustes.css */
+/* Estilos independientes de Ajustes API · 100% tokens de witema.css */
+
+.dv-aj-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4vh;
+  min-height: 94vh;
+}
+
+.dv-aj-title {
+  font-size: var(--fz_m3);
+  font-weight: 700;
+  color: var(--tx1);
+}
+
+.dv-aj-grad {
+  background: var(--gradient-btn);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dv-aj-sub {
+  font-size: var(--fz_s2);
+  color: var(--tx3);
+}
+
+.dv-aj-status {
+  padding: 1vh 1.4vh;
+  border-radius: var(--r_m);
+  font-size: var(--fz_s3);
+  font-weight: 600;
+  border: 1px solid var(--border);
+  background: var(--bg1);
+  color: var(--tx2);
+}
+
+.dv-aj-status[data-state="ok"] {
+  border-color: rgba(22, 163, 74, 0.35);
+  background: rgba(22, 163, 74, 0.12);
+  color: var(--success);
+}
+
+.dv-aj-status[data-state="warn"] {
+  border-color: rgba(245, 158, 11, 0.35);
+  background: rgba(245, 158, 11, 0.12);
+  color: var(--warning);
+}
+
+.dv-aj-status[data-state="err"] {
+  border-color: rgba(239, 68, 68, 0.35);
+  background: rgba(239, 68, 68, 0.12);
+  color: var(--error);
+}
+
+.dv-aj-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55vh;
+}
+
+.dv-aj-field label {
+  font-size: var(--fz_s2);
+  font-weight: 600;
+  color: var(--tx2);
+}
+
+.dv-aj-input-row {
+  display: flex;
+  gap: 0.7vh;
+}
+
+.dv-aj-guide-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6vh;
+  padding-left: 2.2vh;
+  color: var(--tx2);
+  font-size: var(--fz_s3);
+  line-height: 1.55;
+}
+
+.dv-aj-guide-box {
+  padding: 1.4vh;
+  border-radius: var(--r_m);
+  background: var(--bg1);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.9vh;
+}
+
+.dv-aj-guide-box h3 {
+  font-size: var(--fz_m);
+  color: var(--primary);
+}

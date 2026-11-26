@@ -6,6 +6,9 @@ import GeneralPage from '@feature/general/GeneralPage.astro';
 import ImgwiiPage from '@feature/imgwii/ImgwiiPage.astro';
 import LectorJsonPage from '@feature/lector-json/LectorJsonPage.astro';
 import LectorMdPage from '@feature/lector-md/LectorMdPage.astro';
+import SeoTestPage from '@feature/seo-test/SeoTestPage.astro';
+import SpeedTestPage from '@feature/speed-test/SpeedTestPage.astro';
+import AjustesPage from '@feature/ajustes/AjustesPage.astro';
 import { LISTA_IDIOMAS, buildRuta, getCoreLang, type Idioma } from '@idioma';
 
 export function getStaticPaths() {
@@ -13,7 +16,10 @@ export function getStaticPaths() {
     { id: 'general', href: '/' },
     { id: 'imgwii', href: '/imgwii' },
     { id: 'lector-json', href: '/lector-json' },
-    { id: 'lector-md', href: '/lector-md' }
+    { id: 'lector-md', href: '/lector-md' },
+    { id: 'seo-test', href: '/seo-test' },
+    { id: 'speed-test', href: '/speed-test' },
+    { id: 'ajustes', href: '/ajustes' }
   ];
 
   return modulos.flatMap((mod) =>
@@ -29,7 +35,8 @@ export function getStaticPaths() {
 
 const { idioma, modulo } = Astro.props;
 const t = getCoreLang(idioma);
-const titulo = `dev.seowii.com — ${t.nav?.[modulo]?.label || modulo}`;
+const label = t.nav?.[modulo]?.label || t.util?.[modulo] || modulo;
+const titulo = `dev.seowii.com — ${label}`;
 ---
 
 <Principal idioma={idioma} titulo={titulo}>
@@ -65,6 +72,33 @@ const titulo = `dev.seowii.com — ${t.nav?.[modulo]?.label || modulo}`;
       <LectorMdPage idioma={idioma} />
       <script>
         import '@feature/lector-md/lector-md.js';
+      </script>
+    </>
+  )}
+
+  {modulo === 'seo-test' && (
+    <>
+      <SeoTestPage idioma={idioma} />
+      <script>
+        import '@feature/seo-test/seo-test.js';
+      </script>
+    </>
+  )}
+
+  {modulo === 'speed-test' && (
+    <>
+      <SpeedTestPage idioma={idioma} />
+      <script>
+        import '@feature/speed-test/speed-test.js';
+      </script>
+    </>
+  )}
+
+  {modulo === 'ajustes' && (
+    <>
+      <AjustesPage idioma={idioma} />
+      <script>
+        import '@feature/ajustes/ajustes.js';
       </script>
     </>
   )}

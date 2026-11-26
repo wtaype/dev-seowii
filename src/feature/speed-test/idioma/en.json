@@ -1,0 +1,29 @@
+{
+  "pageTitle": "Speed Test · Core Web Vitals & PageSpeed",
+  "pageDesc": "Measure Performance, LCP, FCP, CLS, TBT, and speed opportunities with Google PageSpeed Insights v5.",
+  "titleStart": "Speed ",
+  "titleAccent": "Test",
+  "titleRest": "· Core Web Vitals",
+  "sub": "Measure real-world Mobile or Desktop performance, Core Web Vitals, and Gemini AI optimization plan",
+  "urlPlaceholder": "https://your-site.com",
+  "mobile": "Mobile",
+  "desktop": "Desktop",
+  "runBtn": "Run Speed Test",
+  "runningBtn": "Measuring...",
+  "aiBtn": "Gemini AI Plan",
+  "aiRunning": "Analyzing...",
+  "saveJsonBtn": "Save JSON",
+  "settingsLink": "Settings",
+  "progressSteps": [
+    "1. Connecting to Google PageSpeed Insights v5...",
+    "2. Measuring LCP, FCP, CLS, TBT, and screenshot...",
+    "3. Computing speed opportunities..."
+  ],
+  "vitalsTitle": "Core Web Vitals & Timings",
+  "oppsTitle": "Optimization Opportunities",
+  "shotTitle": "Load Screenshot",
+  "aiTitle": "Gemini AI Optimization Plan",
+  "emptyMsg": "Enter a URL above and click Run Speed Test to inspect the full report.",
+  "rateLimitMsg": "Free daily limit (3/day) reached. Add your own API key in Settings or try tomorrow.",
+  "errGeneric": "Could not complete the test. Please check the URL."
+}

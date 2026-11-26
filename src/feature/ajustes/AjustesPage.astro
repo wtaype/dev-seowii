@@ -1,0 +1,111 @@
+---
+// src/feature/ajustes/AjustesPage.astro
+import './ajustes.css';
+import { getFeatureLang, langPrincipal, type Idioma } from '@idioma';
+
+interface Props {
+  idioma?: Idioma;
+}
+
+const { idioma = langPrincipal } = Astro.props;
+const locales = import.meta.glob<Record<string, any>>('./idioma/*.json', {
+  eager: true,
+  import: 'default'
+});
+const t = getFeatureLang(locales, idioma);
+
+const i18nPayload = JSON.stringify({
+  savedMsg: t.savedMsg,
+  clearedMsg: t.clearedMsg,
+  statusUser: t.statusUser,
+  statusSystem: t.statusSystem,
+  statusBlocked: t.statusBlocked
+});
+---
+
+<section class="dv-aj-wrap" id="dvAjustesView" data-i18n-msg={i18nPayload}>
+  <article class="dv-card">
+    <header class="dv-card-head">
+      <div class="dv-card-title">
+        <span class="dv-card-ico"><i class="fa-solid fa-sliders"></i></span>
+        <div>
+          <h1 class="dv-aj-title">
+            {t.titleStart}<span class="dv-aj-grad">{t.titleAccent}</span> {t.titleRest}
+          </h1>
+          <p class="dv-aj-sub">{t.sub}</p>
+        </div>
+      </div>
+      <span class="dv-pill-status">{t.badge}</span>
+    </header>
+
+    <div class="dv-aj-status" id="dvAj_status" data-state="warn">{t.statusSystem}</div>
+  </article>
+
+  <div class="dv-grid dv-grid-2">
+    <article class="dv-card">
+      <div class="dv-aj-field">
+        <label for="dvAj_speedKey">{t.speedLabel}</label>
+        <div class="dv-aj-input-row">
+          <input
+            id="dvAj_speedKey"
+            type="password"
+            class="dv-input"
+            placeholder={t.speedPlaceholder}
+            autocomplete="off"
+          />
+          <button type="button" class="dv-btn dv-btn-sm" data-toggle-vis="dvAj_speedKey" aria-label="Mostrar">
+            <i class="fa-regular fa-eye"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="dv-aj-field">
+        <label for="dvAj_geminiKey">{t.geminiLabel}</label>
+        <div class="dv-aj-input-row">
+          <input
+            id="dvAj_geminiKey"
+            type="password"
+            class="dv-input"
+            placeholder={t.geminiPlaceholder}
+            autocomplete="off"
+          />
+          <button type="button" class="dv-btn dv-btn-sm" data-toggle-vis="dvAj_geminiKey" aria-label="Mostrar">
+            <i class="fa-regular fa-eye"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="dv-gen-foot-btns">
+        <button type="button" class="dv-btn dv-btn-primary" id="dvAj_btnSave">
+          <i class="fa-solid fa-floppy-disk"></i>
+          <span>{t.saveBtn}</span>
+        </button>
+        <button type="button" class="dv-btn" id="dvAj_btnClear">
+          <i class="fa-solid fa-trash"></i>
+          <span>{t.clearBtn}</span>
+        </button>
+      </div>
+    </article>
+
+    <article class="dv-card">
+      <div class="dv-card-title">
+        <span class="dv-card-ico"><i class="fa-solid fa-book-open"></i></span>
+        <h2>{t.guideTitle}</h2>
+      </div>
+
+      <div class="dv-aj-guide-box">
+        <h3>{t.guideSpeedTitle}</h3>
+        <ol class="dv-aj-guide-list">
+          {(t.guideSpeedSteps || []).map((s: string) => <li>{s}</li>)}
+        </ol>
+      </div>
+
+      <div class="dv-aj-guide-box">
+        <h3>{t.guideGeminiTitle}</h3>
+        <ol class="dv-aj-guide-list">
+          {(t.guideGeminiSteps || []).map((s: string) => <li>{s}</li>)}
+        </ol>
+      </div>
+    </article>
+  </div>
+</section>

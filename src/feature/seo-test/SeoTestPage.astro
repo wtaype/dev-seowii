@@ -1,0 +1,67 @@
+---
+// src/feature/seo-test/SeoTestPage.astro
+import './seo-test.css';
+import { getFeatureLang, buildRuta, langPrincipal, type Idioma } from '@idioma';
+import { SEO_DEFAULTS, CLOUDFLARE_HEADERS } from '@semillas/seo-test.js';
+import SeoLivePanel from './componentes/SeoLivePanel.astro';
+import SeoMetaPanel from './componentes/SeoMetaPanel.astro';
+
+interface Props {
+  idioma?: Idioma;
+}
+
+const { idioma = langPrincipal } = Astro.props;
+const locales = import.meta.glob<Record<string, any>>('./idioma/*.json', {
+  eager: true,
+  import: 'default'
+});
+const t = getFeatureLang(locales, idioma);
+
+const i18nPayload = JSON.stringify({
+  idioma,
+  scoreLabel: t.scoreLabel,
+  copied: t.copiedMsg,
+  runBtn: t.runBtn,
+  runningBtn: t.runningBtn,
+  aiBtn: t.aiBtn,
+  aiRunning: t.aiRunning,
+  gaugePerfect: t.gaugePerfect,
+  gaugeWarn: t.gaugeWarn,
+  gaugeBad: t.gaugeBad,
+  metaRealTitle: t.metaRealTitle,
+  auditMap: t.auditMap,
+  progressSteps: t.progressSteps,
+  rateLimitMsg: t.rateLimitMsg,
+  errGeneric: t.errGeneric,
+  defaults: SEO_DEFAULTS,
+  headersTpl: CLOUDFLARE_HEADERS
+});
+---
+
+<section class="dv-seo-wrap" id="dvSeoView" data-i18n-msg={i18nPayload}>
+  <article class="dv-card">
+    <header class="dv-card-head">
+      <div class="dv-card-title">
+        <span class="dv-card-ico"><i class="fa-solid fa-magnifying-glass-chart"></i></span>
+        <div>
+          <h1 class="dv-seo-title">
+            {t.titleStart}<span class="dv-seo-grad">{t.titleAccent}</span> {t.titleRest}
+          </h1>
+          <p class="dv-seo-sub">{t.sub}</p>
+        </div>
+      </div>
+
+      <div class="dv-seo-tabs">
+        <button type="button" class="dv-seo-tab active" data-seo-mode="live">{t.modeLive}</button>
+        <button type="button" class="dv-seo-tab" data-seo-mode="sim">{t.modeSim}</button>
+        <a href={buildRuta('/ajustes', idioma)} class="dv-seo-tab dv-seo-tab-link" data-astro-prefetch="hover">
+          <i class="fa-solid fa-sliders"></i>
+          <span>{t.settingsLink}</span>
+        </a>
+      </div>
+    </header>
+  </article>
+
+  <SeoLivePanel t={t} />
+  <SeoMetaPanel t={t} />
+</section>

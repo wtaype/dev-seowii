@@ -1,0 +1,34 @@
+{
+  "pageTitle": "Ajustes · Tus API Keys (Speed & Gemini)",
+  "pageDesc": "Configura tus propias claves de Google PageSpeed y Gemini para uso ilimitado sin cuota diaria.",
+  "titleStart": "Ajustes ",
+  "titleAccent": "API",
+  "titleRest": "· PageSpeed & Gemini",
+  "sub": "Guarda tus propias API Keys en este navegador para pruebas ilimitadas y sin esperar cuota diaria",
+  "badge": "LOCALSTORAGE",
+  "speedLabel": "Google PageSpeed Insights API Key",
+  "speedPlaceholder": "Pega tu AIza... de Google Cloud (PageSpeed)",
+  "geminiLabel": "Google Gemini AI API Key",
+  "geminiPlaceholder": "Pega tu AIza... de Google AI Studio",
+  "saveBtn": "Guardar Ajustes",
+  "clearBtn": "Limpiar Keys",
+  "savedMsg": "¡Keys guardadas! Ya tienes uso ilimitado.",
+  "clearedMsg": "Keys eliminadas. Se usará el límite gratuito de 3/día.",
+  "statusUser": "Modo Ilimitado: usando tus propias API Keys.",
+  "statusSystem": "Modo Gratuito del Sistema: máximo 3 pruebas por día (para ahorrar cuota).",
+  "statusBlocked": "Cuota diaria (3/3) agotada. Ingresa tus propias keys arriba o vuelve mañana.",
+  "guideTitle": "¿Cómo conseguir tus API Keys gratis en 1 minuto?",
+  "guideSpeedTitle": "1. PageSpeed Insights API Key (Gratis)",
+  "guideSpeedSteps": [
+    "Entra a Google Cloud Console (console.cloud.google.com).",
+    "Crea un proyecto rápido (ej: mi-seo-test).",
+    "Busca 'PageSpeed Insights API' y haz clic en Habilitar.",
+    "Ve a Credenciales -> Crear credenciales -> Clave de API y pégala aquí."
+  ],
+  "guideGeminiTitle": "2. Gemini AI API Key (Gratis)",
+  "guideGeminiSteps": [
+    "Entra a Google AI Studio (aistudio.google.com/apikey).",
+    "Inicia sesión con tu cuenta Google.",
+    "Haz clic en 'Create API key', cópiala y pégala aquí."
+  ]
+}

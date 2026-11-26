@@ -1,0 +1,107 @@
+{
+  "pageTitle": "SEO Test · Analyze SEO & Meta Tags",
+  "pageDesc": "Audit any live URL with Google Lighthouse SEO, view its real screenshot, analyze with Gemini AI, and simulate SERP/_headers.",
+  "titleStart": "SEO ",
+  "titleAccent": "Test",
+  "titleRest": "· URL Audit & Meta",
+  "sub": "Audit any website's real SEO with live screenshot, Gemini AI insights, and SERP/_headers simulator",
+  "scoreLabel": "SEO Score",
+  "modeLive": "Analyze SEO",
+  "modeSim": "Analyze Meta",
+  "settingsLink": "Settings",
+  "urlPlaceholder": "https://your-site.com",
+  "mobile": "Mobile",
+  "desktop": "Desktop",
+  "runBtn": "Analyze SEO",
+  "runningBtn": "Analyzing...",
+  "aiBtn": "Analyze SEO with AI",
+  "aiRunning": "Running AI...",
+  "saveJsonBtn": "JSON",
+  "gaugeTitle": "SEO & Speed Gauge",
+  "gaugePerfect": "Optimal SEO!",
+  "gaugeWarn": "Needs Work",
+  "gaugeBad": "Critical",
+  "shotTitle": "Live Webpage Screenshot",
+  "shotEmpty": "Enter a URL above and click Analyze SEO to inspect the live screenshot and audits.",
+  "scoresTitle": "Overall Score (0–100)",
+  "auditsTitle": "Google SEO Audits",
+  "auditsEmpty": "Every Google Lighthouse SEO check will appear here with its 0/10 score and explanation.",
+  "metaRealTitle": "Extracted Page Data",
+  "progressSteps": [
+    "1. Connecting to Google Lighthouse and fetching URL...",
+    "2. Checking SEO tags, links, and live screenshot...",
+    "3. Scoring metrics and building report..."
+  ],
+  "auditMap": {
+    "is-crawlable": {
+      "title": "Page isn't blocked from indexing",
+      "tip": "Ensures no noindex directive blocks Google from indexing this URL."
+    },
+    "document-title": {
+      "title": "Document has a <title> element",
+      "tip": "The title tag is the most important on-page signal for search rankings."
+    },
+    "meta-description": {
+      "title": "Document has a meta description",
+      "tip": "Summarizes your page in search snippets to improve click-through rate."
+    },
+    "http-status-code": {
+      "title": "Valid HTTP status code (200)",
+      "tip": "Confirms the page loads cleanly without 4xx or 5xx errors."
+    },
+    "link-text": {
+      "title": "Links have descriptive text",
+      "tip": "Avoid generic anchor text like 'click here'; use clear keywords."
+    },
+    "crawlable-anchors": {
+      "title": "Links are crawlable",
+      "tip": "Use real <a href='...'> links so Google can discover internal pages."
+    },
+    "robots-txt": {
+      "title": "robots.txt is valid",
+      "tip": "Checks that robots.txt has valid syntax and allows crawling."
+    },
+    "image-alt": {
+      "title": "Image elements have [alt] attributes",
+      "tip": "Helps Google Images understand your photos and improves accessibility."
+    },
+    "hreflang": {
+      "title": "Document has valid hreflang",
+      "tip": "Tells Google which language version (ES, EN, etc.) to serve users."
+    },
+    "canonical": {
+      "title": "Valid rel=canonical URL",
+      "tip": "Prevents duplicate content by pointing to the official URL."
+    },
+    "viewport": {
+      "title": "Mobile viewport meta tag present",
+      "tip": "Ensures the layout scales properly on mobile devices."
+    },
+    "structured-data": {
+      "title": "Structured data (Schema JSON-LD)",
+      "tip": "Enables rich snippets (stars, FAQs, business info) in search results."
+    }
+  },
+  "rateLimitMsg": "Free daily limit (3/day) reached. Add your own API key in Settings or try tomorrow.",
+  "errGeneric": "Could not complete the audit. Please check the URL.",
+  "lblTitle": "Meta Title",
+  "lblDesc": "Meta Description",
+  "lblUrl": "Canonical URL",
+  "lblH1": "Main H1 Heading",
+  "lblOg": "OG Image URL",
+  "lblRobots": "Robots Directive",
+  "serpTitle": "Google Search Preview (SERP)",
+  "ogTitle": "Social / WhatsApp Preview",
+  "tabMeta": "HTML Meta Tags",
+  "tabHeaders": "Cloudflare _headers",
+  "copyBtn": "Copy",
+  "copiedMsg": "Copied!",
+  "resetBtn": "Sample",
+  "checks": {
+    "titleOk": "Title between 30 and 60 characters",
+    "descOk": "Description between 110 and 160 characters",
+    "urlOk": "Canonical URL uses HTTPS",
+    "h1Ok": "Main H1 heading present",
+    "ogOk": "Open Graph image configured"
+  }
+}

@@ -25,6 +25,7 @@ export const configurar = {
     lectorMd: '/lector-md',
     seoTest: '/seo-test',
     speedTest: '/speed-test',
+    ajustes: '/ajustes',
     aprender: '/aprender'
   },
 
