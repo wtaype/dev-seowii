@@ -1,6 +1,7 @@
 // src/feature/acercas/acercas.js
 // Orquestador compacto para Contacto y Feedback -> correo-seowii (Resend) + respaldo LocalStorage
 import { savels, getls } from '@widev/storage.js';
+import { app } from '@wii';
 
 const CORREO_API = 'https://correo.seowii.com';
 const FORMS = [
@@ -33,7 +34,7 @@ export function initAcercas() {
       await fetch(CORREO_API, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ tipo, ...entry, origen: window.location.host })
+        body: JSON.stringify({ tipo, app, ...entry, origen: window.location.host })
       }).catch((err) => console.warn('[correo-seowii]', err));
 
       form.style.display = 'none';
