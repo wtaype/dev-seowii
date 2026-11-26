@@ -1,0 +1,181 @@
+/* src/feature/lector-json/lector-json.css */
+/* Estilos independientes de Lector JSON · 100% tokens de witema.css */
+
+.dv-json-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4vh;
+  min-height: 94vh;
+}
+
+.dv-json-title {
+  font-size: var(--fz_m3);
+  font-weight: 700;
+  color: var(--tx1);
+}
+
+.dv-json-grad {
+  background: var(--gradient-btn);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dv-json-sub {
+  font-size: var(--fz_s2);
+  color: var(--tx3);
+}
+
+.dv-json-grid {
+  flex: 1;
+  min-height: 76vh;
+}
+
+.dv-json-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1vh;
+  min-height: 76vh;
+}
+
+.dv-json-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.7vh;
+}
+
+.dv-json-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6vh;
+}
+
+.dv-json-editor {
+  flex: 1;
+  min-height: 54vh;
+  resize: none;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: var(--fz_s3);
+  line-height: 1.55;
+}
+
+.dv-json-error {
+  padding: 0.85vh 1.1vh;
+  border-radius: var(--r_m);
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.32);
+  color: var(--error);
+  font-size: var(--fz_s2);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.dv-json-search {
+  flex: 1;
+  min-width: 180px;
+  padding: 0.7vh 1vh;
+  font-size: var(--fz_s2);
+}
+
+.dv-json-tree-box {
+  flex: 1;
+  min-height: 54vh;
+  max-height: 66vh;
+  overflow: auto;
+  padding: 1.2vh 1.4vh;
+  border-radius: var(--r_m);
+  background: var(--bg1);
+  border: 1px solid var(--border);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: var(--fz_s2);
+  line-height: 1.6;
+}
+
+.dv-jt-node {
+  margin-left: 1.4vh;
+}
+
+.dv-jt-node[open] > .dv-jt-sum::before {
+  content: '▾';
+}
+
+.dv-jt-sum {
+  list-style: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5vh;
+  padding: 1px 4px;
+  border-radius: var(--r_xs);
+}
+
+.dv-jt-sum::before {
+  content: '▸';
+  color: var(--tx3);
+  font-size: var(--fz_s1);
+}
+
+.dv-jt-sum:hover {
+  background: var(--bg3);
+}
+
+.dv-jt-children {
+  padding-left: 1.6vh;
+  border-left: 1px dashed var(--border);
+}
+
+.dv-jt-leaf {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6vh;
+  padding: 1px 4px;
+}
+
+.dv-jt-root {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.dv-jt-key {
+  border: none;
+  background: transparent;
+  padding: 0;
+  color: var(--tx1);
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.dv-jt-key:hover {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+.dv-jt-count {
+  color: var(--tx3);
+  font-size: var(--fz_s1);
+}
+
+.dv-jt-val[data-type="str"] { color: var(--success); }
+.dv-jt-val[data-type="num"] { color: var(--info); }
+.dv-jt-val[data-type="bool"] { color: var(--warning); font-weight: 700; }
+.dv-jt-val[data-type="null"] { color: var(--error); font-style: italic; }
+
+.dv-jt-empty {
+  color: var(--tx3);
+  font-family: var(--ff_P);
+  font-size: var(--fz_s3);
+}
+
+.dv-jt-hidden,
+.dv-json-hidden {
+  display: none !important;
+}
+
+.dv-json-stats {
+  font-size: var(--fz_s1);
+  color: var(--tx3);
+  font-weight: 600;
+}
