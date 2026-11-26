@@ -1,44 +1,46 @@
 // src/feature/acercas/acercas.js
-// Orquestador cliente ligero para Contacto y Feedback (100% local, sin dependencias externas)
+// Orquestador compacto para Contacto y Feedback -> correo-seowii (Resend) + respaldo LocalStorage
 import { savels, getls } from '@widev/storage.js';
 
-function bindForm(formId, boxId, btnId, resetId, storageKey) {
-  const form = document.getElementById(formId);
-  const box = document.getElementById(boxId);
-  const btnSubmit = document.getElementById(btnId);
-  const btnReset = document.getElementById(resetId);
-
-  if (!form || !box || form.dataset.bound === '1') return;
-  form.dataset.bound = '1';
-
-  btnReset?.addEventListener('click', () => {
-    form.reset();
-    box.classList.remove('is-visible');
-    form.style.display = 'grid';
-  });
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    if (btnSubmit) btnSubmit.disabled = true;
-
-    const fd = new FormData(form);
-    const entry = Object.fromEntries(fd.entries());
-    entry.fecha = new Date().toISOString();
-
-    const prev = getls(storageKey);
-    const list = Array.isArray(prev) ? prev : [];
-    list.unshift(entry);
-    savels(storageKey, list.slice(0, 20));
-
-    form.style.display = 'none';
-    box.classList.add('is-visible');
-    if (btnSubmit) btnSubmit.disabled = false;
-  });
-}
+const CORREO_API = 'https://correo-seowii.seowii100.workers.dev';
+const FORMS = [
+  ['formContactoDirecto', 'contactoSuccessBox', 'cntBtnSubmit', 'btnNuevoContacto', 'dv_contacto_msgs', 'contacto'],
+  ['formFeedback', 'feedbackSuccessBox', 'fbBtnSubmit', 'btnNuevoFeedback', 'dv_feedback_msgs', 'feedback']
+];
 
 export function initAcercas() {
-  bindForm('formContactoDirecto', 'contactoSuccessBox', 'cntBtnSubmit', 'btnNuevoContacto', 'dv_contacto_msgs');
-  bindForm('formFeedback', 'feedbackSuccessBox', 'fbBtnSubmit', 'btnNuevoFeedback', 'dv_feedback_msgs');
+  for (const [fId, bId, sId, rId, lsKey, tipo] of FORMS) {
+    const form = document.getElementById(fId);
+    const box = document.getElementById(bId);
+    const btn = document.getElementById(sId);
+    if (!form || !box || form.dataset.bound === '1') continue;
+    form.dataset.bound = '1';
+
+    document.getElementById(rId)?.addEventListener('click', () => {
+      form.reset();
+      box.classList.remove('is-visible');
+      form.style.display = 'grid';
+    });
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (btn) btn.disabled = true;
+
+      const entry = { ...Object.fromEntries(new FormData(form).entries()), fecha: new Date().toISOString() };
+      const prev = getls(lsKey);
+      savels(lsKey, [entry, ...(Array.isArray(prev) ? prev : [])].slice(0, 20));
+
+      await fetch(CORREO_API, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ tipo, ...entry, origen: window.location.host })
+      }).catch((err) => console.warn('[correo-seowii]', err));
+
+      form.style.display = 'none';
+      box.classList.add('is-visible');
+      if (btn) btn.disabled = false;
+    });
+  }
 }
 
 initAcercas();

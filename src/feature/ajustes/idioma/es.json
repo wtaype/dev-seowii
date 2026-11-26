@@ -18,17 +18,17 @@
   "statusSystem": "Modo Gratuito del Sistema: máximo 3 pruebas por día (para ahorrar cuota).",
   "statusBlocked": "Cuota diaria (3/3) agotada. Ingresa tus propias keys arriba o vuelve mañana.",
   "guideTitle": "¿Cómo conseguir tus API Keys gratis en 1 minuto?",
+  "getKeyBtn": "Obtener Key",
   "guideSpeedTitle": "1. PageSpeed Insights API Key (Gratis)",
   "guideSpeedSteps": [
-    "Entra a Google Cloud Console (console.cloud.google.com).",
-    "Crea un proyecto rápido (ej: mi-seo-test).",
-    "Busca 'PageSpeed Insights API' y haz clic en Habilitar.",
-    "Ve a Credenciales -> Crear credenciales -> Clave de API y pégala aquí."
+    "Haz clic en 'Obtener Key' (Google Developers) o entra directo a PageSpeed API en Cloud Console.",
+    "Presiona el botón azul 'Get a Key' (o Habilitar API) y elige o crea un proyecto rápido.",
+    "Copia la clave AIza... generada y pégala arriba en Google PageSpeed."
   ],
   "guideGeminiTitle": "2. Gemini AI API Key (Gratis)",
   "guideGeminiSteps": [
-    "Entra a Google AI Studio (aistudio.google.com/apikey).",
-    "Inicia sesión con tu cuenta Google.",
-    "Haz clic en 'Create API key', cópiala y pégala aquí."
+    "Haz clic en 'Obtener Key' para abrir aistudio.google.com/api-keys.",
+    "Inicia sesión con tu cuenta Google y presiona 'Create API key'.",
+    "Copia tu clave AIza... y pégala arriba."
   ]
 }

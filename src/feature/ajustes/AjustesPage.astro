@@ -104,14 +104,47 @@ const i18nPayload = JSON.stringify({
       </div>
 
       <div class="dv-aj-guide-box">
-        <h3>{t.guideSpeedTitle}</h3>
+        <div class="dv-aj-guide-head">
+          <h3>{t.guideSpeedTitle}</h3>
+          <div class="dv-gen-foot-btns">
+            <a
+              href="https://developers.google.com/speed/docs/insights/v5/get-started"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="dv-btn dv-btn-sm dv-btn-pri"
+            >
+              <span>{t.getKeyBtn}</span>
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+            <a
+              href="https://console.cloud.google.com/apis/library/pagespeedonline.googleapis.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="dv-btn dv-btn-sm"
+            >
+              <span>Cloud Console</span>
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </div>
         <ol class="dv-aj-guide-list">
           {(t.guideSpeedSteps || []).map((s: string) => <li>{s}</li>)}
         </ol>
       </div>
 
       <div class="dv-aj-guide-box">
-        <h3>{t.guideGeminiTitle}</h3>
+        <div class="dv-aj-guide-head">
+          <h3>{t.guideGeminiTitle}</h3>
+          <a
+            href="https://aistudio.google.com/api-keys"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="dv-btn dv-btn-sm dv-btn-pri"
+          >
+            <span>{t.getKeyBtn}</span>
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+        </div>
         <ol class="dv-aj-guide-list">
           {(t.guideGeminiSteps || []).map((s: string) => <li>{s}</li>)}
         </ol>
