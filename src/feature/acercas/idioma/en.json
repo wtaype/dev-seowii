@@ -1,174 +1,130 @@
 {
   "nosotros": {
     "page_title": "About Us",
-    "badge": "🏛️ Organization & Software Engineering",
+    "badge": "⚡ Browser Dev & SEO Suite · v{version}",
     "titulo_start": "Meet",
-    "titulo_highlight": "{marca}",
-    "desc": "We are a digital engineering studio specialized in sub-second web architectures, native mobile apps, and custom business software with full technological sovereignty.",
-    "historia_titulo": "🚀 High-Performance Digital Engineering, No Middlemen",
-    "historia_p1": "At {marca}, we build proprietary technology for organizations that cannot afford slow websites, generic templates, or third-party lock-in. Every platform is built from scratch with clean, scalable, audited code.",
-    "historia_p2": "Under the technical leadership of {fundador} ({universidad}), we integrate enterprise engineering standards, extreme Core Web Vitals optimization, cloud security, and full Git repository handover.",
-    "historia_p3": "We operate with contractual transparency, milestone-based deliverables, and direct engineering support for growing companies and enterprises.",
-    "metricas_titulo": "📊 Engineering & Delivery Metrics",
+    "titulo_highlight": "{app}",
+    "desc": "Free ultra-fast toolkit for web developers: WebP/AVIF compression, JSON/Markdown viewers, live SEO & Speed audits, and practical deployment guides.",
+    "historia_titulo": "🚀 Real High-Performance Tools, 100% in Your Browser",
+    "historia_p1": "{app} ({slogan}) was built to solve everyday web development tasks without forced signups, watermarks, or slow intermediate servers.",
+    "historia_p2": "Engineered by {by} with modular Astro architecture and local browser processing, every tool prioritizes privacy, sub-second speed, and zero friction.",
+    "historia_p3": "All image conversion (ImgWii), JSON formatting, and Markdown rendering run locally on your device; live audits connect directly to Google PageSpeed and metadata endpoints.",
+    "metricas_titulo": "📊 Platform Highlights",
     "metricas": [
-      { "valor": "+30", "label": "Platforms in Production", "pct": "96%" },
-      { "valor": "100/100", "label": "Google Core Web Vitals", "pct": "100%" },
-      { "valor": "< 1.0s", "label": "Average Load Time", "pct": "98%" },
-      { "valor": "100%", "label": "Source Code Ownership", "pct": "100%" }
+      { "valor": "6+", "label": "Integrated Tools", "pct": "96%" },
+      { "valor": "100%", "label": "Local Browser Processing", "pct": "100%" },
+      { "valor": "< 1.0s", "label": "Cloudflare Edge Delivery", "pct": "98%" },
+      { "valor": "ES / EN", "label": "Native Bilingual UI", "pct": "100%" }
     ],
-    "mision_tit": "🎯 Corporate Mission",
-    "mision_desc": "Boost each client's digital competitiveness through ultra-fast, secure, scalable proprietary software—eliminating unnecessary monthly rents and operational bottlenecks.",
-    "vision_tit": "🔭 Strategic Vision",
-    "vision_desc": "Consolidate our position as a leading engineering reference in sub-second web architecture and cloud/mobile solutions with full technological ownership for clients.",
-    "valores_titulo": "⚡ Principles of Our Technical Culture",
+    "mision_tit": "🎯 Mission",
+    "mision_desc": "Give every developer and creator a fast, free, transparent suite to optimize images, validate data, audit SEO/Speed, and learn best practices.",
+    "vision_tit": "🔭 Vision",
+    "vision_desc": "Make {app} the everyday go-to toolbox for modern web projects built with Astro, Cloudflare, Vercel, and Firebase.",
+    "valores_titulo": "⚡ Design Principles",
     "valores": [
-      { "emoji": "⚡", "titulo": "Speed Obsession", "desc": "Every millisecond impacts SEO and conversion. We design with zero unnecessary JS and instant loading." },
-      { "emoji": "🔐", "titulo": "Sovereignty & Security", "desc": "Your company owns the code, database, domains, and credentials from day one." },
-      { "emoji": "📐", "titulo": "Scalable Architecture", "desc": "Clean layer separation, maintainable code, and real readiness to scale in traffic and features." },
-      { "emoji": "🤝", "titulo": "Full Transparency", "desc": "Clear scopes, live staging previews, and direct communication with no intermediaries." }
+      { "emoji": "⚡", "titulo": "Zero Friction", "desc": "Open any tool and use it right away—no mandatory accounts or artificial limits on local tools." },
+      { "emoji": "🔐", "titulo": "Local Privacy", "desc": "Your images, JSON, Markdown files, and personal API keys stay in your browser (LocalStorage)." },
+      { "emoji": "📐", "titulo": "Modular Code", "desc": "Built with Astro, CSS theme tokens, and lightweight utilities with zero heavy bloat." },
+      { "emoji": "🌍", "titulo": "Bilingual & Accessible", "desc": "Full English and Spanish interface with light/dark themes and productivity shortcuts." }
     ],
-    "proceso_titulo": "🛠️ 4-Phase Engineering Methodology",
+    "proceso_titulo": "🛠️ Recommended Workflow in {app}",
     "proceso": [
-      { "paso": "01", "titulo": "Discovery & Architecture", "desc": "Technical goal alignment, optimal stack definition, data model, and roadmap." },
-      { "paso": "02", "titulo": "UI/UX & Visual System", "desc": "Clean interfaces focused on conversion, mobile accessibility, and brand consistency." },
-      { "paso": "03", "titulo": "Build & Optimization", "desc": "Modular development, 100/100 performance testing, security, and API/Cloud integrations." },
-      { "paso": "04", "titulo": "Deploy & Git Handover", "desc": "Production launch, technical training, documentation, and full source code delivery." }
+      { "paso": "01", "titulo": "Optimize Images", "desc": "Convert JPG/PNG to WebP or AVIF in /en/imgwii and batch-rename for SEO." },
+      { "paso": "02", "titulo": "Validate Data & Docs", "desc": "Format JSON in /en/lector-json and preview READMEs in /en/lector-md." },
+      { "paso": "03", "titulo": "Audit SEO & Meta Tags", "desc": "Inspect any URL in /en/seo-test with Google SERP preview and _headers generator." },
+      { "paso": "04", "titulo": "Measure Core Web Vitals", "desc": "Check FCP, LCP, CLS, and real page weight in /en/speed-test before launch." }
     ],
-    "pilares_titulo": "🏆 Enterprise Guarantee Pillars",
+    "pilares_titulo": "🏆 What Sets {app} Apart",
     "pilares": [
-      { "icono": "fa-solid fa-gauge-high", "titulo": "Sub-1s Speed", "desc": "Modern architecture tuned to load under 1 second and score 100/100 on Core Web Vitals." },
-      { "icono": "fa-solid fa-code-branch", "titulo": "100% Your Code", "desc": "We deliver the full Git repository and master credentials with zero platform lock-in." },
-      { "icono": "fa-solid fa-handshake", "titulo": "Direct Contact", "desc": "Direct coordination with the engineer leading your project from diagnosis to launch." },
-      { "icono": "fa-solid fa-shield-halved", "titulo": "Warranty & Support", "desc": "Real testing, post-delivery support, and formal invoicing for operational peace of mind." }
+      { "icono": "fa-solid fa-gauge-high", "titulo": "Real Speed", "desc": "Hosted on Cloudflare Workers to respond in milliseconds from anywhere." },
+      { "icono": "fa-solid fa-key", "titulo": "Your Own API Key", "desc": "Plug in your free Google PageSpeed API key in /en/ajustes for unlimited audits." },
+      { "icono": "fa-solid fa-graduation-cap", "titulo": "Learn by Building", "desc": "Includes step-by-step guides for Astro, Cloudflare, Vercel, and Firebase in /en/aprender." },
+      { "icono": "fa-solid fa-shield-halved", "titulo": "Zero Trackers", "desc": "No intrusive ads or data selling—just focused utilities for developers." }
     ]
   },
   "terminos": {
-    "page_title": "Terms of Service",
-    "badge": "⚖️ Contractual Framework & Guarantees",
-    "titulo_start": "Terms & Conditions of",
-    "titulo_highlight": "Service",
-    "desc": "Clear, transparent, and binding conditions governing contracting, software development, source code delivery, and support at {marca}.",
-    "vigencia": "Effective: November 2026",
+    "page_title": "Terms of Use",
+    "badge": "⚖️ Transparent Usage · {app}",
+    "titulo_start": "Terms of Use for",
+    "titulo_highlight": "{app}",
+    "desc": "Clear and straightforward terms governing the use of the free tools in {app}, built by {by}.",
+    "vigencia": "Version {version} · November 2026",
     "indice_tit": "Quick Index:",
     "clausulas": [
       {
         "num": "01",
-        "icono": "fa-solid fa-file-signature",
-        "titulo": "Scope, Technical Proposal & Acceptance",
-        "texto": "Every project begins with a formal technical proposal specifying architecture, modules, deliverables, timeline, and fixed budget.",
+        "icono": "fa-solid fa-toolbox",
+        "titulo": "Free Use of Tools",
+        "texto": "{app} provides free web utilities for image optimization, technical file viewing, and SEO/Speed analysis.",
         "items": [
-          "Development starts after written proposal approval and initial milestone payment.",
-          "Additional features outside the approved scope are quoted as an independent addendum.",
-          "Delivery timelines are counted in business days from receipt of client assets."
+          "You may use all tools for personal or commercial projects.",
+          "Local tools (ImgWii, JSON Reader, MD Reader) process files 100% in your browser.",
+          "We do not guarantee uninterrupted uptime of third-party APIs such as Google PageSpeed."
         ]
       },
       {
         "num": "02",
-        "icono": "fa-solid fa-code-branch",
-        "titulo": "Intellectual Property & 100% Code Ownership",
-        "texto": "Unlike agencies that rent templates, we guarantee full technological ownership upon final payment.",
+        "icono": "fa-solid fa-key",
+        "titulo": "API Keys & Quotas",
+        "texto": "For SEO Test and Speed Test, you may use the shared system quota or enter your own API Key in /en/ajustes.",
         "items": [
-          "Full handover of the Git repository, clean source code, and deployment credentials.",
-          "Zero forced monthly fees or platform lock-in for using the delivered software.",
-          "Brand assets, copy, and media provided by the client remain their exclusive property."
+          "Any API Key saved in /en/ajustes stays strictly inside your browser.",
+          "Responsible usage helps prevent temporary Google rate limits."
         ]
       },
       {
         "num": "03",
-        "icono": "fa-solid fa-credit-card",
-        "titulo": "Payment Terms, Currency & Billing",
-        "texto": "We operate with full transparency in USD or PEN through formal payment channels.",
+        "icono": "fa-solid fa-shield-halved",
+        "titulo": "Ownership of Your Files",
+        "texto": "We never claim rights over or store copies of the images, JSON, or documents you process on the platform.",
         "items": [
-          "One-time project payment structured by milestones (kickoff and final production delivery).",
-          "Accepted methods: Bank transfer, Yape, Plin, Card, PayPal, and Cash.",
-          "Official electronic invoice issued for every payment."
+          "Every converted or downloaded file remains 100% yours.",
+          "Clearing your browser storage removes all local cache."
         ]
       },
       {
         "num": "04",
-        "icono": "fa-solid fa-laptop-code",
-        "titulo": "Live Staging & Review Rounds",
-        "texto": "We validate quality and speed transparently throughout the build process.",
-        "items": [
-          "Private access to a live staging URL to test responsive design, flows, and performance.",
-          "Up to 3 comprehensive review and adjustment rounds before production launch.",
-          "Technical optimization aligned with Core Web Vitals and SEO best practices."
-        ]
-      },
-      {
-        "num": "05",
-        "icono": "fa-solid fa-shield-halved",
-        "titulo": "Technical Warranty & Post-Launch Support",
-        "texto": "We stand behind every line of code delivered to ensure your business continuity.",
-        "items": [
-          "30 calendar days of free warranty against any bug or issue in the delivered code.",
-          "Operational training so your team can manage content and panels independently.",
-          "Warranty does not cover third-party modifications made after handover."
-        ]
-      },
-      {
-        "num": "06",
-        "icono": "fa-solid fa-lock",
-        "titulo": "Confidentiality & Credential Protection",
-        "texto": "All commercial, financial, database, and access information shared is treated under strict confidentiality.",
-        "items": [
-          "Credentials are used exclusively for authorized setup, deployment, and testing.",
-          "We recommend rotating master keys once formal repository handover is complete."
-        ]
-      },
-      {
-        "num": "07",
-        "icono": "fa-solid fa-scale-balanced",
-        "titulo": "Governing Law & Jurisdiction",
-        "texto": "These Terms are governed by the applicable laws of the Republic of Peru.",
-        "items": [
-          "Any dispute will first be addressed directly for an amicable resolution.",
-          "Competent jurisdiction in the courts of Lima, Peru."
-        ]
-      },
-      {
-        "num": "08",
         "icono": "fa-solid fa-envelope-open-text",
-        "titulo": "Updates & Legal Contact",
-        "texto": "We may update these terms to reflect operational or regulatory improvements.",
+        "titulo": "Contact & Bug Reports",
+        "texto": "If you spot an issue or want to suggest an improvement, reach out via our official channels.",
         "items": [
-          "For contractual inquiries or legal notices, write directly to {correo}.",
-          "In-person appointments by prior scheduling at {sede}."
+          "Official site: {linkweb}",
+          "Support email: {correo}"
         ]
       }
     ]
   },
   "cookies": {
     "page_title": "Cookie Policy",
-    "badge": "🍪 Digital Transparency",
-    "titulo_start": "Cookie",
-    "titulo_highlight": "Policy",
-    "desc": "At {marca} we respect your privacy. Here we detail the exact local storage keys and cookies used to deliver a fast, secure experience.",
-    "vigencia": "Effective: November 2026",
+    "badge": "🍪 Local Storage · {app}",
+    "titulo_start": "Cookie &",
+    "titulo_highlight": "Storage Policy",
+    "desc": "At {app} we respect your privacy. We only store technical keys in your own browser (LocalStorage) to remember your preferences.",
+    "vigencia": "Version {version} · November 2026",
     "clausulas": [
       {
         "num": "01",
         "icono": "fa-solid fa-cookie-bite",
-        "titulo": "What are cookies and local storage?",
-        "texto": "They are small entries saved in your browser (such as LocalStorage or technical cookies) that remember your preferences without hurting speed or privacy."
+        "titulo": "What do we store in your browser?",
+        "texto": "We use LocalStorage to remember your theme (Light/Dark), sidebar state, active guide in Learn, and your latest SEO/Speed report cache."
       },
       {
         "num": "02",
-        "icono": "fa-solid fa-sliders",
-        "titulo": "Categories we use",
-        "texto": "We only use strictly necessary storage so the app runs in milliseconds: visual theme (Light/Dark), language (ES/EN), and local tool cache."
+        "icono": "fa-solid fa-key",
+        "titulo": "Your Google API Key",
+        "texto": "If you configure your key in /en/ajustes, it is saved exclusively in your browser and never sent to external databases."
       },
       {
         "num": "03",
         "icono": "fa-solid fa-shield-halved",
-        "titulo": "Zero invasive trackers",
-        "texto": "We never sell or share your browsing history with third-party ad networks. Your usage on our platform stays private."
+        "titulo": "Zero ad trackers",
+        "texto": "We do not use third-party advertising cookies or sell browsing data."
       },
       {
         "num": "04",
         "icono": "fa-solid fa-laptop-file",
-        "titulo": "Browser controls",
-        "texto": "You can clear or block storage anytime from Chrome, Edge, Safari, or Firefox settings. Questions? Write to {correo}."
+        "titulo": "Full browser control",
+        "texto": "You can clear local storage anytime from your browser settings or DevTools. Questions: {correo}."
       }
     ],
     "tabla_tit": "Technical Registry of Active Keys",
@@ -179,110 +135,102 @@
     "filas": [
       { "clave": "witema", "tipo": "Essential", "proposito": "Stores your visual theme preference (Light or Dark) without flicker.", "duracion": "Persistent" },
       { "clave": "dv_sidebar_collapsed", "tipo": "Preference", "proposito": "Remembers whether the sidebar is expanded or collapsed.", "duracion": "Persistent" },
-      { "clave": "dv_aprender_tab", "tipo": "Preference", "proposito": "Restores your last viewed guide in Learn.", "duracion": "Persistent" },
-      { "clave": "dv_seo_cache / dv_speed_cache", "tipo": "Functional", "proposito": "Caches your latest local SEO/Speed report for instant reload.", "duracion": "Local" }
+      { "clave": "dv_aprender_tab", "tipo": "Preference", "proposito": "Restores the last viewed guide in /en/aprender.", "duracion": "Persistent" },
+      { "clave": "dv_seo_cache / dv_speed_cache", "tipo": "Functional", "proposito": "Caches your latest SEO/Speed report for instant reload.", "duracion": "Local" },
+      { "clave": "dv_google_keys", "tipo": "Optional", "proposito": "Stores your personal Google PageSpeed API key if configured in /en/ajustes.", "duracion": "Local" }
     ]
   },
   "privacidad": {
     "page_title": "Privacy Policy",
-    "badge": "🔒 Personal Data Protection",
+    "badge": "🔒 Privacy by Design · {app}",
     "titulo_start": "Privacy",
     "titulo_highlight": "Policy",
-    "desc": "At {marca} we protect your personal data and digital assets in strict compliance with applicable data protection regulations.",
-    "vigencia": "Effective: November 2026",
+    "desc": "At {app} we prioritize local browser processing so your files and settings always stay under your control.",
+    "vigencia": "Version {version} · November 2026",
     "indice_tit": "Quick index:",
     "clausulas": [
       {
         "num": "01",
         "icono": "fa-solid fa-database",
-        "titulo": "Data We Collect",
-        "texto": "We only request the information needed to quote, execute software projects, issue invoices, and answer inquiries.",
+        "titulo": "Locally Processed Data",
+        "texto": "ImgWii, JSON Reader, and MD Reader run completely in-memory inside your browser without uploading files to any server.",
         "items": [
-          "Name or company name, email address, and contact phone.",
-          "Technical project details voluntarily shared by you."
+          "Your images, JSON, and Markdown files never leave your device.",
+          "Contact or Feedback submissions are stored locally in your session history."
         ]
       },
       {
         "num": "02",
-        "icono": "fa-solid fa-bullseye",
-        "titulo": "Purpose of Processing",
-        "texto": "Your data is used solely to provide technical support, 1-on-1 consulting, formal billing, and deliverable tracking.",
+        "icono": "fa-solid fa-globe",
+        "titulo": "Live Queries (SEO Test & Speed Test)",
+        "texto": "When you analyze a public URL in /en/seo-test or /en/speed-test, that URL is queried via Google PageSpeed API and our metadata endpoint.",
         "items": [
-          "We never sell, rent, or transfer databases to third parties.",
-          "Zero marketing spam without your prior consent."
+          "Only the public URL you explicitly enter is queried.",
+          "We never index or publish your audit results."
         ]
       },
       {
         "num": "03",
         "icono": "fa-solid fa-shield-halved",
-        "titulo": "Security & Infrastructure",
-        "texto": "Operational records are handled over encrypted HTTPS/TLS infrastructure with strict access controls.",
+        "titulo": "Security & HTTPS",
+        "texto": "{app} is served entirely over HTTPS on Cloudflare Workers with active security headers.",
         "items": [
-          "Client credentials and repositories are safeguarded under professional confidentiality.",
-          "Upon handover, we recommend rotating administrative keys."
-        ]
-      },
-      {
-        "num": "04",
-        "icono": "fa-solid fa-user-lock",
-        "titulo": "Your Privacy Rights",
-        "texto": "You may exercise your rights of Access, Rectification, Cancellation, and Opposition at any time free of charge.",
-        "items": [
-          "Send your request directly to {correo} with your name and request.",
-          "In-person support by appointment at {sede}."
+          "TLS-encrypted connections across all routes.",
+          "Direct privacy inquiries: {correo}."
         ]
       }
     ]
   },
   "contacto": {
     "page_title": "Contact",
-    "badge": "📬 Direct Engineering Support",
-    "titulo_start": "Let's Talk About Your",
-    "titulo_highlight": "Next Project",
-    "desc": "No call centers or middlemen. Coordinate directly with the engineering team at {marca} through your preferred channel.",
-    "card_wa_tit": "Direct WhatsApp",
-    "card_wa_btn": "Message on WhatsApp",
-    "card_mail_tit": "Corporate Email",
+    "badge": "📬 Direct Contact · {app}",
+    "titulo_start": "Let's Talk About",
+    "titulo_highlight": "{app}",
+    "desc": "Have a tool idea, spotted a bug, or want to collaborate? Reach out directly.",
+    "card_wa_tit": "Official Web Channel",
+    "card_wa_btn": "Visit {app}",
+    "card_mail_tit": "Direct Email",
     "card_mail_btn": "Send Email",
-    "card_sede_tit": "Headquarters",
-    "card_sede_btn": "View on Google Maps",
-    "card_plat_tit": "Online Meetings",
-    "form_tit": "Send Us a Direct Message",
-    "form_desc": "Tell us briefly about your goal and we will get back to you shortly.",
+    "card_sede_tit": "Author & Project",
+    "card_sede_btn": "Browse Tools",
+    "card_plat_tit": "Status & Version",
+    "form_tit": "Send Us a Message",
+    "form_desc": "Your message is saved in your local history and helps us improve {app}.",
     "lbl_nombre": "Full Name *",
     "ph_nombre": "e.g. John Carter",
     "lbl_correo": "Email Address *",
-    "ph_correo": "email@company.com",
-    "lbl_asunto": "Subject / Project *",
-    "ph_asunto": "e.g. Corporate Website or Cloud System",
+    "ph_correo": "john@my-business.com",
+    "lbl_asunto": "Subject / Tool *",
+    "ph_asunto": "e.g. Suggestion for Speed Test or ImgWii",
     "lbl_mensaje": "Message *",
-    "ph_mensaje": "Briefly describe what you need to build...",
-    "btn_enviar": "Send Inquiry",
-    "exito_tit": "Message Received!",
-    "exito_desc": "Thank you for reaching out. Our team will review your inquiry and reply shortly.",
-    "btn_nuevo": "Send Another Inquiry"
+    "ph_mensaje": "Tell us what improvement or feature you'd like to see...",
+    "btn_enviar": "Send Message",
+    "exito_tit": "Message Saved!",
+    "exito_desc": "Thank you for your message. You can also write directly to {correo} for a quick reply.",
+    "btn_nuevo": "Send Another Message"
   },
   "feedback": {
     "page_title": "Feedback",
-    "badge": "⭐ Your Opinion Improves Our Studio",
+    "badge": "⭐ Your Opinion Improves {app}",
     "titulo_start": "Share Your",
     "titulo_highlight": "Experience",
-    "desc": "We value every comment to keep perfecting our speed, architecture, and personalized support.",
+    "desc": "Help us keep refining the speed and usefulness of {app} ({slogan}).",
     "lbl_rating": "Overall Rating *",
-    "lbl_cat": "Evaluated Area *",
+    "lbl_cat": "Evaluated Tool *",
     "cats": [
-      "Web Experience & Speed",
-      "Engineering & Code Quality",
-      "1-on-1 Technical Consulting",
-      "Post-Delivery Support"
+      "ImgWii (WebP & Resize)",
+      "JSON Reader & MD Reader",
+      "SEO Test & Meta Tags",
+      "Speed Test (Core Web Vitals)",
+      "Learn & Guides"
     ],
     "lbl_nombre": "Your Name (Optional)",
     "ph_nombre": "e.g. John Carter",
     "lbl_comentario": "Your Comment or Suggestion *",
-    "ph_comentario": "What did you like most or what can we improve?",
+    "ph_comentario": "What was most useful or what should we improve in v2?",
     "btn_enviar": "Submit Feedback",
     "exito_tit": "Thank You for Your Feedback!",
-    "exito_desc": "Your review has been recorded and helps us maintain our 100/100 standard.",
+    "exito_desc": "Your rating has been recorded and helps us build an even better v2.",
     "btn_nuevo": "Submit Another Review"
   }
 }

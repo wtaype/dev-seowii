@@ -1,174 +1,130 @@
 {
   "nosotros": {
     "page_title": "Nosotros",
-    "badge": "🏛️ Organización & Ingeniería de Software",
-    "titulo_start": "Conoce a",
-    "titulo_highlight": "{marca}",
-    "desc": "Somos una firma de ingeniería digital especializada en arquitecturas web sub-segundo, aplicativos móviles nativos y software empresarial a medida con soberanía tecnológica total.",
-    "historia_titulo": "🚀 Ingeniería Digital de Alto Rendimiento, Sin Intermediarios",
-    "historia_p1": "En {marca} construimos tecnología propia para organizaciones que no pueden permitirse sitios lentos, plantillas genéricas ni dependencias de terceros. Cada plataforma nace desde cero con código limpio, escalable y auditado.",
-    "historia_p2": "Bajo la dirección técnica de {fundador} ({universidad}), integramos estándares de ingeniería empresarial, optimización extrema Core Web Vitals, seguridad en la nube y entrega completa de repositorios Git.",
-    "historia_p3": "Operamos con transparencia contractual, entregables medibles por hitos y soporte directo de ingeniería para empresas en crecimiento y corporaciones.",
-    "metricas_titulo": "📊 Indicadores de Ingeniería & Entrega",
+    "badge": "⚡ Suite Dev & SEO en tu Navegador · v{version}",
+    "titulo_start": "Conoce",
+    "titulo_highlight": "{app}",
+    "desc": "Suite gratuita de herramientas ultrarrápidas para desarrolladores web: compresión WebP/AVIF, lectores JSON/Markdown, auditoría SEO/Speed en vivo y guías prácticas.",
+    "historia_titulo": "🚀 Herramientas Reales de Alto Rendimiento, 100% en tu Navegador",
+    "historia_p1": "{app} ({slogan}) nació para resolver tareas diarias de desarrollo web sin registros forzosos, sin marcas de agua ni servidores intermedios lentos.",
+    "historia_p2": "Desarrollado por {by} con arquitectura modular Astro y procesamiento local en el navegador, cada herramienta prioriza privacidad, velocidad sub-segundo y cero fricción.",
+    "historia_p3": "Todo el procesamiento de imágenes (ImgWii), validación JSON y lectura Markdown ocurre localmente en tu dispositivo; las auditorías en vivo se conectan directo a Google PageSpeed y metadatos.",
+    "metricas_titulo": "📊 Indicadores de la Plataforma",
     "metricas": [
-      { "valor": "+30", "label": "Plataformas en Producción", "pct": "96%" },
-      { "valor": "100/100", "label": "Google Core Web Vitals", "pct": "100%" },
-      { "valor": "< 1.0s", "label": "Tiempo de Carga Promedio", "pct": "98%" },
-      { "valor": "100%", "label": "Propiedad del Código Fuente", "pct": "100%" }
+      { "valor": "6+", "label": "Herramientas Integradas", "pct": "96%" },
+      { "valor": "100%", "label": "Procesamiento Local (Privado)", "pct": "100%" },
+      { "valor": "< 1.0s", "label": "Carga en Edge Cloudflare", "pct": "98%" },
+      { "valor": "ES / EN", "label": "Soporte Bilingüe Nativo", "pct": "100%" }
     ],
-    "mision_tit": "🎯 Misión Corporativa",
-    "mision_desc": "Impulsar la competitividad digital de cada cliente mediante software propio ultra veloz, seguro y escalable, eliminando rentas mensuales innecesarias y cuellos de botella operativos.",
-    "vision_tit": "🔭 Visión Estratégica",
-    "vision_desc": "Consolidarnos como la firma referente en Latinoamérica en arquitectura web sub-segundo y soluciones cloud/móviles con soberanía tecnológica total para el cliente.",
-    "valores_titulo": "⚡ Principios de Nuestra Cultura Técnica",
+    "mision_tit": "🎯 Misión",
+    "mision_desc": "Dar a cada programador y creador web una suite rápida, gratuita y transparente para optimizar imágenes, validar datos, auditar SEO/Speed y aprender buenas prácticas.",
+    "vision_tit": "🔭 Visión",
+    "vision_desc": "Convertir a {app} en la caja de herramientas diaria de referencia para proyectos web modernos con Astro, Cloudflare, Vercel y Firebase.",
+    "valores_titulo": "⚡ Principios de Diseño",
     "valores": [
-      { "emoji": "⚡", "titulo": "Obsesión por la Velocidad", "desc": "Cada milisegundo impacta en SEO y conversión. Diseñamos con Zero-JS innecesario y carga instantánea." },
-      { "emoji": "🔐", "titulo": "Soberanía & Seguridad", "desc": "Tu empresa es dueña absoluta del código, base de datos, dominios y credenciales desde el día uno." },
-      { "emoji": "📐", "titulo": "Arquitectura Escalable", "desc": "Separación limpia de capas, código mantenible y preparación real para crecer en tráfico y funciones." },
-      { "emoji": "🤝", "titulo": "Transparencia Total", "desc": "Alcances claros, cronogramas verificables en staging en vivo y comunicación directa sin intermediarios." }
+      { "emoji": "⚡", "titulo": "Cero Fricción", "desc": "Abre la herramienta y úsala al instante: sin cuentas obligatorias ni límites artificiales en herramientas locales." },
+      { "emoji": "🔐", "titulo": "Privacidad Local", "desc": "Tus imágenes, JSON, archivos Markdown y API Keys personales se quedan en tu navegador (LocalStorage)." },
+      { "emoji": "📐", "titulo": "Código Modular", "desc": "Construido con Astro, CSS en variables de tema y utilidades ligeras sin dependencias pesadas." },
+      { "emoji": "🌍", "titulo": "Bilingüe y Accesible", "desc": "Interfaz completa en Español e Inglés con tema claro/oscuro y atajos de productividad." }
     ],
-    "proceso_titulo": "🛠️ Metodología de Ingeniería en 4 Fases",
+    "proceso_titulo": "🛠️ Flujo Recomendado en {app}",
     "proceso": [
-      { "paso": "01", "titulo": "Diagnóstico & Arquitectura", "desc": "Levantamiento técnico de objetivos, definición de stack óptimo, modelo de datos y hoja de ruta." },
-      { "paso": "02", "titulo": "Diseño UI/UX & Sistema Visual", "desc": "Interfaces limpias orientadas a conversión, accesibilidad móvil y coherencia de marca." },
-      { "paso": "03", "titulo": "Construcción & Optimización", "desc": "Desarrollo modular, pruebas de rendimiento 100/100, seguridad e integraciones API/Cloud." },
-      { "paso": "04", "titulo": "Despliegue & Entrega Git", "desc": "Puesta en producción, capacitación técnica, documentación y entrega total del código." }
+      { "paso": "01", "titulo": "Optimiza tus Imágenes", "desc": "Convierte JPG/PNG a WebP o AVIF en /imgwii y renombra en lote para SEO." },
+      { "paso": "02", "titulo": "Valida Datos & Docs", "desc": "Formatea JSON en /lector-json y previsualiza tus README o guías en /lector-md." },
+      { "paso": "03", "titulo": "Audita SEO & Metas", "desc": "Analiza cualquier URL en /seo-test con vista previa Google SERP y generador _headers." },
+      { "paso": "04", "titulo": "Mide Core Web Vitals", "desc": "Verifica FCP, LCP, CLS y peso real en /speed-test antes de lanzar a producción." }
     ],
-    "pilares_titulo": "🏆 Pilares de Garantía Empresarial",
+    "pilares_titulo": "🏆 Lo que Hace Diferente a {app}",
     "pilares": [
-      { "icono": "fa-solid fa-gauge-high", "titulo": "Velocidad Sub-1s", "desc": "Arquitectura moderna optimizada para cargar en menos de 1 segundo y alcanzar 100/100 en Core Web Vitals." },
-      { "icono": "fa-solid fa-code-branch", "titulo": "Código 100% Tuyo", "desc": "Entregamos repositorio Git completo y credenciales maestras sin alquileres ni bloqueos de plataforma." },
-      { "icono": "fa-solid fa-handshake", "titulo": "Trato Directo", "desc": "Coordinación directa con el ingeniero responsable de tu proyecto desde el diagnóstico hasta el lanzamiento." },
-      { "icono": "fa-solid fa-shield-halved", "titulo": "Respaldo & Garantía", "desc": "Pruebas reales, soporte post-entrega y facturación electrónica formal para tu tranquilidad operativa." }
+      { "icono": "fa-solid fa-gauge-high", "titulo": "Velocidad Real", "desc": "Alojado en Cloudflare Workers para responder en milisegundos desde cualquier país." },
+      { "icono": "fa-solid fa-key", "titulo": "Tu Propia API Key", "desc": "Conecta tu clave gratuita de Google PageSpeed en /ajustes para auditorías ilimitadas." },
+      { "icono": "fa-solid fa-graduation-cap", "titulo": "Aprende Haciendo", "desc": "Incluye guías paso a paso para Astro, Cloudflare, Vercel y Firebase en /aprender." },
+      { "icono": "fa-solid fa-shield-halved", "titulo": "Sin Rastreadores", "desc": "Cero publicidad invasiva ni venta de datos; solo herramientas útiles para devs." }
     ]
   },
   "terminos": {
-    "page_title": "Términos del Servicio",
-    "badge": "⚖️ Marco Contractual & Garantías",
-    "titulo_start": "Términos y Condiciones de",
-    "titulo_highlight": "Servicio",
-    "desc": "Condiciones claras, transparentes y jurídicamente vinculantes que rigen la contratación, desarrollo de software, entrega de código fuente y soporte en {marca}.",
-    "vigencia": "Vigencia: Noviembre 2026",
+    "page_title": "Términos de Uso",
+    "badge": "⚖️ Uso Transparente · {app}",
+    "titulo_start": "Términos de Uso de",
+    "titulo_highlight": "{app}",
+    "desc": "Condiciones claras y directas sobre el uso de las herramientas gratuitas de {app}, desarrolladas por {by}.",
+    "vigencia": "Versión {version} · Noviembre 2026",
     "indice_tit": "Índice Rápido:",
     "clausulas": [
       {
         "num": "01",
-        "icono": "fa-solid fa-file-signature",
-        "titulo": "Alcance, Propuesta Técnica y Aceptación",
-        "texto": "Todo proyecto inicia con una propuesta técnica formal donde se especifican arquitectura, módulos, entregables, cronograma y presupuesto cerrado.",
+        "icono": "fa-solid fa-toolbox",
+        "titulo": "Uso Libre de las Herramientas",
+        "texto": "{app} ofrece utilidades web gratuitas para optimización de imágenes, lectura técnica y análisis SEO/Speed.",
         "items": [
-          "El desarrollo comienza tras la aprobación escrita de la propuesta y el abono del hito inicial.",
-          "Cualquier funcionalidad adicional fuera del alcance aprobado se cotiza como adenda independiente.",
-          "Los plazos de entrega se contabilizan en días hábiles desde la recepción de insumos del cliente."
+          "Puedes usar todas las herramientas para proyectos personales o comerciales.",
+          "Las herramientas locales (ImgWii, Lector JSON, Lector MD) procesan archivos 100% en tu navegador.",
+          "No garantizamos disponibilidad ininterrumpida de APIs externas de terceros como Google PageSpeed."
         ]
       },
       {
         "num": "02",
-        "icono": "fa-solid fa-code-branch",
-        "titulo": "Propiedad Intelectual y 100% Código Tuyo",
-        "texto": "A diferencia de agencias que alquilan plantillas, garantizamos soberanía tecnológica absoluta al finalizar el pago.",
+        "icono": "fa-solid fa-key",
+        "titulo": "Claves API y Cuotas",
+        "texto": "Para las pruebas de SEO Test y Speed Test, puedes usar la cuota compartida del sistema o ingresar tu propia API Key en /ajustes.",
         "items": [
-          "Entrega completa del repositorio Git, código fuente limpio y credenciales maestras de despliegue.",
-          "Cero rentas mensuales forzosas ni bloqueos de plataforma por uso del código desarrollado.",
-          "Los activos de marca, textos e imágenes provistos por el cliente siguen siendo de su propiedad exclusiva."
+          "La API Key que guardes en /ajustes se almacena únicamente en tu navegador.",
+          "El uso responsable evita bloqueos temporales por límite de peticiones de Google."
         ]
       },
       {
         "num": "03",
-        "icono": "fa-solid fa-credit-card",
-        "titulo": "Modalidad de Pago, Moneda y Facturación",
-        "texto": "Operamos con transparencia tributaria en Dólares Americanos (USD) o Soles Peruanos (PEN) mediante canales formales.",
+        "icono": "fa-solid fa-shield-halved",
+        "titulo": "Propiedad de tus Archivos",
+        "texto": "Nunca reclamamos derechos ni almacenamos copias de las imágenes, JSON o documentos que procesas en la plataforma.",
         "items": [
-          "Pago único estructurado por hitos (inicio de desarrollo y entrega final en producción).",
-          "Medios habilitados: Transferencia bancaria, Yape, Plin, Tarjeta, PayPal y Efectivo.",
-          "Emisión oficial de Boleta o Factura Electrónica SUNAT por cada abono realizado."
+          "Todo archivo convertido o descargado sigue siendo 100% de tu propiedad.",
+          "Al cerrar o limpiar tu navegador, cualquier caché local desaparece."
         ]
       },
       {
         "num": "04",
-        "icono": "fa-solid fa-laptop-code",
-        "titulo": "Entorno Staging en Vivo y Rondas de Revisión",
-        "texto": "Validamos la calidad y velocidad del proyecto de forma transparente durante todo el proceso constructivo.",
-        "items": [
-          "Acceso privado a URL de staging en vivo para probar diseño responsive, flujos y rendimiento.",
-          "Hasta 3 rondas integrales de revisión y ajustes funcionales antes del pase a producción.",
-          "Optimización técnica orientada a Core Web Vitals y buenas prácticas SEO."
-        ]
-      },
-      {
-        "num": "05",
-        "icono": "fa-solid fa-shield-halved",
-        "titulo": "Garantía Técnica y Soporte Post-Entrega",
-        "texto": "Respaldamos cada línea de código entregada para asegurar la continuidad operativa de tu negocio.",
-        "items": [
-          "30 días calendario de garantía gratuita frente a cualquier incidencia o error en el código entregado.",
-          "Capacitación operativa para que tu equipo administre contenidos y paneles con autonomía.",
-          "La garantía no cubre alteraciones realizadas por terceros ajenos al equipo tras la entrega."
-        ]
-      },
-      {
-        "num": "06",
-        "icono": "fa-solid fa-lock",
-        "titulo": "Confidencialidad y Protección de Credenciales",
-        "texto": "Toda información comercial, financiera, bases de datos y accesos compartidos son tratados bajo estricto secreto profesional.",
-        "items": [
-          "Uso exclusivo de credenciales para configuración, despliegue y pruebas autorizadas.",
-          "Recomendamos rotar claves maestras una vez concluida la entrega formal del repositorio."
-        ]
-      },
-      {
-        "num": "07",
-        "icono": "fa-solid fa-scale-balanced",
-        "titulo": "Legislación Aplicable y Jurisdicción",
-        "texto": "Estos Términos se rigen por las leyes vigentes de la República del Perú, incluyendo el Código de Protección y Defensa del Consumidor.",
-        "items": [
-          "Cualquier controversia será atendida inicialmente de forma directa para solución amistosa.",
-          "Jurisdicción competente en los juzgados y tribunales de Lima, Perú."
-        ]
-      },
-      {
-        "num": "08",
         "icono": "fa-solid fa-envelope-open-text",
-        "titulo": "Modificaciones y Contacto Legal",
-        "texto": "Podemos actualizar estos términos para reflejar mejoras operativas o normativas vigentes.",
+        "titulo": "Contacto y Reportes",
+        "texto": "Si encuentras algún fallo o deseas sugerir una mejora, puedes escribirnos por los canales oficiales.",
         "items": [
-          "Para consultas contractuales o notificaciones legales escribe directamente a {correo}.",
-          "Atención presencial previa cita en {sede}."
+          "Sitio oficial: {linkweb}",
+          "Correo de soporte: {correo}"
         ]
       }
     ]
   },
   "cookies": {
     "page_title": "Política de Cookies",
-    "badge": "🍪 Transparencia Digital · Ley N° 29733",
+    "badge": "🍪 Almacenamiento Local · {app}",
     "titulo_start": "Política de",
-    "titulo_highlight": "Cookies",
-    "desc": "En {marca} respetamos tu privacidad. Aquí detallamos exactamente qué datos locales y cookies utilizamos para brindarte una experiencia ultra rápida y segura.",
-    "vigencia": "Vigencia: Noviembre 2026",
+    "titulo_highlight": "Cookies & Storage",
+    "desc": "En {app} respetamos tu privacidad. Solo guardamos claves técnicas en tu propio navegador (LocalStorage) para recordar tus preferencias.",
+    "vigencia": "Versión {version} · Noviembre 2026",
     "clausulas": [
       {
         "num": "01",
         "icono": "fa-solid fa-cookie-bite",
-        "titulo": "¿Qué son las cookies y el almacenamiento local?",
-        "texto": "Son pequeños archivos o claves guardadas en tu navegador (como LocalStorage o cookies técnicas) que permiten recordar tus preferencias sin comprometer el rendimiento ni tu privacidad."
+        "titulo": "¿Qué guardamos en tu navegador?",
+        "texto": "Usamos LocalStorage para recordar tu tema (Luz/Noche), estado de la barra lateral, pestaña activa en Aprender y caché de tu último análisis SEO/Speed."
       },
       {
         "num": "02",
-        "icono": "fa-solid fa-sliders",
-        "titulo": "Categorías que utilizamos",
-        "texto": "Solo empleamos almacenamiento estrictamente necesario para que el sitio funcione en milisegundos: tema visual (Luz/Noche), idioma (ES/EN/PT), moneda (PEN/USD) y autenticación segura."
+        "icono": "fa-solid fa-key",
+        "titulo": "Tu API Key de Google",
+        "texto": "Si configuras tu clave en /ajustes, se guarda exclusivamente en tu navegador para enviarla directo en tus auditorías sin pasar por bases de datos externas."
       },
       {
         "num": "03",
         "icono": "fa-solid fa-shield-halved",
-        "titulo": "Cero rastreadores invasivos",
-        "texto": "No vendemos ni compartimos tu historial de navegación con redes publicitarias de terceros. Tu navegación en nuestro estudio es directa y privada."
+        "titulo": "Cero rastreadores publicitarios",
+        "texto": "No usamos cookies de terceros para perfilado comercial ni vendemos datos de navegación."
       },
       {
         "num": "04",
         "icono": "fa-solid fa-laptop-file",
-        "titulo": "Control desde tu navegador",
-        "texto": "Puedes borrar o bloquear cookies en cualquier momento desde la configuración de Chrome, Edge, Safari o Firefox. Para consultas escríbenos a {correo}."
+        "titulo": "Control total desde tu navegador",
+        "texto": "Puedes borrar el almacenamiento local en cualquier momento desde las herramientas de desarrollador o ajustes de tu navegador. Consultas: {correo}."
       }
     ],
     "tabla_tit": "Registro Técnico de Claves en Uso",
@@ -178,205 +134,103 @@
     "col_duracion": "Duración",
     "filas": [
       { "clave": "witema", "tipo": "Esencial", "proposito": "Guarda tu preferencia de tema visual (Luz o Noche) sin parpadeos.", "duracion": "Persistente" },
-      { "clave": "wimoneda", "tipo": "Preferencia", "proposito": "Recuerda la moneda seleccionada (PEN o USD) en cotizaciones.", "duracion": "Persistente" },
-      { "clave": "wi_idioma", "tipo": "Preferencia", "proposito": "Mantiene el idioma elegido (ES, EN o PT) al navegar.", "duracion": "Persistente" },
-      { "clave": "wi_cookies_consent", "tipo": "Esencial", "proposito": "Registra tu elección sobre el uso de cookies.", "duracion": "1 año" },
-      { "clave": "firebase:authUser", "tipo": "Esencial", "proposito": "Mantiene tu sesión autenticada de forma cifrada si inicias sesión.", "duracion": "Sesión" }
-    ],
-    "banner_msg": "Usamos almacenamiento local esencial para recordar tu tema, idioma y ofrecerte una experiencia rápida y segura.",
-    "banner_info": "más info.",
-    "banner_aceptar": "Aceptar",
-    "banner_rechazar": "Rechazar"
-  },
-  "reclamaciones": {
-    "page_title": "Libro de Reclamaciones",
-    "badge": "📖 Ley N° 29571 · D.S. N° 011-2011-PCM · Ley N° 31435 (INDECOPI)",
-    "titulo_start": "Libro de",
-    "titulo_highlight": "Reclamaciones Virtual",
-    "desc": "Conforme al Código de Protección y Defensa del Consumidor, ponemos a tu disposición nuestra Hoja de Reclamación Virtual. Plazo máximo de respuesta: 15 días hábiles improrrogables.",
-    "prov_tit": "Identificación del Proveedor (Establecimiento Virtual)",
-    "prov_razon": "Razón Social:",
-    "prov_sede": "Domicilio:",
-    "prov_correo": "Correo Oficial:",
-    "prov_canal": "Atención Directa:",
-    "paso1_tit": "01. Identificación del Consumidor Reclamante",
-    "paso2_tit": "02. Identificación del Bien o Servicio Contratado",
-    "paso3_tit": "03. Detalle de la Reclamación y Pedido del Consumidor",
-    "paso4_tit": "04. Resumen, Declaración Jurada y Envío",
-    "paso5_tit": "05. Confirmación Oficial",
-    "step1_short": "Consumidor",
-    "step2_short": "Servicio",
-    "step3_short": "Detalle",
-    "step4_short": "Revisión",
-    "step5_short": "Confirmación",
-    "btn_anterior": "Anterior",
-    "btn_siguiente": "Siguiente",
-    "res_consumidor": "Datos del Consumidor",
-    "res_bien": "Bien o Servicio",
-    "res_reclamo": "Detalle y Pedido",
-    "lbl_nombre": "Nombre Completo / Razón Social *",
-    "ph_nombre": "Ej. Carlos Mendoza Quispe",
-    "lbl_tipo_doc": "Tipo de Documento *",
-    "lbl_doc": "Número de Documento *",
-    "ph_doc": "DNI, CE, Pasaporte o RUC",
-    "lbl_tel": "Teléfono / WhatsApp *",
-    "lbl_correo": "Correo Electrónico *",
-    "ph_correo": "correo@ejemplo.com",
-    "lbl_direccion": "Domicilio Actual *",
-    "ph_direccion": "Av. / Jr. / Calle, Distrito, Ciudad",
-    "lbl_menor": "Soy menor de edad (habilita datos del padre, madre o tutor)",
-    "lbl_tutor": "Nombre del Padre / Madre / Tutor",
-    "ph_tutor": "Nombre completo del representante",
-    "lbl_bien_tipo": "Tipo de Contratación *",
-    "opt_servicio": "Servicio Digital / Software",
-    "opt_asesoria": "Asesoría Técnica 1 a 1",
-    "opt_producto": "Producto / Licencia",
-    "lbl_moneda": "Moneda y Monto Reclamado (Opcional)",
-    "ph_monto": "Ej. 180.00",
-    "lbl_servicio": "Descripción del Servicio o Proyecto Contratado *",
-    "ph_servicio": "Ej. Desarrollo de Página Web Corporativa / Sistema Cloud",
-    "lbl_tipo_rec": "Naturaleza de la Solicitud *",
-    "rec_titulo": "Reclamo",
-    "rec_desc": "Disconformidad relacionada directamente con los productos o servicios contratados.",
-    "que_titulo": "Queja",
-    "que_desc": "Malestar o descontento respecto a la atención al público, sin relación directa al producto.",
-    "lbl_detalle": "Detalle de los Hechos (Fecha, incidente y contexto) *",
-    "ph_detalle": "Describe con claridad lo sucedido...",
-    "lbl_pedido": "Pedido Concreto del Consumidor *",
-    "ph_pedido": "Indica qué solución o acción esperas recibir...",
-    "chk_declaracion": "Declaro bajo responsabilidad que la información consignada es veraz y autorizo el tratamiento de mis datos para la atención de esta Hoja de Reclamación conforme a la Ley N° 29733.",
-    "btn_enviar": "Registrar Hoja de Reclamación",
-    "exito_tit": "Hoja de Reclamación Registrada",
-    "exito_desc": "Tu constancia ha sido generada y almacenada de forma segura. Conforme a la Ley N° 31435, recibirás respuesta oficial en un plazo máximo de 15 días hábiles.",
-    "exito_cod": "Código de Hoja de Reclamación:",
-    "btn_imprimir": "Imprimir / Guardar PDF",
-    "btn_wa": "Enviar Constancia por WhatsApp",
-    "btn_nuevo": "Registrar Otra Solicitud",
-    "wa_tpl": "Hola, registré mi Hoja de Reclamación Virtual con el código {codigo}.",
-    "faq_tit": "Preguntas Frecuentes sobre el Libro de Reclamaciones",
-    "faq_items": [
-      {
-        "q": "¿Cómo me llegará la respuesta oficial de la empresa?",
-        "a": "Nuestra respuesta formal se enviará directamente al correo electrónico que registraste en el Paso 01 desde nuestra casilla oficial ({correo}), citando tu código único HR-YYYY-XXXX y el detalle de la solución."
-      },
-      {
-        "q": "¿Cómo confirmo que mi Hoja de Reclamación quedó registrada?",
-        "a": "Al completar el Paso 05 se genera automáticamente tu código HR-YYYY-XXXX en nuestra base de datos segura. Además, puedes imprimir o guardar en PDF tu constancia y notificar por WhatsApp al instante."
-      },
-      {
-        "q": "¿Cuánto tiempo tarda en llegar la respuesta?",
-        "a": "Conforme a la Ley N° 31435 de INDECOPI, el proveedor está obligado a responder en un plazo máximo improrrogable de 15 días hábiles desde el registro de tu solicitud."
-      },
-      {
-        "q": "¿Qué diferencia hay entre un Reclamo y una Queja?",
-        "a": "El Reclamo es una disconformidad relacionada directamente con el servicio, software o producto adquirido. La Queja expresa descontento con la atención al público o trato recibido, sin relación directa al producto."
-      },
-      {
-        "q": "¿Puedo hacer seguimiento o enviar pruebas adicionales?",
-        "a": "Sí. Puedes escribir a {correo} o a nuestro canal directo indicando tu código HR-YYYY-XXXX para adjuntar capturas, comprobantes o ampliar información."
-      }
+      { "clave": "dv_sidebar_collapsed", "tipo": "Preferencia", "proposito": "Recuerda si el menú lateral está expandido o colapsado.", "duracion": "Persistente" },
+      { "clave": "dv_aprender_tab", "tipo": "Preferencia", "proposito": "Mantiene la última guía abierta en /aprender.", "duracion": "Persistente" },
+      { "clave": "dv_seo_cache / dv_speed_cache", "tipo": "Funcional", "proposito": "Guarda tu último reporte SEO/Speed para recarga instantánea.", "duracion": "Local" },
+      { "clave": "dv_google_keys", "tipo": "Opcional", "proposito": "Almacena tu API Key personal de Google PageSpeed si la configuras en /ajustes.", "duracion": "Local" }
     ]
   },
   "privacidad": {
     "page_title": "Política de Privacidad",
-    "badge": "🔒 Ley N° 29733 · Protección de Datos Personales",
+    "badge": "🔒 Privacidad por Diseño · {app}",
     "titulo_start": "Política de",
     "titulo_highlight": "Privacidad",
-    "desc": "En {marca} protegemos tus datos personales y activos digitales bajo estricto cumplimiento de la Ley N° 29733 de Protección de Datos Personales del Perú.",
-    "vigencia": "Vigencia: Noviembre 2026",
+    "desc": "En {app} priorizamos el procesamiento local en tu navegador para que tus archivos y configuraciones permanezcan bajo tu control.",
+    "vigencia": "Versión {version} · Noviembre 2026",
     "indice_tit": "Índice rápido:",
     "clausulas": [
       {
         "num": "01",
         "icono": "fa-solid fa-database",
-        "titulo": "Datos que Recopilamos",
-        "texto": "Únicamente solicitamos los datos necesarios para cotizar, ejecutar proyectos de software, emitir comprobantes y atender consultas.",
+        "titulo": "Datos Procesados Localmente",
+        "texto": "ImgWii, Lector JSON y Lector MD ejecutan todo en memoria dentro de tu navegador sin subir archivos a ningún servidor.",
         "items": [
-          "Nombre o razón social, correo electrónico y teléfono de contacto.",
-          "Información técnica del proyecto o requerimiento comercial compartido voluntariamente."
+          "Tus imágenes, archivos JSON y Markdown nunca abandonan tu dispositivo.",
+          "Los mensajes de Contacto o Feedback se registran localmente como historial de sesión."
         ]
       },
       {
         "num": "02",
-        "icono": "fa-solid fa-bullseye",
-        "titulo": "Finalidad del Tratamiento",
-        "texto": "Tus datos se utilizan exclusivamente para brindarte soporte técnico, asesoría 1 a 1, facturación electrónica SUNAT y seguimiento de entregables.",
+        "icono": "fa-solid fa-globe",
+        "titulo": "Consultas en Vivo (SEO Test & Speed Test)",
+        "texto": "Cuando analizas una URL pública en /seo-test o /speed-test, la URL solicitada se consulta vía Google PageSpeed API y el endpoint de metadatos.",
         "items": [
-          "Nunca vendemos, alquilamos ni cedemos bases de datos a terceros.",
-          "Cero envío de spam publicitario sin tu autorización previa."
+          "Solo se consulta la URL pública que ingresas explícitamente.",
+          "No indexamos ni publicamos tus análisis."
         ]
       },
       {
         "num": "03",
         "icono": "fa-solid fa-shield-halved",
-        "titulo": "Seguridad e Infraestructura",
-        "texto": "Almacenamos registros operativos sobre infraestructura cifrada (HTTPS/TLS y Google Cloud Firestore) con controles de acceso restringido.",
+        "titulo": "Seguridad y HTTPS",
+        "texto": "{app} se sirve íntegramente bajo HTTPS en Cloudflare Workers con cabeceras de seguridad activas.",
         "items": [
-          "Credenciales y repositorios de clientes se resguardan bajo secreto profesional.",
-          "Al concluir la entrega, recomendamos rotar claves administrativas."
-        ]
-      },
-      {
-        "num": "04",
-        "icono": "fa-solid fa-user-lock",
-        "titulo": "Derechos ARCO del Titular",
-        "texto": "Puedes ejercer tus derechos de Acceso, Rectificación, Cancelación y Oposición (ARCO) en cualquier momento sin costo alguno.",
-        "items": [
-          "Envía tu solicitud directamente a {correo} indicando tu nombre y requerimiento.",
-          "Atención presencial previa cita en {sede}."
+          "Conexiones cifradas TLS en todas las rutas.",
+          "Contacto directo para consultas de privacidad: {correo}."
         ]
       }
     ]
   },
   "contacto": {
     "page_title": "Contacto",
-    "badge": "📬 Atención Directa de Ingeniería",
-    "titulo_start": "Conversemos sobre tu",
-    "titulo_highlight": "Próximo Proyecto",
-    "desc": "Sin call centers ni intermediarios. Coordina directamente con el equipo de ingeniería de {marca} por el canal que prefieras.",
-    "card_wa_tit": "WhatsApp Directo",
-    "card_wa_btn": "Escribir por WhatsApp",
-    "card_mail_tit": "Correo Corporativo",
+    "badge": "📬 Contacto Directo · {app}",
+    "titulo_start": "Conversemos sobre",
+    "titulo_highlight": "{app}",
+    "desc": "¿Tienes sugerencias de nuevas herramientas, encontraste un bug o quieres colaborar? Escríbenos directo.",
+    "card_wa_tit": "Canal Web Oficial",
+    "card_wa_btn": "Visitar {app}",
+    "card_mail_tit": "Correo Directo",
     "card_mail_btn": "Enviar Correo",
-    "card_sede_tit": "Sede Central",
-    "card_sede_btn": "Ver en Google Maps",
-    "card_plat_tit": "Reuniones Online",
-    "form_tit": "Envíanos un Mensaje Directo",
-    "form_desc": "Cuéntanos brevemente tu objetivo y te responderemos a la brevedad.",
+    "card_sede_tit": "Autor & Proyecto",
+    "card_sede_btn": "Ver Herramientas",
+    "card_plat_tit": "Estado & Versión",
+    "form_tit": "Envíanos un Mensaje",
+    "form_desc": "Tu consulta se guarda en tu historial local y nos ayuda a mejorar {app}.",
     "lbl_nombre": "Nombre Completo *",
-    "ph_nombre": "Ej. Ana Lucía Torres",
+    "ph_nombre": "Ej. Juan Pérez",
     "lbl_correo": "Correo Electrónico *",
-    "ph_correo": "correo@empresa.com",
-    "lbl_asunto": "Asunto / Proyecto *",
-    "ph_asunto": "Ej. Desarrollo Web Corporativa o Sistema Cloud",
+    "ph_correo": "juan@mi-negocio.com",
+    "lbl_asunto": "Asunto / Herramienta *",
+    "ph_asunto": "Ej. Sugerencia para Speed Test o ImgWii",
     "lbl_mensaje": "Mensaje *",
-    "ph_mensaje": "Describe brevemente qué necesitas construir...",
-    "btn_enviar": "Enviar Consulta",
-    "exito_tit": "¡Mensaje Recibido!",
-    "exito_desc": "Gracias por escribirnos. Nuestro equipo revisará tu consulta y te responderá pronto.",
-    "btn_nuevo": "Enviar Otra Consulta"
+    "ph_mensaje": "Cuéntanos qué mejora o función te gustaría ver...",
+    "btn_enviar": "Enviar Mensaje",
+    "exito_tit": "¡Mensaje Guardado!",
+    "exito_desc": "Gracias por tu mensaje. También puedes escribir directo a {correo} si necesitas respuesta rápida.",
+    "btn_nuevo": "Enviar Otro Mensaje"
   },
   "feedback": {
     "page_title": "Feedback",
-    "badge": "⭐ Tu Opinión Mejora Nuestro Estudio",
+    "badge": "⭐ Tu Opinión Mejora {app}",
     "titulo_start": "Comparte tu",
     "titulo_highlight": "Experiencia",
-    "desc": "Valoramos cada comentario para seguir perfeccionando nuestra velocidad, arquitectura y atención personalizada.",
+    "desc": "Ayúdanos a seguir puliendo la velocidad y utilidad de {app} ({slogan}).",
     "lbl_rating": "Calificación General *",
-    "lbl_cat": "Área Evaluada *",
+    "lbl_cat": "Herramienta Evaluada *",
     "cats": [
-      "Experiencia Web y Velocidad",
-      "Calidad de Ingeniería y Código",
-      "Asesoría Técnica 1 a 1",
-      "Soporte Post-Entrega"
+      "ImgWii (WebP & Resize)",
+      "Lector JSON & Lector MD",
+      "SEO Test & Meta Tags",
+      "Speed Test (Core Web Vitals)",
+      "Aprender & Guías"
     ],
     "lbl_nombre": "Tu Nombre (Opcional)",
-    "ph_nombre": "Ej. Carlos Mendoza",
+    "ph_nombre": "Ej. Juan Pérez",
     "lbl_comentario": "Tu Comentario o Sugerencia *",
-    "ph_comentario": "¿Qué fue lo que más te gustó o qué podemos mejorar?",
+    "ph_comentario": "¿Qué te pareció más útil o qué mejorarías en v2?",
     "btn_enviar": "Enviar Feedback",
     "exito_tit": "¡Muchas Gracias por tu Feedback!",
-    "exito_desc": "Tu valoración quedó registrada y nos ayuda a mantener el estándar 100/100.",
+    "exito_desc": "Tu valoración quedó registrada y nos ayuda a construir una mejor versión 2.",
     "btn_nuevo": "Enviar Otra Valoración"
   }
 }

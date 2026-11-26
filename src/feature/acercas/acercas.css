@@ -1287,3 +1287,16 @@
   flex-wrap: wrap;
   gap: 0.6vh;
 }
+
+/* ─── Padding de contenido y ajuste de ancho dentro de dev.seowii.com ─── */
+.dv-ac-shell .acercas-page-wrap {
+  padding: 2.4vh 2.6vh 4vh;
+  border-radius: var(--r_m, 1vh);
+  border: 1px solid var(--border);
+}
+
+.dv-ac-shell .acercas-page-wrap .conwii {
+  width: 100%;
+  max-width: 100%;
+  padding-inline: 0;
+}

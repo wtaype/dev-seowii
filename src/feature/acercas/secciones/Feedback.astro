@@ -3,6 +3,7 @@
 // ⭐ Buzón de Feedback & Experiencia del Cliente (0 imágenes · Firestore · .conwii 85vw)
 
 import { getFeatureLang, langPrincipal, type Idioma } from '@idioma';
+import { rellenarWii } from '../lib/wiiVars';
 
 interface Props {
   idioma?: Idioma;
@@ -13,7 +14,7 @@ const locales = import.meta.glob<Record<string, any>>('../idioma/*.json', {
   eager: true,
   import: 'default'
 });
-const t = getFeatureLang(locales, idioma).feedback || {};
+const t = rellenarWii(getFeatureLang(locales, idioma).feedback || {});
 const cats = Array.isArray(t.cats) ? t.cats : [];
 ---
 

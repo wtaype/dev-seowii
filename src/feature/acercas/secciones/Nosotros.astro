@@ -2,9 +2,8 @@
 // src/feature/acercas/secciones/Nosotros.astro
 // 🏛️ Página Nosotros (0 Imágenes · Puro Texto Estructurado + Gráficos CSS · 0ms · .conwii 85vw)
 
-import { app } from '@semillas';
 import { getFeatureLang, langPrincipal, type Idioma } from '@idioma';
-const datosApp: Record<string, any> = {};
+import { WII_INFO, rellenarWii } from '../lib/wiiVars';
 
 interface Props {
   idioma?: Idioma;
@@ -15,25 +14,11 @@ const locales = import.meta.glob<Record<string, any>>('../idioma/*.json', {
   eager: true,
   import: 'default'
 });
-const t = getFeatureLang(locales, idioma).nosotros || {};
+const t = rellenarWii(getFeatureLang(locales, idioma).nosotros || {});
 
-// Cascada Sagrada: datosApp (Firestore) -> app (seowii.js) -> ""
-const marcaApp = (datosApp.marca || {}) as Record<string, any>;
-const contactoApp = (datosApp.contacto || {}) as Record<string, any>;
-const titularApp = (datosApp.hero?.titular || {}) as Record<string, any>;
-
-const nombreMarca = marcaApp.nombre || app.marca?.nombre || '';
-const razonSocial = marcaApp.razonSocial || app.marca?.razonSocial || nombreMarca;
-const fundador = titularApp.nombre || app.fundador?.nombre || '';
-const universidad = titularApp.universidad || app.fundador?.universidad || '';
-const sede = contactoApp.sedePrincipal || app.contacto?.sedePrincipal || '';
-const correo = contactoApp.correo || app.contacto?.correo || '';
-
-const tituloHighlight = (t.titulo_highlight || '').replace('{marca}', razonSocial || nombreMarca);
-const historiaP1 = (t.historia_p1 || '').replace('{marca}', razonSocial || nombreMarca);
-const historiaP2 = (t.historia_p2 || '')
-  .replace('{fundador}', fundador)
-  .replace('{universidad}', universidad);
+const tituloHighlight = t.titulo_highlight || '';
+const historiaP1 = t.historia_p1 || '';
+const historiaP2 = t.historia_p2 || '';
 
 const metricas = Array.isArray(t.metricas) ? t.metricas : [];
 const valores = Array.isArray(t.valores) ? t.valores : [];
@@ -52,24 +37,18 @@ const pilares = Array.isArray(t.pilares) ? t.pilares : [];
       {t.desc && <p class="acercas-hero-desc">{t.desc}</p>}
 
       <div class="acercas-meta-strip">
-        {sede && (
-          <span class="acercas-meta-chip">
-            <i class="fa-solid fa-location-dot"></i>
-            <span>{sede}</span>
-          </span>
-        )}
-        {correo && (
-          <span class="acercas-meta-chip">
-            <i class="fa-solid fa-envelope"></i>
-            <span>{correo}</span>
-          </span>
-        )}
-        {universidad && (
-          <span class="acercas-meta-chip">
-            <i class="fa-solid fa-graduation-cap"></i>
-            <span>{universidad}</span>
-          </span>
-        )}
+        <span class="acercas-meta-chip">
+          <i class="fa-solid fa-code"></i>
+          <span>{WII_INFO.by}</span>
+        </span>
+        <span class="acercas-meta-chip">
+          <i class="fa-solid fa-envelope"></i>
+          <span>{WII_INFO.correo}</span>
+        </span>
+        <span class="acercas-meta-chip">
+          <i class="fa-solid fa-bolt"></i>
+          <span>v{WII_INFO.version} · {WII_INFO.slogan}</span>
+        </span>
       </div>
     </header>
 

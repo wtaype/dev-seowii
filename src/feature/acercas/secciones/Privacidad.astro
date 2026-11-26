@@ -2,9 +2,8 @@
 // src/feature/acercas/secciones/Privacidad.astro
 // 🔒 Política de Privacidad y Protección de Datos Personales (Ley N° 29733 · .conwii 85vw)
 
-import { app } from '@semillas';
 import { getFeatureLang, langPrincipal, type Idioma } from '@idioma';
-const datosApp: Record<string, any> = {};
+import { WII_INFO, rellenarWii } from '../lib/wiiVars';
 
 interface Props {
   idioma?: Idioma;
@@ -15,17 +14,12 @@ const locales = import.meta.glob<Record<string, any>>('../idioma/*.json', {
   eager: true,
   import: 'default'
 });
-const t = getFeatureLang(locales, idioma).privacidad || {};
+const t = rellenarWii(getFeatureLang(locales, idioma).privacidad || {});
 
-const marcaApp = (datosApp.marca || {}) as Record<string, any>;
-const contactoApp = (datosApp.contacto || {}) as Record<string, any>;
-
-const nombreMarca = marcaApp.nombre || app.marca?.nombre || '';
-const razonSocial = marcaApp.razonSocial || app.marca?.razonSocial || nombreMarca;
-const sede = contactoApp.sedePrincipal || app.contacto?.sedePrincipal || '';
-const correo = contactoApp.correo || app.contacto?.correo || '';
-
-const desc = (t.desc || '').replace('{marca}', razonSocial || nombreMarca);
+const razonSocial = WII_INFO.app;
+const sede = WII_INFO.by;
+const correo = WII_INFO.correo;
+const desc = t.desc || '';
 const clausulas = Array.isArray(t.clausulas) ? t.clausulas : [];
 ---
 
