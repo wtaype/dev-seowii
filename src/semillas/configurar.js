@@ -1,6 +1,6 @@
 // src/semillas/configurar.js
 // 🛠️ Tablero Maestro de Configuración — dev.seowii.com
-// Fuente única de verdad para navegación, módulos, rutas y tema por defecto.
+// Solo estructura, iconos y rutas base. Los textos viven en core/idioma/{es,en}.json.
 
 import { id, app, slogan, by, version, linkweb } from '@wii';
 
@@ -28,95 +28,32 @@ export const configurar = {
     aprender: '/aprender'
   },
 
-  // Navegación principal (Sidebar superior + Mobile)
-  // Nota: General vive en '/' (por defecto, sin '/general')
+  // Navegación principal (General vive en '/', sin '/general')
   navPrincipal: [
-    {
-      id: 'general',
-      href: '/',
-      label: 'General',
-      sub: 'Herramientas',
-      icono: 'fa-solid fa-layer-group'
-    },
-    {
-      id: 'imgwii',
-      href: '/imgwii',
-      label: 'ImgWii',
-      sub: 'WebP & Resize',
-      icono: 'fa-solid fa-image'
-    },
-    {
-      id: 'lector-json',
-      href: '/lector-json',
-      label: 'Lector JSON',
-      sub: 'Validar & Árbol',
-      icono: 'fa-solid fa-code'
-    },
-    {
-      id: 'lector-md',
-      href: '/lector-md',
-      label: 'Lector MD',
-      sub: 'Visor Markdown',
-      icono: 'fa-solid fa-file-lines'
-    },
-    {
-      id: 'seo-test',
-      href: '/seo-test',
-      label: 'SEO Test',
-      sub: 'Meta & Headers',
-      icono: 'fa-solid fa-magnifying-glass-chart'
-    },
-    {
-      id: 'speed-test',
-      href: '/speed-test',
-      label: 'Speed Test',
-      sub: 'Peso & Vitals',
-      icono: 'fa-solid fa-gauge-high'
-    }
+    { id: 'general', href: '/', icono: 'fa-solid fa-layer-group' },
+    { id: 'imgwii', href: '/imgwii', icono: 'fa-solid fa-image' },
+    { id: 'lector-json', href: '/lector-json', icono: 'fa-solid fa-code' },
+    { id: 'lector-md', href: '/lector-md', icono: 'fa-solid fa-file-lines' },
+    { id: 'seo-test', href: '/seo-test', icono: 'fa-solid fa-magnifying-glass-chart' },
+    { id: 'speed-test', href: '/speed-test', icono: 'fa-solid fa-gauge-high' }
   ],
 
-  // Navegación inferior del Sidebar (anclada abajo; Aprender arriba de Colapsar)
+  // Navegación inferior (Aprender arriba de Colapsar)
   navInferior: [
-    {
-      id: 'tema',
-      tipo: 'accion',
-      accion: 'toggle-tema',
-      labelLuz: 'Tema Noche',
-      labelNoche: 'Tema Luz',
-      iconoLuz: 'fa-solid fa-moon',
-      iconoNoche: 'fa-solid fa-sun'
-    },
-    {
-      id: 'acerca',
-      tipo: 'accion',
-      accion: 'open-acerca',
-      label: 'Acerca',
-      icono: 'fa-solid fa-circle-info'
-    },
-    {
-      id: 'aprender',
-      tipo: 'link',
-      href: '/aprender',
-      label: 'Aprender',
-      icono: 'fa-solid fa-graduation-cap'
-    },
-    {
-      id: 'colapsar',
-      tipo: 'accion',
-      accion: 'toggle-sidebar',
-      label: 'Colapsar',
-      icono: 'fa-solid fa-angles-left'
-    }
+    { id: 'tema', tipo: 'accion', accion: 'toggle-tema', icono: 'fa-solid fa-moon', key: 'temaLuz' },
+    { id: 'idioma', tipo: 'accion', accion: 'toggle-idioma', icono: 'fa-solid fa-globe', key: 'idioma' },
+    { id: 'acerca', tipo: 'accion', accion: 'open-acerca', icono: 'fa-solid fa-circle-info', key: 'acerca' },
+    { id: 'aprender', tipo: 'link', href: '/aprender', icono: 'fa-solid fa-graduation-cap', key: 'aprender' },
+    { id: 'colapsar', tipo: 'accion', accion: 'toggle-sidebar', icono: 'fa-solid fa-angles-left', key: 'colapsar' }
   ],
 
-  // Enlaces legales / acerca incluidos en Acerca.astro
   enlacesAcerca: [
-    { label: 'Nosotros', href: '/nosotros', icono: 'fa-solid fa-users' },
-    { label: 'Contacto', href: '/contacto', icono: 'fa-solid fa-envelope' },
-    { label: 'Feedback', href: '/feedback', icono: 'fa-solid fa-comment-dots' },
-    { label: 'Privacidad', href: '/privacidad', icono: 'fa-solid fa-shield-halved' },
-    { label: 'Términos', href: '/terminos', icono: 'fa-solid fa-file-contract' },
-    { label: 'Cookies', href: '/cookies', icono: 'fa-solid fa-cookie-bite' }
+    { id: 'nosotros', href: '/nosotros', icono: 'fa-solid fa-users' },
+    { id: 'contacto', href: '/contacto', icono: 'fa-solid fa-envelope' },
+    { id: 'feedback', href: '/feedback', icono: 'fa-solid fa-comment-dots' },
+    { id: 'privacidad', href: '/privacidad', icono: 'fa-solid fa-shield-halved' },
+    { id: 'terminos', href: '/terminos', icono: 'fa-solid fa-file-contract' },
+    { id: 'cookies', href: '/cookies', icono: 'fa-solid fa-cookie-bite' }
   ]
 };
 

@@ -1,20 +1,40 @@
 ---
 // src/core/componentes/Mobile.astro
 import { configurar } from '@semillas';
+import { getCoreLang, buildRuta, langPrincipal, type Idioma } from '@idioma';
 
-const { navPrincipal } = configurar;
-const navMobile = navPrincipal.slice(0, 5);
+interface Props {
+  idioma?: Idioma;
+}
+
+const { idioma = langPrincipal } = Astro.props;
+const navMobile = configurar.navPrincipal.slice(0, 4);
+const t = getCoreLang(idioma);
 ---
 
 <nav class="dv-mobile" id="dvMobile" transition:persist="dv-mobile" aria-label="Navegación móvil">
-  {navMobile.map((item) => (
-    <a id={`dvMob_${item.id}`} href={item.href} class="dv-mob-item" data-nav-link data-href={item.href}>
-      <i class={item.icono}></i>
-      <span>{item.label}</span>
-    </a>
-  ))}
+  {navMobile.map((item) => {
+    const label = t.nav?.[item.id]?.label || '';
+    return (
+      <a
+        id={`dvMob_${item.id}`}
+        href={buildRuta(item.href, idioma)}
+        class="dv-mob-item"
+        data-nav-link
+        data-base-href={item.href}
+        data-astro-prefetch="hover"
+      >
+        <i class={item.icono}></i>
+        <span data-i18n-nav={item.id}>{label}</span>
+      </a>
+    );
+  })}
+  <button id="dvMob_idioma" type="button" class="dv-mob-item" data-action="toggle-idioma" aria-label="Idioma">
+    <i class="fa-solid fa-globe"></i>
+    <span data-i18n-lang-short>{idioma.toUpperCase()}</span>
+  </button>
   <button id="dvMob_tema" type="button" class="dv-mob-item" data-action="toggle-tema" aria-label="Cambiar tema">
     <i class="fa-solid fa-moon" data-tema-ico="1"></i>
-    <span>Tema</span>
+    <span data-i18n-util="temaMovil">{t.util?.temaMovil}</span>
   </button>
 </nav>

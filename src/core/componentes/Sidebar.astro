@@ -1,12 +1,19 @@
 ---
 // src/core/componentes/Sidebar.astro
 import { configurar } from '@semillas';
+import { getCoreLang, buildRuta, langPrincipal, type Idioma } from '@idioma';
 
+interface Props {
+  idioma?: Idioma;
+}
+
+const { idioma = langPrincipal } = Astro.props;
 const { app, slogan, navPrincipal, navInferior } = configurar;
+const t = getCoreLang(idioma);
 ---
 
 <aside class="dv-sidebar" id="dvSidebar" transition:persist="dv-sidebar" aria-label="Menú principal">
-  <a href="/" class="dv-brand" data-nav-link>
+  <a id="dvSb_brand" href={buildRuta('/', idioma)} class="dv-brand" data-nav-link data-base-href="/" data-astro-prefetch="hover">
     <span class="dv-brand-ico" aria-hidden="true">
       <i class="fa-solid fa-terminal"></i>
     </span>
@@ -17,37 +24,44 @@ const { app, slogan, navPrincipal, navInferior } = configurar;
   </a>
 
   <nav class="dv-nav-top">
-    {navPrincipal.map((item) => (
-      <a
-        id={`dvSb_${item.id}`}
-        href={item.href}
-        class="dv-nav-item"
-        data-nav-link
-        data-href={item.href}
-        title={item.label}
-      >
-        <span class="dv-nav-ico"><i class={item.icono}></i></span>
-        <span class="dv-nav-txt">
-          <strong>{item.label}</strong>
-          <small>{item.sub}</small>
-        </span>
-      </a>
-    ))}
+    {navPrincipal.map((item) => {
+      const txt = t.nav?.[item.id] || {};
+      return (
+        <a
+          id={`dvSb_${item.id}`}
+          href={buildRuta(item.href, idioma)}
+          class="dv-nav-item"
+          data-nav-link
+          data-base-href={item.href}
+          data-nav-id={item.id}
+          data-astro-prefetch="hover"
+          title={txt.label}
+        >
+          <span class="dv-nav-ico"><i class={item.icono}></i></span>
+          <span class="dv-nav-txt">
+            <strong data-i18n-nav={item.id}>{txt.label}</strong>
+            <small data-i18n-sub={item.id}>{txt.sub}</small>
+          </span>
+        </a>
+      );
+    })}
   </nav>
 
   <div class="dv-nav-bottom">
-    {navInferior.map((item) =>
-      item.tipo === 'link' ? (
+    {navInferior.map((item) => {
+      const label = t.util?.[item.key] || '';
+      return item.tipo === 'link' ? (
         <a
           id={`dvSb_${item.id}`}
-          href={item.href}
+          href={buildRuta(item.href, idioma)}
           class="dv-util-item"
           data-nav-link
-          data-href={item.href}
-          title={item.label}
+          data-base-href={item.href}
+          data-astro-prefetch="hover"
+          title={label}
         >
           <span class="dv-util-ico"><i class={item.icono}></i></span>
-          <span class="dv-util-lbl">{item.label}</span>
+          <span class="dv-util-lbl" data-i18n-util={item.key}>{label}</span>
         </a>
       ) : (
         <button
@@ -55,19 +69,23 @@ const { app, slogan, navPrincipal, navInferior } = configurar;
           type="button"
           class="dv-util-item"
           data-action={item.accion}
-          title={item.label || item.labelLuz}
+          title={label}
         >
           <span class="dv-util-ico">
             <i
-              class={item.icono || item.iconoLuz}
+              class={item.icono}
               data-tema-ico={item.accion === 'toggle-tema' ? '1' : undefined}
             ></i>
           </span>
-          <span class="dv-util-lbl" data-tema-lbl={item.accion === 'toggle-tema' ? '1' : undefined}>
-            {item.label || item.labelLuz}
+          <span
+            class="dv-util-lbl"
+            data-i18n-util={item.key}
+            data-tema-lbl={item.accion === 'toggle-tema' ? '1' : undefined}
+          >
+            {label}
           </span>
         </button>
-      )
-    )}
+      );
+    })}
   </div>
 </aside>

@@ -1,0 +1,30 @@
+{
+  "nav": {
+    "general": { "label": "General", "sub": "Herramientas" },
+    "imgwii": { "label": "ImgWii", "sub": "WebP & Resize" },
+    "lector-json": { "label": "Lector JSON", "sub": "Validar & Árbol" },
+    "lector-md": { "label": "Lector MD", "sub": "Visor Markdown" },
+    "seo-test": { "label": "SEO Test", "sub": "Meta & Headers" },
+    "speed-test": { "label": "Speed Test", "sub": "Peso & Vitals" }
+  },
+  "util": {
+    "temaLuz": "Tema Noche",
+    "temaNoche": "Tema Luz",
+    "idioma": "Idioma: ES",
+    "acerca": "Acerca",
+    "aprender": "Aprender",
+    "colapsar": "Colapsar",
+    "temaMovil": "Tema"
+  },
+  "acerca": {
+    "descripcion": "Suite ultrarrápida para desarrollo web, optimización de imágenes, lectura técnica y auditoría SEO/Speed 100% en tu navegador.",
+    "enlaces": {
+      "nosotros": "Nosotros",
+      "contacto": "Contacto",
+      "feedback": "Feedback",
+      "privacidad": "Privacidad",
+      "terminos": "Términos",
+      "cookies": "Cookies"
+    }
+  }
+}

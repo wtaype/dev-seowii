@@ -2,6 +2,7 @@
 // 🗺️ Enrutador Central de dev.seowii.com
 
 import { configurar } from '@semillas';
+import { limpiarPrefijoIdioma, buildRuta } from '@idioma';
 
 export const RUTAS = {
   general: '/',
@@ -20,17 +21,13 @@ export const RUTAS = {
   ...(configurar.rutas || {})
 };
 
-/** Normaliza la ruta actual eliminando barras finales (excepto '/') */
-export const normalizarRuta = (path = '/') => {
-  const clean = String(path || '/').replace(/\/+$/, '');
-  return clean || '/';
-};
+export const normalizarRuta = (path = '/') => limpiarPrefijoIdioma(path);
 
-/** Verifica si un enlace coincide con la ruta activa */
 export const esRutaActiva = (href = '/', currentPath = '/') =>
   normalizarRuta(href) === normalizarRuta(currentPath);
 
-/** Resuelve rutas relativas/locales al origen activo del navegador */
+export const rutaConIdioma = (href = '/', lang = 'es') => buildRuta(href, lang);
+
 export function resolverRutas(urlRaw = '', fallback = '') {
   const u = String(urlRaw || fallback || '').trim();
   if (!u) return fallback;
@@ -40,7 +37,6 @@ export function resolverRutas(urlRaw = '', fallback = '') {
   return origin ? `${origin}${clean}` : clean;
 }
 
-/** Normaliza cualquier texto a un slug canónico URL-friendly */
 export const slugify = (texto = '') =>
   String(texto)
     .toLowerCase()
@@ -50,4 +46,4 @@ export const slugify = (texto = '') =>
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/(^-|-$)+/g, '');
 
-export default { RUTAS, normalizarRuta, esRutaActiva, resolverRutas, slugify };
+export default { RUTAS, normalizarRuta, esRutaActiva, rutaConIdioma, resolverRutas, slugify };

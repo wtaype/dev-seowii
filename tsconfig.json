@@ -8,6 +8,8 @@
       "@layouts/*": ["./src/core/layouts/*"],
       "@wicss/*": ["./src/core/wicss/*"],
       "@servicios/*": ["./src/core/servicios/*"],
+      "@idioma": ["./src/core/idioma/idioma.ts"],
+      "@idioma/*": ["./src/core/idioma/*"],
       "@widev": ["./src/core/widev/widev.js"],
       "@widev/*": ["./src/core/widev/*"],
       "@semillas": ["./src/semillas/configurar.js"],
