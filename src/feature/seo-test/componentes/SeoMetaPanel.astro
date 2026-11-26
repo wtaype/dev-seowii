@@ -1,7 +1,5 @@
 ---
 // src/feature/seo-test/componentes/SeoMetaPanel.astro
-import { SEO_DEFAULTS } from '@semillas/seo-test.js';
-
 interface Props {
   t: Record<string, any>;
 }
@@ -9,101 +7,39 @@ interface Props {
 const { t } = Astro.props;
 ---
 
-<div id="dvSeo_simPane" class="dv-grid dv-grid-2 dv-seo-grid dv-seo-hidden">
-  <article class="dv-card dv-seo-panel">
-    <div class="dv-seo-field">
+<div id="dvSeo_simPane" class="dv-seo-wrap dv-seo-hidden">
+  <article class="dv-card dv-seo-welcome" id="dvSeo_mejEmpty">
+    <div class="dv-seo-welcome-box">
+      <span class="dv-seo-welcome-ico"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
+      <h2>{t.modeSim}</h2>
+      <p>{t.mejorasEmpty}</p>
+    </div>
+  </article>
+
+  <div class="dv-grid dv-grid-2 dv-seo-grid dv-seo-hidden" id="dvSeo_mejGrid">
+    <article class="dv-card dv-seo-panel">
       <div class="dv-seo-label-row">
-        <label for="dvSeo_title">{t.lblTitle}</label>
-        <span class="dv-seo-counter" id="dvSeo_titleCount">0 / 60</span>
+        <span>{t.mejorasTitle}</span>
+        <span class="dv-pill-status" id="dvSeo_mejBadge" data-state="ok">--</span>
       </div>
-      <input id="dvSeo_title" type="text" class="dv-input" value={SEO_DEFAULTS.title} />
-    </div>
 
-    <div class="dv-seo-field">
-      <div class="dv-seo-label-row">
-        <label for="dvSeo_desc">{t.lblDesc}</label>
-        <span class="dv-seo-counter" id="dvSeo_descCount">0 / 160</span>
-      </div>
-      <textarea id="dvSeo_desc" class="dv-textarea" rows="3">{SEO_DEFAULTS.desc}</textarea>
-    </div>
+      <div class="dv-seo-checks dv-seo-audits-scroll" id="dvSeo_mejList"></div>
+    </article>
 
-    <div class="dv-grid dv-grid-2">
-      <div class="dv-seo-field">
-        <label class="dv-seo-label-row" for="dvSeo_url">{t.lblUrl}</label>
-        <input id="dvSeo_url" type="url" class="dv-input" value={SEO_DEFAULTS.url} />
-      </div>
-      <div class="dv-seo-field">
-        <label class="dv-seo-label-row" for="dvSeo_robots">{t.lblRobots}</label>
-        <select id="dvSeo_robots" class="dv-input">
-          <option value="index, follow" selected>index, follow</option>
-          <option value="noindex, nofollow">noindex, nofollow</option>
-          <option value="index, nofollow">index, nofollow</option>
-        </select>
-      </div>
-    </div>
-
-    <div class="dv-grid dv-grid-2">
-      <div class="dv-seo-field">
-        <label class="dv-seo-label-row" for="dvSeo_h1">{t.lblH1}</label>
-        <input id="dvSeo_h1" type="text" class="dv-input" value={SEO_DEFAULTS.h1} />
-      </div>
-      <div class="dv-seo-field">
-        <label class="dv-seo-label-row" for="dvSeo_og">{t.lblOg}</label>
-        <input id="dvSeo_og" type="url" class="dv-input" value={SEO_DEFAULTS.ogImage} />
-      </div>
-    </div>
-
-    <div class="dv-seo-checks" id="dvSeo_checks">
-      {Object.entries(t.checks || {}).map(([key, label]) => (
-        <div class="dv-seo-check" data-check-key={key} data-ok="1">
-          <i class="fa-solid fa-circle-check"></i>
-          <span>{label}</span>
+    <article class="dv-card dv-seo-panel">
+      <div class="dv-seo-code-head">
+        <div class="dv-seo-tabs">
+          <button type="button" class="dv-seo-tab active" data-seo-tab="json">{t.tabJson}</button>
+          <button type="button" class="dv-seo-tab" data-seo-tab="meta">{t.tabMeta}</button>
+          <button type="button" class="dv-seo-tab" data-seo-tab="headers">{t.tabHeaders}</button>
         </div>
-      ))}
-    </div>
-  </article>
-
-  <article class="dv-card dv-seo-panel">
-    <div class="dv-seo-label-row">
-      <span>{t.serpTitle}</span>
-      <button type="button" class="dv-btn dv-btn-sm" id="dvSeo_btnReset">
-        <i class="fa-solid fa-flask"></i>
-        <span>{t.resetBtn}</span>
-      </button>
-    </div>
-
-    <div class="dv-serp-box">
-      <span class="dv-serp-url" id="dvSeo_serpUrl">{SEO_DEFAULTS.url}</span>
-      <div class="dv-serp-title" id="dvSeo_serpTitle">{SEO_DEFAULTS.title}</div>
-      <div class="dv-serp-desc" id="dvSeo_serpDesc">{SEO_DEFAULTS.desc}</div>
-    </div>
-
-    <div class="dv-seo-label-row">
-      <span>{t.ogTitle}</span>
-    </div>
-
-    <div class="dv-og-box">
-      <div class="dv-og-banner">
-        <i class="fa-regular fa-image"></i>
-        <span id="dvSeo_ogImgOut">{SEO_DEFAULTS.ogImage}</span>
+        <button type="button" class="dv-btn dv-btn-primary dv-btn-sm" id="dvSeo_btnCopy">
+          <i class="fa-regular fa-copy"></i>
+          <span>{t.copyBtn}</span>
+        </button>
       </div>
-      <div class="dv-og-body">
-        <strong id="dvSeo_ogTitleOut">{SEO_DEFAULTS.title}</strong>
-        <p id="dvSeo_ogDescOut">{SEO_DEFAULTS.desc}</p>
-      </div>
-    </div>
 
-    <div class="dv-seo-code-head">
-      <div class="dv-seo-tabs">
-        <button type="button" class="dv-seo-tab active" data-seo-tab="meta">{t.tabMeta}</button>
-        <button type="button" class="dv-seo-tab" data-seo-tab="headers">{t.tabHeaders}</button>
-      </div>
-      <button type="button" class="dv-btn dv-btn-primary dv-btn-sm" id="dvSeo_btnCopy">
-        <i class="fa-regular fa-copy"></i>
-        <span>{t.copyBtn}</span>
-      </button>
-    </div>
-
-    <pre class="dv-seo-pre" id="dvSeo_codeOut"></pre>
-  </article>
+      <pre class="dv-seo-pre dv-seo-audits-scroll" id="dvSeo_codeOut"></pre>
+    </article>
+  </div>
 </div>

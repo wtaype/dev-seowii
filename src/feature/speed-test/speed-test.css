@@ -124,6 +124,96 @@
   flex-shrink: 0;
 }
 
+.dv-spd-opp[data-state="err"] strong {
+  color: var(--error);
+}
+
+.dv-spd-opps-scroll {
+  max-height: 30vh;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.dv-gauge-wrap {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 1.3vh;
+  align-items: center;
+  padding: 1.2vh 1.4vh;
+  border-radius: var(--r_m);
+  background: var(--bg1);
+  border: 1px solid var(--border);
+}
+
+.dv-gauge-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4vh;
+}
+
+.dv-gauge-svg {
+  width: 195px;
+  height: 112px;
+  overflow: visible;
+}
+
+.dv-gauge-needle {
+  transform-origin: 100px 100px;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.dv-gauge-score {
+  font-size: var(--fz_l1);
+  font-weight: 700;
+  color: var(--tx1);
+  margin-top: -1vh;
+}
+
+.dv-gauge-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85vh;
+}
+
+.dv-gbar-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25vh;
+}
+
+.dv-gbar-head {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--fz_s1);
+  font-weight: 600;
+  color: var(--tx2);
+}
+
+.dv-gbar-track {
+  width: 100%;
+  height: 7px;
+  border-radius: var(--r_pill);
+  background: var(--bg3);
+  overflow: hidden;
+}
+
+.dv-gbar-fill {
+  height: 100%;
+  border-radius: var(--r_pill);
+  background: var(--success);
+  transition: width 0.4s ease;
+}
+
+.dv-gbar-fill[data-state="warn"] { background: var(--warning); }
+.dv-gbar-fill[data-state="err"] { background: var(--error); }
+
+@media (max-width: 640px) {
+  .dv-gauge-wrap {
+    grid-template-columns: 1fr;
+  }
+}
+
 .dv-spd-scores {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));

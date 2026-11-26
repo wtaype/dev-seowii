@@ -18,8 +18,10 @@ const i18nPayload = JSON.stringify({
   idioma,
   runBtn: t.runBtn,
   runningBtn: t.runningBtn,
-  aiBtn: t.aiBtn,
-  aiRunning: t.aiRunning,
+  oppsAllOk: t.oppsAllOk,
+  gaugePerfect: t.gaugePerfect,
+  gaugeWarn: t.gaugeWarn,
+  gaugeBad: t.gaugeBad,
   progressSteps: t.progressSteps,
   rateLimitMsg: t.rateLimitMsg,
   errGeneric: t.errGeneric,
@@ -59,10 +61,6 @@ const i18nPayload = JSON.stringify({
         <i class="fa-solid fa-bolt"></i>
         <span>{t.runBtn}</span>
       </button>
-      <button type="button" class="dv-btn" id="dvSpd_btnAi" disabled>
-        <i class="fa-solid fa-wand-magic-sparkles"></i>
-        <span>{t.aiBtn}</span>
-      </button>
     </div>
 
     <div class="dv-seo-progress dv-spd-hidden" id="dvSpd_progressBox">
@@ -80,7 +78,6 @@ const i18nPayload = JSON.stringify({
       </div>
     </div>
 
-    <div id="dvSpd_aiBox" class="dv-seo-ai-short dv-spd-hidden"></div>
     <div id="dvSpd_err" class="dv-aj-status dv-spd-hidden" data-state="err"></div>
   </article>
 
@@ -102,14 +99,18 @@ const i18nPayload = JSON.stringify({
       <div class="dv-seo-label-row">
         <span>{t.vitalsTitle}</span>
       </div>
-      <div class="dv-spd-vitals" id="dvSpd_vitals">
-        <p class="dv-sub">{t.emptyMsg}</p>
+      <div class="dv-spd-vitals" id="dvSpd_vitals"></div>
+
+      <div class="dv-seo-label-row">
+        <span>{t.diagTitle}</span>
       </div>
+      <div class="dv-spd-vitals" id="dvSpd_diags"></div>
 
       <div class="dv-seo-label-row">
         <span>{t.oppsTitle}</span>
+        <span class="dv-pill-status" id="dvSpd_oppsCount">0</span>
       </div>
-      <div class="dv-spd-opps" id="dvSpd_opps"></div>
+      <div class="dv-spd-opps dv-spd-opps-scroll" id="dvSpd_opps"></div>
     </article>
 
     <article class="dv-card">
@@ -128,9 +129,7 @@ const i18nPayload = JSON.stringify({
         </div>
       </div>
 
-      <div class="dv-spd-shot-box" id="dvSpd_shotBox">
-        <p class="dv-sub">{t.emptyMsg}</p>
-      </div>
+      <div class="dv-spd-shot-box" id="dvSpd_shotBox"></div>
 
       <div class="dv-spd-scores">
         <div class="dv-spd-kpi" id="dvSpd_kpiPerf" data-state="ok">
@@ -148,6 +147,47 @@ const i18nPayload = JSON.stringify({
         <div class="dv-spd-kpi" id="dvSpd_kpiSeo" data-state="ok">
           <strong id="dvSpd_valSeo">--</strong>
           <span>SEO</span>
+        </div>
+      </div>
+
+      <div class="dv-gauge-wrap">
+        <div class="dv-gauge-box">
+          <svg class="dv-gauge-svg" viewBox="0 0 200 115" aria-hidden="true">
+            <defs>
+              <linearGradient id="dvSpdGaugeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="var(--error)" />
+                <stop offset="50%" stop-color="var(--warning)" />
+                <stop offset="100%" stop-color="var(--success)" />
+              </linearGradient>
+            </defs>
+            <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="var(--bg3)" stroke-width="14" stroke-linecap="round" />
+            <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="url(#dvSpdGaugeGrad)" stroke-width="14" stroke-linecap="round" />
+            <g class="dv-gauge-needle" id="dvSpd_needle" style="transform: rotate(-90deg);">
+              <line x1="100" y1="100" x2="100" y2="30" stroke="var(--primary)" stroke-width="3.5" stroke-linecap="round" />
+              <circle cx="100" cy="100" r="6" fill="var(--primary)" />
+            </g>
+          </svg>
+          <div class="dv-gauge-score" id="dvSpd_gaugeScore">--</div>
+          <span class="dv-pill-status" id="dvSpd_gaugeBadge" data-state="ok">Performance</span>
+        </div>
+
+        <div class="dv-gauge-bars">
+          <div class="dv-gbar-item">
+            <div class="dv-gbar-head"><span>Performance</span><strong id="dvSpd_barTxtPerf">--</strong></div>
+            <div class="dv-gbar-track"><div class="dv-gbar-fill" id="dvSpd_barPerf" style="width:0%"></div></div>
+          </div>
+          <div class="dv-gbar-item">
+            <div class="dv-gbar-head"><span>Accessibility</span><strong id="dvSpd_barTxtA11y">--</strong></div>
+            <div class="dv-gbar-track"><div class="dv-gbar-fill" id="dvSpd_barA11y" style="width:0%"></div></div>
+          </div>
+          <div class="dv-gbar-item">
+            <div class="dv-gbar-head"><span>Best Practices</span><strong id="dvSpd_barTxtBp">--</strong></div>
+            <div class="dv-gbar-track"><div class="dv-gbar-fill" id="dvSpd_barBp" style="width:0%"></div></div>
+          </div>
+          <div class="dv-gbar-item">
+            <div class="dv-gbar-head"><span>SEO</span><strong id="dvSpd_barTxtSeo">--</strong></div>
+            <div class="dv-gbar-track"><div class="dv-gbar-fill" id="dvSpd_barSeo" style="width:0%"></div></div>
+          </div>
         </div>
       </div>
     </article>

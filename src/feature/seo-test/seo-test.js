@@ -1,22 +1,18 @@
 // src/feature/seo-test/seo-test.js
-// ⚡ Orquestador de SEO Test (Gauge Velocímetro, Notas 0-10 transparentes, /api/meta, IA corta y JSON)
+// ⚡ Orquestador de SEO Test (Auditoría URL + SERP Real + Velocímetro + Analisa las Mejoras con JSON real)
 
 import { savels, getls } from '@widev/storage.js';
 import { wiMd } from '@widev/wimd.js';
 import { wiGaleria } from '@widev/galeria.js';
 import { wiTip } from '@widev/witip.js';
 import { ejecutarPageSpeed, analizarConGemini } from '@servicios/googleApi.js';
-import { SEO_LIMITS } from '@semillas/seo-test.js';
 import {
   escapeHtml,
-  evaluarSeo,
-  extraerDominio,
   fetchMetaReal,
   generarMetaHtml,
   parseLighthouseSeo
 } from './lib/seoAudit.js';
 
-const LS_SIM = 'dv_seo_test';
 const LS_LIVE = 'dv_seo_live_cache';
 
 function getMsgs(root) {
@@ -60,16 +56,6 @@ function initSeoTest() {
   const simPane = document.getElementById('dvSeo_simPane');
   const modeBtns = root.querySelectorAll('[data-seo-mode]');
 
-  modeBtns.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      modeBtns.forEach((b) => b.classList.remove('active'));
-      btn.classList.add('active');
-      const isLive = btn.getAttribute('data-seo-mode') === 'live';
-      livePane?.classList.toggle('dv-seo-hidden', !isLive);
-      simPane?.classList.toggle('dv-seo-hidden', isLive);
-    });
-  });
-
   // ── MODO 1: AUDITORÍA URL ──
   const liveUrl = document.getElementById('dvSeo_liveUrl');
   const stratBtns = root.querySelectorAll('[data-seo-strat]');
@@ -93,10 +79,29 @@ function initSeoTest() {
   const progFill = document.getElementById('dvSeo_progressFill');
   const progLines = root.querySelectorAll('[data-prog-step]');
 
+  // ── MODO 2: ANALISA LAS MEJORAS (desde el JSON real del reporte) ──
+  const mejEmpty = document.getElementById('dvSeo_mejEmpty');
+  const mejGrid = document.getElementById('dvSeo_mejGrid');
+  const mejBadge = document.getElementById('dvSeo_mejBadge');
+  const mejList = document.getElementById('dvSeo_mejList');
+  const codeOut = document.getElementById('dvSeo_codeOut');
+  const tabBtns = root.querySelectorAll('[data-seo-tab]');
+
   let strategy = 'mobile';
+  let activeTab = 'json';
   let cacheReports = getls(LS_LIVE) || {};
   let currentParsed = cacheReports[strategy] || cacheReports.mobile || cacheReports.desktop || null;
   let progTimer = null;
+
+  modeBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      modeBtns.forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+      const isLive = btn.getAttribute('data-seo-mode') === 'live';
+      livePane?.classList.toggle('dv-seo-hidden', !isLive);
+      simPane?.classList.toggle('dv-seo-hidden', isLive);
+    });
+  });
 
   const startProgress = () => {
     clearInterval(progTimer);
@@ -126,7 +131,7 @@ function initSeoTest() {
   };
 
   const updateGauge = (seo, perf) => {
-    const avg = Math.round((seo * 0.65) + (perf * 0.35));
+    const avg = Math.round(seo * 0.65 + perf * 0.35);
     const deg = -90 + (avg / 100) * 180;
     if (needle) needle.style.transform = `rotate(${deg}deg)`;
     if (gaugeScore) gaugeScore.textContent = `${avg}.0`;
@@ -134,6 +139,65 @@ function initSeoTest() {
       const st = scoreState(avg);
       gaugeBadge.dataset.state = st;
       gaugeBadge.textContent = st === 'ok' ? msg.gaugePerfect : st === 'warn' ? msg.gaugeWarn : msg.gaugeBad;
+    }
+  };
+
+  const renderMejoras = (parsed) => {
+    const has = Boolean(parsed);
+    mejEmpty?.classList.toggle('dv-seo-hidden', has);
+    mejGrid?.classList.toggle('dv-seo-hidden', !has);
+    if (!parsed) return;
+
+    const auditMap = msg.auditMap || {};
+    const pendientes = parsed.seoList.filter((a) => a.nota10 < 10);
+
+    if (mejBadge) {
+      mejBadge.textContent = `${pendientes.length}`;
+      mejBadge.dataset.state = pendientes.length === 0 ? 'ok' : 'warn';
+    }
+
+    if (mejList) {
+      if (!pendientes.length) {
+        mejList.innerHTML = `<div class="dv-seo-audit-item" data-state="ok"><p class="dv-seo-audit-title"><i class="fa-solid fa-circle-check"></i><span>${escapeHtml(msg.mejorasAllOk)}</span></p></div>`;
+      } else {
+        mejList.innerHTML = pendientes
+          .map((a) => {
+            const loc = auditMap[a.id] || {};
+            const title = loc.title || a.title;
+            const tip = loc.tip || a.desc || title;
+            const comment = a.reason ? `${tip} · ${a.reason}` : tip;
+            return `
+            <div class="dv-seo-audit-item" data-state="${a.state}">
+              <div class="dv-seo-audit-top">
+                <span class="dv-seo-audit-title">
+                  <i class="fa-solid ${a.state === 'warn' ? 'fa-circle-exclamation' : 'fa-circle-xmark'}"></i>
+                  <span>${escapeHtml(title)}</span>
+                </span>
+                <span class="dv-pill-status" data-state="${a.state}">${a.nota10}/10</span>
+              </div>
+              ${a.extracted ? `<div class="dv-seo-extracted">${escapeHtml(a.extracted)}</div>` : ''}
+              <p class="dv-seo-audit-desc">${escapeHtml(comment)}</p>
+            </div>`;
+          })
+          .join('');
+      }
+    }
+
+    if (codeOut) {
+      if (activeTab === 'headers') {
+        codeOut.textContent = msg.headersTpl || '';
+      } else if (activeTab === 'meta') {
+        const m = parsed.metaReal || {};
+        codeOut.textContent = generarMetaHtml({
+          title: m.title || '',
+          desc: m.desc || '',
+          url: m.canonical || parsed.url || '',
+          ogImage: m.ogImage || ''
+        });
+      } else {
+        const cleanJson = { ...parsed, screenshot: parsed.screenshot ? '[base64_image]' : '' };
+        codeOut.textContent = JSON.stringify(cleanJson, null, 2);
+      }
     }
   };
 
@@ -253,11 +317,15 @@ function initSeoTest() {
     if (shotBox && parsed.screenshot) {
       shotBox.innerHTML = `<img class="dv-seo-shot-img" src="${parsed.screenshot}" alt="${escapeHtml(parsed.url)}" />`;
     }
+
+    renderMejoras(parsed);
   };
 
   if (currentParsed) {
     if (liveUrl && currentParsed.url) liveUrl.value = currentParsed.url;
     renderLive(currentParsed);
+  } else {
+    renderMejoras(null);
   }
 
   const runLiveAudit = async () => {
@@ -340,95 +408,13 @@ function initSeoTest() {
     }
   });
 
-  // ── MODO 2: ANALISA LAS METAS ──
-  const inpTitle = document.getElementById('dvSeo_title');
-  const inpDesc = document.getElementById('dvSeo_desc');
-  const inpUrl = document.getElementById('dvSeo_url');
-  const inpH1 = document.getElementById('dvSeo_h1');
-  const inpOg = document.getElementById('dvSeo_og');
-  const selRobots = document.getElementById('dvSeo_robots');
-  const titleCount = document.getElementById('dvSeo_titleCount');
-  const descCount = document.getElementById('dvSeo_descCount');
-  const serpUrl = document.getElementById('dvSeo_serpUrl');
-  const serpTitle = document.getElementById('dvSeo_serpTitle');
-  const serpDesc = document.getElementById('dvSeo_serpDesc');
-  const ogImgOut = document.getElementById('dvSeo_ogImgOut');
-  const ogTitleOut = document.getElementById('dvSeo_ogTitleOut');
-  const ogDescOut = document.getElementById('dvSeo_ogDescOut');
-  const codeOut = document.getElementById('dvSeo_codeOut');
-  const tabBtns = root.querySelectorAll('[data-seo-tab]');
-
-  let activeTab = 'meta';
-  const savedSim = getls(LS_SIM);
-  if (savedSim && typeof savedSim === 'object') {
-    if (inpTitle && savedSim.title != null) inpTitle.value = savedSim.title;
-    if (inpDesc && savedSim.desc != null) inpDesc.value = savedSim.desc;
-    if (inpUrl && savedSim.url != null) inpUrl.value = savedSim.url;
-    if (inpH1 && savedSim.h1 != null) inpH1.value = savedSim.h1;
-    if (inpOg && savedSim.ogImage != null) inpOg.value = savedSim.ogImage;
-    if (selRobots && savedSim.robots != null) selRobots.value = savedSim.robots;
-  }
-
-  const syncSim = () => {
-    const data = {
-      title: inpTitle?.value || '',
-      desc: inpDesc?.value || '',
-      url: inpUrl?.value || '',
-      h1: inpH1?.value || '',
-      ogImage: inpOg?.value || '',
-      robots: selRobots?.value || 'index, follow'
-    };
-    savels(LS_SIM, data, 24);
-    const { tLen, dLen, checks } = evaluarSeo(data);
-
-    if (titleCount) {
-      titleCount.textContent = `${tLen} / ${SEO_LIMITS.titleMax}`;
-      titleCount.dataset.state = tLen >= SEO_LIMITS.titleMin && tLen <= SEO_LIMITS.titleMax ? 'ok' : 'err';
-    }
-    if (descCount) {
-      descCount.textContent = `${dLen} / ${SEO_LIMITS.descMax}`;
-      descCount.dataset.state = dLen >= SEO_LIMITS.descMin && dLen <= SEO_LIMITS.descMax ? 'ok' : 'err';
-    }
-    checks.forEach((c) => {
-      const row = root.querySelector(`[data-check-key="${c.key}"]`);
-      if (!row) return;
-      row.setAttribute('data-ok', c.ok ? '1' : '0');
-      const ico = row.querySelector('i');
-      if (ico) ico.className = c.ok ? 'fa-solid fa-circle-check' : 'fa-solid fa-circle-xmark';
-    });
-
-    if (serpUrl) serpUrl.textContent = extraerDominio(data.url);
-    if (serpTitle) serpTitle.textContent = data.title || '...';
-    if (serpDesc) serpDesc.textContent = data.desc || '...';
-    if (ogImgOut) ogImgOut.textContent = data.ogImage || '—';
-    if (ogTitleOut) ogTitleOut.textContent = data.title || '...';
-    if (ogDescOut) ogDescOut.textContent = data.desc || '...';
-    if (codeOut) codeOut.textContent = activeTab === 'headers' ? msg.headersTpl || '' : generarMetaHtml(data);
-  };
-
-  [inpTitle, inpDesc, inpUrl, inpH1, inpOg, selRobots].forEach((el) => {
-    el?.addEventListener('input', syncSim);
-    el?.addEventListener('change', syncSim);
-  });
-
   tabBtns.forEach((btn) => {
     btn.addEventListener('click', () => {
       tabBtns.forEach((b) => b.classList.remove('active'));
       btn.classList.add('active');
-      activeTab = btn.getAttribute('data-seo-tab') || 'meta';
-      syncSim();
+      activeTab = btn.getAttribute('data-seo-tab') || 'json';
+      renderMejoras(currentParsed);
     });
-  });
-
-  document.getElementById('dvSeo_btnReset')?.addEventListener('click', () => {
-    const d = msg.defaults || {};
-    if (inpTitle) inpTitle.value = d.title || '';
-    if (inpDesc) inpDesc.value = d.desc || '';
-    if (inpUrl) inpUrl.value = d.url || '';
-    if (inpH1) inpH1.value = d.h1 || '';
-    if (inpOg) inpOg.value = d.ogImage || '';
-    if (selRobots) selRobots.value = d.robots || 'index, follow';
-    syncSim();
   });
 
   document.getElementById('dvSeo_btnCopy')?.addEventListener('click', async (e) => {
@@ -443,8 +429,6 @@ function initSeoTest() {
       }
     } catch {}
   });
-
-  syncSim();
 }
 
 if (!window.__dvSeoReady) {

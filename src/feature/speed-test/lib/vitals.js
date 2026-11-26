@@ -1,5 +1,5 @@
 // src/feature/speed-test/lib/vitals.js
-// ⚡ Parser de Core Web Vitals y oportunidades desde PageSpeed Insights v5
+// ⚡ Parser completo de Core Web Vitals, Diagnósticos, Peso y Oportunidades (PageSpeed v5)
 
 const VITAL_KEYS = [
   { id: 'first-contentful-paint', label: 'FCP' },
@@ -10,14 +10,13 @@ const VITAL_KEYS = [
   { id: 'server-response-time', label: 'TTFB' }
 ];
 
-const OPP_KEYS = [
-  'render-blocking-resources',
-  'unused-javascript',
-  'unused-css-rules',
-  'uses-optimized-images',
-  'modern-image-formats',
-  'uses-text-compression',
-  'total-byte-weight'
+const DIAG_KEYS = [
+  { id: 'total-byte-weight', label: 'Peso Total' },
+  { id: 'dom-size', label: 'Nodos DOM' },
+  { id: 'mainthread-work-breakdown', label: 'Hilo Principal' },
+  { id: 'bootup-time', label: 'Ejecución JS' },
+  { id: 'network-requests', label: 'Peticiones HTTP' },
+  { id: 'uses-long-cache-ttl', label: 'Caché Estática' }
 ];
 
 export function scoreState(score = 0) {
@@ -30,6 +29,7 @@ export function parseSpeedReport(data) {
   const lh = data?.lighthouseResult || {};
   const cats = lh.categories || {};
   const audits = lh.audits || {};
+  const perfRefs = cats.performance?.auditRefs || [];
   const pct = (c) => Math.round((c?.score || 0) * 100);
 
   const vitals = VITAL_KEYS.filter((v) => audits[v.id]).map((v) => {
@@ -43,14 +43,49 @@ export function parseSpeedReport(data) {
     };
   });
 
-  const opps = OPP_KEYS.filter((k) => audits[k] && (audits[k].score ?? 1) < 0.9).map((k) => ({
-    id: k,
-    title: audits[k].title || k,
-    display: audits[k].displayValue || ''
-  }));
+  const diagnostics = DIAG_KEYS.filter((d) => audits[d.id]).map((d) => {
+    const a = audits[d.id];
+    const val =
+      a.displayValue ||
+      (d.id === 'network-requests' && a.details?.items ? `${a.details.items.length} reqs` : '--');
+    const s = a.score === null ? 95 : Math.round((a.score ?? 1) * 100);
+    return {
+      id: d.id,
+      label: d.label,
+      value: val,
+      state: scoreState(s)
+    };
+  });
+
+  const opps = perfRefs
+    .map((r) => audits[r.id])
+    .filter(
+      (a) =>
+        a &&
+        a.score !== null &&
+        a.score < 0.9 &&
+        !VITAL_KEYS.some((v) => v.id === a.id) &&
+        !DIAG_KEYS.some((d) => d.id === a.id)
+    )
+    .map((a) => {
+      const s = Math.round((a.score || 0) * 100);
+      const ms = a.details?.overallSavingsMs ? `${Math.round(a.details.overallSavingsMs)} ms` : '';
+      const kb = a.details?.overallSavingsBytes
+        ? `${Math.round(a.details.overallSavingsBytes / 1024)} KiB`
+        : '';
+      const saving = [ms, kb].filter(Boolean).join(' · ') || a.displayValue || `${s}/100`;
+      return {
+        id: a.id,
+        title: a.title || a.id,
+        saving,
+        state: scoreState(s)
+      };
+    })
+    .slice(0, 12);
 
   return {
     url: data?.id || lh.finalDisplayedUrl || '',
+    strategy: lh.configSettings?.formFactor || 'mobile',
     scores: {
       perf: pct(cats.performance),
       a11y: pct(cats.accessibility),
@@ -58,6 +93,7 @@ export function parseSpeedReport(data) {
       seo: pct(cats.seo)
     },
     vitals,
+    diagnostics,
     opps,
     screenshot: audits['final-screenshot']?.details?.data || ''
   };
