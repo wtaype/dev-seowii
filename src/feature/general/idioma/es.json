@@ -1,0 +1,72 @@
+{
+  "pageTitle": "General · Herramientas Rápidas",
+  "pageDesc": "Text & Case Studio, JSON Formatter, HTTP Status, Tokens .env, Color WCAG y Breakpoints CSS.",
+  "text": {
+    "title": "Text & Case Studio",
+    "sub": "Transforma, limpia y prepara textos o slugs SEO en un clic",
+    "chars": "chars",
+    "words": "palabras",
+    "upper": "MAYÚSCULAS",
+    "lower": "minúsculas",
+    "cap": "Capitalizar",
+    "camel": "camelCase",
+    "slug": "slug-seo",
+    "clean": "Limpiar espacios",
+    "copy": "Copiar Texto",
+    "copied": "¡Texto copiado!"
+  },
+  "json": {
+    "title": "JSON Formatter & Validador Pro",
+    "sub": "Formatea, minifica y valida payloads o configs JSON al instante",
+    "valid": "VÁLIDO",
+    "invalid": "INVÁLIDO",
+    "format": "Formatear",
+    "minify": "Minificar",
+    "copy": "Copiar JSON",
+    "copied": "¡JSON copiado!"
+  },
+  "http": {
+    "title": "HTTP & SEO Status",
+    "badge": "LIVE",
+    "placeholder": "Buscar código (301, 404)...",
+    "codes": {
+      "200": "Página indexable y respuesta correcta.",
+      "201": "Recurso creado correctamente.",
+      "301": "Redirección permanente (transfiere autoridad).",
+      "302": "Redirección temporal (no consolida URL).",
+      "304": "Recurso sin cambios desde caché.",
+      "400": "Petición mal formada por el cliente.",
+      "401": "Requiere autenticación válida.",
+      "403": "Acceso denegado por permisos.",
+      "404": "No encontrado (revisar enlaces rotos).",
+      "410": "Eliminado permanentemente (desindexa rápido).",
+      "500": "Error interno del servidor.",
+      "502": "Gateway inválido o servidor caído.",
+      "503": "Servicio temporalmente no disponible."
+    }
+  },
+  "tokens": {
+    "title": "Tokens & UUID .env",
+    "badge": "CRYPTO",
+    "copy": "Copiar Token",
+    "copied": "¡Token copiado!",
+    "rows": {
+      "uuid": "IDs únicos 100% cliente",
+      "secret": "Tokens JWT / API Keys",
+      "pass": "16 chars alfanuméricos"
+    }
+  },
+  "color": {
+    "title": "Color & Contraste",
+    "ok": "AA OK",
+    "low": "Bajo",
+    "rgb": "RGB",
+    "dark": "Sobre Oscuro",
+    "light": "Sobre Blanco"
+  },
+  "bp": {
+    "title": "Breakpoints CSS",
+    "badge": "CLIC COPIA",
+    "copied": "¡Copiado!"
+  }
+}

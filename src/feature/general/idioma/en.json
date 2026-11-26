@@ -1,0 +1,72 @@
+{
+  "pageTitle": "General · Quick Dev Tools",
+  "pageDesc": "Text & Case Studio, JSON Formatter, HTTP Status, .env Tokens, WCAG Color and CSS Breakpoints.",
+  "text": {
+    "title": "Text & Case Studio",
+    "sub": "Transform, clean, and prepare text or SEO slugs in one click",
+    "chars": "chars",
+    "words": "words",
+    "upper": "UPPERCASE",
+    "lower": "lowercase",
+    "cap": "Capitalize",
+    "camel": "camelCase",
+    "slug": "slug-seo",
+    "clean": "Trim spaces",
+    "copy": "Copy Text",
+    "copied": "Text copied!"
+  },
+  "json": {
+    "title": "JSON Formatter & Validator Pro",
+    "sub": "Format, minify, and validate JSON payloads or configs instantly",
+    "valid": "VALID",
+    "invalid": "INVALID",
+    "format": "Format",
+    "minify": "Minify",
+    "copy": "Copy JSON",
+    "copied": "JSON copied!"
+  },
+  "http": {
+    "title": "HTTP & SEO Status",
+    "badge": "LIVE",
+    "placeholder": "Search code (301, 404)...",
+    "codes": {
+      "200": "Indexable page and successful response.",
+      "201": "Resource created successfully.",
+      "301": "Permanent redirect (transfers SEO authority).",
+      "302": "Temporary redirect (does not consolidate URL).",
+      "304": "Not modified, served from cache.",
+      "400": "Malformed request from client.",
+      "401": "Valid authentication required.",
+      "403": "Access forbidden by permissions.",
+      "404": "Not found (check broken links).",
+      "410": "Permanently gone (deindexes faster).",
+      "500": "Internal server error.",
+      "502": "Bad gateway or upstream down.",
+      "503": "Service temporarily unavailable."
+    }
+  },
+  "tokens": {
+    "title": "Tokens & UUID .env",
+    "badge": "CRYPTO",
+    "copy": "Copy Token",
+    "copied": "Token copied!",
+    "rows": {
+      "uuid": "100% client-side unique IDs",
+      "secret": "JWT / API Key secrets",
+      "pass": "16 alphanumeric chars"
+    }
+  },
+  "color": {
+    "title": "Color & Contrast",
+    "ok": "AA OK",
+    "low": "Low",
+    "rgb": "RGB",
+    "dark": "On Dark",
+    "light": "On White"
+  },
+  "bp": {
+    "title": "CSS Breakpoints",
+    "badge": "CLICK COPY",
+    "copied": "Copied!"
+  }
+}

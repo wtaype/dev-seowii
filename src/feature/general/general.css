@@ -1,0 +1,150 @@
+/* src/feature/general/general.css */
+/* Estilos independientes del módulo General consumiendo tokens de witema.css */
+
+.dv-gen-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5vh;
+  min-height: 94vh;
+}
+
+.dv-gen-top .dv-textarea {
+  min-height: 22vh;
+  resize: vertical;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: var(--fz_s4);
+  line-height: 1.55;
+}
+
+.dv-gen-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7vh;
+}
+
+.dv-chip {
+  padding: 0.65vh 1.1vh;
+  border-radius: var(--r_m);
+  border: 1px solid var(--border);
+  background: var(--bg1);
+  color: var(--tx2);
+  font-family: inherit;
+  font-size: var(--fz_s2);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--tr_f);
+}
+
+.dv-chip:hover,
+.dv-chip.active {
+  border-color: var(--primary);
+  background: var(--primary-light);
+  color: var(--primary);
+}
+
+.dv-gen-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1vh;
+  margin-top: auto;
+  flex-wrap: wrap;
+}
+
+.dv-gen-foot-btns {
+  display: flex;
+  gap: 0.8vh;
+  flex-wrap: wrap;
+}
+
+.dv-gen-bottom {
+  flex: 1;
+}
+
+.dv-gen-scroll {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7vh;
+  max-height: 36vh;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.dv-gen-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1vh;
+  padding: 0.9vh 1.1vh;
+  border-radius: var(--r_m);
+  border: 1px solid var(--border);
+  background: var(--bg1);
+  font-size: var(--fz_s2);
+  color: var(--tx2);
+  transition: border-color var(--tr_f), background var(--tr_f);
+}
+
+.dv-gen-row-btn {
+  width: 100%;
+  text-align: left;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.dv-gen-row-btn:hover {
+  border-color: var(--primary);
+  background: var(--bg-card-hover);
+}
+
+.dv-gen-code {
+  font-weight: 700;
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.dv-gen-code[data-tipo="ok"] { color: var(--success); }
+.dv-gen-code[data-tipo="warn"] { color: var(--warning); }
+.dv-gen-code[data-tipo="err"] { color: var(--error); }
+
+.dv-gen-token-box {
+  padding: 1.1vh 1.2vh;
+  border-radius: var(--r_m);
+  border: 1px solid var(--border-accent);
+  background: var(--bg1);
+  color: var(--tx1);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: var(--fz_s2);
+  word-break: break-all;
+}
+
+.dv-gen-color-row {
+  display: flex;
+  align-items: center;
+  gap: 1vh;
+}
+
+.dv-gen-picker {
+  width: 44px;
+  height: 38px;
+  padding: 2px;
+  border-radius: var(--r_m);
+  border: 1px solid var(--border);
+  background: var(--bg1);
+  cursor: pointer;
+}
+
+.dv-pill-status[data-state="ok"] {
+  color: var(--success);
+  border-color: rgba(22, 163, 74, 0.35);
+  background: rgba(22, 163, 74, 0.12);
+}
+
+.dv-pill-status[data-state="err"] {
+  color: var(--error);
+  border-color: rgba(239, 68, 68, 0.35);
+  background: rgba(239, 68, 68, 0.12);
+}
+
+.dv-gen-hidden {
+  display: none !important;
+}

@@ -2,6 +2,7 @@
 // src/pages/[...ruta].astro
 // ⭐ Enrutador único bilingüe: genera todas las rutas en ES (/) y EN (/en/...)
 import Principal from '@layouts/Principal.astro';
+import GeneralPage from '@feature/general/GeneralPage.astro';
 import { LISTA_IDIOMAS, buildRuta, getCoreLang, type Idioma } from '@idioma';
 
 export function getStaticPaths() {
@@ -19,12 +20,8 @@ const t = getCoreLang(idioma);
 ---
 
 <Principal idioma={idioma} titulo={`dev.seowii.com — ${t.nav?.general?.label || 'General'}`}>
-  <section class="dv-fase1-check">
-    <div class="dv-card-demo">
-      <span class="dv-badge">{t.util?.idioma}</span>
-      <h1>dev.seowii.com</h1>
-      <p>{t.acerca?.descripcion}</p>
-      <p class="dv-sub">{t.nav?.general?.label} · {t.nav?.general?.sub}</p>
-    </div>
-  </section>
+  <GeneralPage idioma={idioma} />
+  <script>
+    import '@feature/general/general.js';
+  </script>
 </Principal>

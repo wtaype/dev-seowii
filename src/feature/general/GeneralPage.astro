@@ -1,0 +1,232 @@
+---
+// src/feature/general/GeneralPage.astro
+import './general.css';
+import { getFeatureLang, langPrincipal, type Idioma } from '@idioma';
+import {
+  HTTP_STATUS,
+  BREAKPOINTS_CSS,
+  TOKEN_MODES,
+  DEFAULT_TEXT,
+  DEFAULT_JSON,
+  DEFAULT_COLOR
+} from '@semillas/general.js';
+
+interface Props {
+  idioma?: Idioma;
+}
+
+const { idioma = langPrincipal } = Astro.props;
+const locales = import.meta.glob<Record<string, any>>('./idioma/*.json', {
+  eager: true,
+  import: 'default'
+});
+const t = getFeatureLang(locales, idioma);
+
+const i18nPayload = JSON.stringify({
+  chars: t.text?.chars,
+  words: t.text?.words,
+  textCopied: t.text?.copied,
+  jsonValid: t.json?.valid,
+  jsonInvalid: t.json?.invalid,
+  jsonCopied: t.json?.copied,
+  tokenCopied: t.tokens?.copied,
+  aaOk: t.color?.ok,
+  aaLow: t.color?.low,
+  bpCopied: t.bp?.copied
+});
+---
+
+<section class="dv-gen-wrap" id="dvGeneralView" data-i18n-msg={i18nPayload}>
+  <!-- FILA SUPERIOR: Text Studio + JSON Formatter -->
+  <div class="dv-grid dv-grid-2 dv-gen-top">
+    <article class="dv-card" id="dvGen_cardText">
+      <header class="dv-card-head">
+        <div class="dv-card-title">
+          <span class="dv-card-ico"><i class="fa-solid fa-font"></i></span>
+          <div>
+            <h2>{t.text?.title}</h2>
+            <p>{t.text?.sub}</p>
+          </div>
+        </div>
+        <span class="dv-pill-status" id="dvGen_textStats">0 {t.text?.chars} · 0 {t.text?.words}</span>
+      </header>
+
+      <textarea id="dvGen_textArea" class="dv-textarea" spellcheck="false">{DEFAULT_TEXT}</textarea>
+
+      <div class="dv-gen-chips">
+        <button type="button" class="dv-chip" data-text-op="upper">{t.text?.upper}</button>
+        <button type="button" class="dv-chip" data-text-op="lower">{t.text?.lower}</button>
+        <button type="button" class="dv-chip" data-text-op="cap">{t.text?.cap}</button>
+        <button type="button" class="dv-chip" data-text-op="camel">{t.text?.camel}</button>
+        <button type="button" class="dv-chip" data-text-op="slug">{t.text?.slug}</button>
+        <button type="button" class="dv-chip" data-text-op="clean">{t.text?.clean}</button>
+      </div>
+
+      <footer class="dv-gen-foot">
+        <span></span>
+        <button type="button" class="dv-btn dv-btn-primary" id="dvGen_copyText">
+          <i class="fa-regular fa-copy"></i>
+          <span>{t.text?.copy}</span>
+        </button>
+      </footer>
+    </article>
+
+    <article class="dv-card" id="dvGen_cardJson">
+      <header class="dv-card-head">
+        <div class="dv-card-title">
+          <span class="dv-card-ico"><i class="fa-solid fa-code"></i></span>
+          <div>
+            <h2>{t.json?.title}</h2>
+            <p>{t.json?.sub}</p>
+          </div>
+        </div>
+        <span class="dv-pill-status" id="dvGen_jsonBadge" data-state="ok">{t.json?.valid}</span>
+      </header>
+
+      <textarea id="dvGen_jsonArea" class="dv-textarea" spellcheck="false">{DEFAULT_JSON}</textarea>
+
+      <footer class="dv-gen-foot">
+        <div class="dv-gen-foot-btns">
+          <button type="button" class="dv-btn" id="dvGen_jsonFormat">
+            <i class="fa-solid fa-align-left"></i>
+            <span>{t.json?.format}</span>
+          </button>
+          <button type="button" class="dv-btn" id="dvGen_jsonMinify">
+            <i class="fa-solid fa-compress"></i>
+            <span>{t.json?.minify}</span>
+          </button>
+        </div>
+        <button type="button" class="dv-btn dv-btn-primary" id="dvGen_copyJson">
+          <i class="fa-regular fa-copy"></i>
+          <span>{t.json?.copy}</span>
+        </button>
+      </footer>
+    </article>
+  </div>
+
+  <!-- FILA INFERIOR: HTTP Status + Tokens + Color WCAG + Breakpoints -->
+  <div class="dv-grid dv-grid-4 dv-gen-bottom">
+    <article class="dv-card" id="dvGen_cardHttp">
+      <header class="dv-card-head">
+        <div class="dv-card-title">
+          <span class="dv-card-ico"><i class="fa-solid fa-server"></i></span>
+          <h3>{t.http?.title}</h3>
+        </div>
+        <span class="dv-pill-status">{t.http?.badge}</span>
+      </header>
+
+      <input
+        id="dvGen_httpSearch"
+        type="search"
+        class="dv-input"
+        placeholder={t.http?.placeholder}
+        autocomplete="off"
+      />
+
+      <div class="dv-gen-scroll" id="dvGen_httpList">
+        {HTTP_STATUS.map((item) => {
+          const desc = t.http?.codes?.[item.code] || '';
+          return (
+            <div class="dv-gen-row" data-http-item={`${item.code} ${desc.toLowerCase()}`}>
+              <span class="dv-gen-code" data-tipo={item.tipo}>{item.code}</span>
+              <span>{desc}</span>
+            </div>
+          );
+        })}
+      </div>
+    </article>
+
+    <article class="dv-card" id="dvGen_cardTokens">
+      <header class="dv-card-head">
+        <div class="dv-card-title">
+          <span class="dv-card-ico"><i class="fa-solid fa-key"></i></span>
+          <h3>{t.tokens?.title}</h3>
+        </div>
+        <span class="dv-pill-status">{t.tokens?.badge}</span>
+      </header>
+
+      <div class="dv-gen-chips">
+        {TOKEN_MODES.map((m, idx) => (
+          <button
+            type="button"
+            class={`dv-chip ${idx === 0 ? 'active' : ''}`}
+            data-token-mode={m.id}
+          >
+            {m.label}
+          </button>
+        ))}
+      </div>
+
+      <div class="dv-gen-token-box" id="dvGen_tokenOut"></div>
+
+      <div class="dv-gen-scroll">
+        {TOKEN_MODES.map((m) => (
+          <div class="dv-gen-row">
+            <span class="dv-gen-code">{m.label.split(' ')[0]}</span>
+            <span>{t.tokens?.rows?.[m.id]}</span>
+          </div>
+        ))}
+      </div>
+
+      <footer class="dv-gen-foot">
+        <button type="button" class="dv-btn dv-btn-primary" id="dvGen_copyToken">
+          <i class="fa-regular fa-copy"></i>
+          <span>{t.tokens?.copy}</span>
+        </button>
+      </footer>
+    </article>
+
+    <article class="dv-card" id="dvGen_cardColor">
+      <header class="dv-card-head">
+        <div class="dv-card-title">
+          <span class="dv-card-ico"><i class="fa-solid fa-palette"></i></span>
+          <h3>{t.color?.title}</h3>
+        </div>
+        <span class="dv-pill-status" id="dvGen_colorBadge" data-state="ok">{t.color?.ok}</span>
+      </header>
+
+      <div class="dv-gen-color-row">
+        <input id="dvGen_colorPicker" type="color" class="dv-gen-picker" value={DEFAULT_COLOR} />
+        <input id="dvGen_colorHex" type="text" class="dv-input" value={DEFAULT_COLOR} maxlength="7" />
+      </div>
+
+      <div class="dv-gen-scroll">
+        <div class="dv-gen-row">
+          <span>{t.color?.rgb}</span>
+          <strong id="dvGen_rgbOut">rgb(6, 182, 212)</strong>
+        </div>
+        <div class="dv-gen-row">
+          <span>{t.color?.dark}</span>
+          <strong id="dvGen_contrastDark">8.34:1</strong>
+        </div>
+        <div class="dv-gen-row">
+          <span>{t.color?.light}</span>
+          <strong id="dvGen_contrastLight">2.51:1</strong>
+        </div>
+      </div>
+    </article>
+
+    <article class="dv-card" id="dvGen_cardBp">
+      <header class="dv-card-head">
+        <div class="dv-card-title">
+          <span class="dv-card-ico"><i class="fa-solid fa-mobile-screen-button"></i></span>
+          <h3>{t.bp?.title}</h3>
+        </div>
+        <span class="dv-pill-status" id="dvGen_bpBadge">{t.bp?.badge}</span>
+      </header>
+
+      <div class="dv-gen-scroll">
+        {BREAKPOINTS_CSS.map((bp) => (
+          <button
+            type="button"
+            class="dv-gen-row dv-gen-row-btn"
+            data-bp-copy={`@media (max-width: ${bp.px}) {}`}
+          >
+            <span class="dv-gen-code">{bp.px}</span>
+            <span>{bp.label}</span>
+          </button>
+        ))}
+      </div>
+    </article>
+  </div>
+</section>
