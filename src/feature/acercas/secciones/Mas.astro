@@ -1,0 +1,79 @@
+---
+// src/feature/acercas/secciones/Mas.astro
+// 📱 Vista /mas: acceso rápido en móvil (y web) a herramientas extra y secciones Acerca
+import { configurar } from '@semillas';
+import { getCoreLang, getFeatureLang, buildRuta, langPrincipal, type Idioma } from '@idioma';
+import { rellenarWii } from '../lib/wiiVars';
+
+interface Props {
+  idioma?: Idioma;
+}
+
+const { idioma = langPrincipal } = Astro.props;
+const tCore = getCoreLang(idioma);
+const locales = import.meta.glob<Record<string, any>>('../idioma/*.json', {
+  eager: true,
+  import: 'default'
+});
+const t = rellenarWii(getFeatureLang(locales, idioma).mas || {});
+
+const herramientasExtra = [
+  ...configurar.navPrincipal.filter((n) => ['lector-json', 'lector-md'].includes(n.id)),
+  { id: 'aprender', href: '/aprender', icono: 'fa-solid fa-graduation-cap', isUtil: true },
+  { id: 'ajustes', href: '/ajustes', icono: 'fa-solid fa-sliders', isUtil: true }
+];
+---
+
+<section class="acercas-page-wrap" aria-label={t.page_title || 'Más'}>
+  <div class="conwii">
+    <header class="acercas-hero-header">
+      {t.badge && <div class="acercas-badge-pill">{t.badge}</div>}
+      <h1 class="acercas-hero-title">
+        {t.titulo_start} {t.titulo_highlight && <span>{t.titulo_highlight}</span>}
+      </h1>
+      {t.desc && <p class="acercas-hero-desc">{t.desc}</p>}
+    </header>
+
+    <div class="dv-mas-section">
+      <h2 class="dv-mas-h2"><i class="fa-solid fa-toolbox"></i> {t.tools_title}</h2>
+      <div class="dv-mas-grid">
+        {herramientasExtra.map((item: any) => {
+          const label = item.isUtil
+            ? tCore.util?.[item.id] || (item.id === 'ajustes' ? t.ajustes_label : item.id)
+            : tCore.nav?.[item.id]?.label || item.id;
+          const sub = item.isUtil
+            ? t.extra_subs?.[item.id] || ''
+            : tCore.nav?.[item.id]?.sub || '';
+          return (
+            <a href={buildRuta(item.href, idioma)} class="dv-mas-card" data-astro-prefetch="hover">
+              <span class="legal-clause-icon"><i class={item.icono}></i></span>
+              <div class="dv-mas-meta">
+                <strong>{label}</strong>
+                {sub && <small>{sub}</small>}
+              </div>
+              <i class="fa-solid fa-chevron-right dv-mas-arrow"></i>
+            </a>
+          );
+        })}
+      </div>
+    </div>
+
+    <div class="dv-mas-section">
+      <h2 class="dv-mas-h2"><i class="fa-solid fa-circle-info"></i> {t.about_title}</h2>
+      <div class="dv-mas-grid">
+        {configurar.enlacesAcerca.map((link) => {
+          const label = tCore.acerca?.enlaces?.[link.id] || link.id;
+          return (
+            <a href={buildRuta(link.href, idioma)} class="dv-mas-card" data-astro-prefetch="hover">
+              <span class="legal-clause-icon"><i class={link.icono}></i></span>
+              <div class="dv-mas-meta">
+                <strong>{label}</strong>
+              </div>
+              <i class="fa-solid fa-chevron-right dv-mas-arrow"></i>
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  </div>
+</section>

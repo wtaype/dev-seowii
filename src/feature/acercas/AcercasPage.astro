@@ -8,12 +8,13 @@ import Feedback from './secciones/Feedback.astro';
 import Privacidad from './secciones/Privacidad.astro';
 import Terminos from './secciones/Terminos.astro';
 import Cookies from './secciones/Cookies.astro';
+import Mas from './secciones/Mas.astro';
 import { configurar } from '@semillas/configurar.js';
 import { buildRuta, getCoreLang, langPrincipal, type Idioma } from '@idioma';
 
 interface Props {
   idioma?: Idioma;
-  seccion: 'nosotros' | 'contacto' | 'feedback' | 'privacidad' | 'terminos' | 'cookies';
+  seccion: 'nosotros' | 'contacto' | 'feedback' | 'privacidad' | 'terminos' | 'cookies' | 'mas';
 }
 
 const { idioma = langPrincipal, seccion } = Astro.props;
@@ -25,7 +26,8 @@ const SECCIONES = {
   feedback: Feedback,
   privacidad: Privacidad,
   terminos: Terminos,
-  cookies: Cookies
+  cookies: Cookies,
+  mas: Mas
 };
 
 const SeccionActiva = SECCIONES[seccion] || Nosotros;

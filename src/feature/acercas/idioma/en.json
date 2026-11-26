@@ -232,5 +232,19 @@
     "exito_tit": "Thank You for Your Feedback!",
     "exito_desc": "Your rating has been recorded and helps us build an even better v2.",
     "btn_nuevo": "Submit Another Review"
+  },
+  "mas": {
+    "page_title": "More Tools",
+    "badge": "📱 Full Menu · {app}",
+    "titulo_start": "More on",
+    "titulo_highlight": "{app}",
+    "desc": "Access the rest of our developer tools and project information.",
+    "tools_title": "Additional Tools",
+    "about_title": "Info & Legal",
+    "ajustes_label": "API Settings",
+    "extra_subs": {
+      "aprender": "Astro, CF & Resend Guides",
+      "ajustes": "Google PageSpeed Keys"
+    }
   }
 }

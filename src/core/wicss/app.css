@@ -286,6 +286,7 @@ html.dv-collapsed .wii-main-area {
 }
 
 /* 4. NAVEGACIÓN MÓVIL */
+.dv-mob-header,
 .dv-mobile {
   display: none;
 }
@@ -418,23 +419,125 @@ html.dv-collapsed .wii-main-area {
   }
 
   .wii-content {
-    padding: 1.2vh 1.4vh 88px;
+    padding: 74px 1.2vh 78px;
+  }
+
+  .dv-card-head {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1vh;
+  }
+
+  .dv-grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .dv-mob-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    padding: 0 1.4vh;
+    background: var(--glass-dock);
+    backdrop-filter: blur(var(--glass-blur));
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1vh;
+    z-index: 90;
+  }
+
+  .dv-mob-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.9vh;
+    color: var(--tx1);
+    min-width: 0;
+  }
+
+  .dv-mob-logo {
+    width: 34px;
+    height: 34px;
+    border-radius: var(--r_m);
+    background: var(--gradient-btn);
+    color: var(--white);
+    display: grid;
+    place-items: center;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+  }
+
+  .dv-mob-brand-txt {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.15;
+    min-width: 0;
+  }
+
+  .dv-mob-brand-txt strong {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--tx1);
+    white-space: nowrap;
+  }
+
+  .dv-mob-brand-txt small {
+    font-size: 0.62rem;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-weight: 600;
+  }
+
+  .dv-mob-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.7vh;
+    flex-shrink: 0;
+  }
+
+  .dv-mob-act-btn {
+    height: 34px;
+    min-width: 34px;
+    padding: 0 1vh;
+    border-radius: var(--r_m);
+    background: var(--bg1);
+    border: 1px solid var(--border-card);
+    color: var(--tx2);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5vh;
+    font-family: inherit;
+    font-size: 0.72rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--tr_f);
+  }
+
+  .dv-mob-act-btn.active,
+  .dv-mob-act-btn:hover {
+    color: var(--primary);
+    border-color: var(--primary);
   }
 
   .dv-mobile {
     position: fixed;
-    inset: auto 1vh 1vh 1vh;
-    height: 64px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: calc(62px + env(safe-area-inset-bottom, 0px));
+    padding: 4px 0.6vh env(safe-area-inset-bottom, 0px);
     background: var(--glass-dock);
     backdrop-filter: blur(var(--glass-blur));
-    border: 1px solid var(--border-card);
-    border-radius: var(--r_xl);
-    box-shadow: var(--shadow-card);
+    border-top: 1px solid var(--border-card);
+    box-shadow: 0 -6px 24px rgba(0, 0, 0, 0.22);
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     align-items: center;
-    padding: 0 0.6vh;
-    z-index: 50;
+    z-index: 90;
   }
 
   .dv-mob-item {
@@ -451,6 +554,7 @@ html.dv-collapsed .wii-main-area {
     font-weight: 500;
     padding: 6px 2px;
     border-radius: var(--r_s);
+    white-space: nowrap;
     cursor: pointer;
     transition: color var(--tr_f), background var(--tr_f);
   }

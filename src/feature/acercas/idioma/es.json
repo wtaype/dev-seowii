@@ -232,5 +232,19 @@
     "exito_tit": "¡Muchas Gracias por tu Feedback!",
     "exito_desc": "Tu valoración quedó registrada y nos ayuda a construir una mejor versión 2.",
     "btn_nuevo": "Enviar Otra Valoración"
+  },
+  "mas": {
+    "page_title": "Más Herramientas",
+    "badge": "📱 Menú Completo · {app}",
+    "titulo_start": "Más en",
+    "titulo_highlight": "{app}",
+    "desc": "Accede al resto de herramientas para desarrolladores y a toda la información del proyecto.",
+    "tools_title": "Herramientas Adicionales",
+    "about_title": "Información & Legal",
+    "ajustes_label": "Ajustes API",
+    "extra_subs": {
+      "aprender": "Guías Astro, CF y Resend",
+      "ajustes": "Keys Google PageSpeed"
+    }
   }
 }

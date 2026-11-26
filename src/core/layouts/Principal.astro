@@ -26,6 +26,7 @@ const {
 
 const globalCss = `${witemaCss}\n${fontsCss}\n${faCss}\n${appCss}`;
 const { temaDefecto, storageKeys } = configurar;
+const themeScript = `(()=>{try{const s=matchMedia('(prefers-color-scheme:dark)').matches?'noche':'${temaDefecto}';document.documentElement.dataset.theme=localStorage.getItem('${storageKeys.tema}')||s;if(localStorage.getItem('${storageKeys.sidebar}')==='1')document.documentElement.classList.add('dv-collapsed')}catch{}})();`;
 ---
 
 <!doctype html>
@@ -37,19 +38,7 @@ const { temaDefecto, storageKeys } = configurar;
     <meta name="description" content={descripcion} />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <ClientRouter fallback="swap" />
-
-    <script is:inline define:vars={{ temaDefecto, keyTema: storageKeys.tema, keySb: storageKeys.sidebar }}>
-      (() => {
-        try {
-          const sys = window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'noche' : temaDefecto || 'luz';
-          document.documentElement.dataset.theme = localStorage.getItem(keyTema) || sys;
-          if (localStorage.getItem(keySb) === '1') {
-            document.documentElement.classList.add('dv-collapsed');
-          }
-        } catch {}
-      })();
-    </script>
-
+    <script is:inline set:html={themeScript} />
     <style set:html={globalCss} data-astro-transition-persist="global-css"></style>
   </head>
 
