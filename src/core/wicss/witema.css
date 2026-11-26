@@ -52,15 +52,15 @@
   --wa_hover:#1ebd5b;
   --white:   #ffffff;
   --noche:   #0a1827;
-  --luz:     #059669;
+  --luz:     #0891b2;
 
-  /* Variables base por defecto */
-  --color-primary:       #059669;
-  --color-primary-hover: #047857;
-  --color-primary-light: #ecfdf5;
-  --color-primary-soft:  #d1fae5;
-  --color-accent:        #10b981;
-  --color-accent-glow:   rgba(16, 185, 129, 0.28);
+  /* Variables base por defecto (dev.seowii.com Cyan Dev) */
+  --color-primary:       #0891b2;
+  --color-primary-hover: #0e7490;
+  --color-primary-light: #ecfeff;
+  --color-primary-soft:  #cffafe;
+  --color-accent:        #06b6d4;
+  --color-accent-glow:   rgba(6, 182, 212, 0.28);
   --color-gold:          #d97706;
   --color-gold-light:    #fef3c7;
   --color-gold-soft:     #fde68a;
@@ -88,31 +88,31 @@
   --bg5:                 #cbd5e1;
   --bg-body:             #f8fafc;
   --bg_body:             #f8fafc;
-  --mesh-bg:             radial-gradient(at 0% 0%, #ecfdf5 0px, transparent 55%), 
-                         radial-gradient(at 100% 0%, #f0fdf4 0px, transparent 55%), 
+  --mesh-bg:             radial-gradient(at 0% 0%, #ecfeff 0px, transparent 55%), 
+                         radial-gradient(at 100% 0%, #f0f9ff 0px, transparent 55%), 
                          radial-gradient(at 50% 100%, #f8fafc 0px, transparent 50%), 
                          #f8fafc;
   --wb:                  #ffffff;
   --surface:             #ffffff;
   --bg-surface:          #ffffff;
-  --raised:              #f0fdf4;
-  --bg-surface-elevated: #f0fdf4;
+  --raised:              #f0f9ff;
+  --bg-surface-elevated: #f0f9ff;
   --bg-card:             #ffffff;
   --bg_card:             #ffffff;
-  --bg-card-hover:       #f0fdf4;
-  --bg_card_hv:          #f0fdf4;
-  --bg-subtle:           rgba(5, 150, 105, 0.04);
-  --bg-neutral-subtle:   rgba(241, 245, 249, 0.78);
+  --bg-card-hover:       #f0f9ff;
+  --bg_card_hv:          #f0f9ff;
+  --bg-subtle:           rgba(8, 145, 178, 0.05);
+  --bg-neutral-subtle:   rgba(241, 245, 249, 0.82);
   --line:                #e2e8f0;
   --brd:                 #e2e8f0;
   --border:              #e2e8f0;
-  --border-card:         rgba(5, 150, 105, 0.16);
-  --border_card:         rgba(5, 150, 105, 0.16);
-  --border-soft:         rgba(5, 150, 105, 0.16);
-  --border_soft:         rgba(5, 150, 105, 0.16);
+  --border-card:         rgba(8, 145, 178, 0.16);
+  --border_card:         rgba(8, 145, 178, 0.16);
+  --border-soft:         rgba(8, 145, 178, 0.16);
+  --border_soft:         rgba(8, 145, 178, 0.16);
   --border-light:        rgba(255, 255, 255, 0.90);
-  --border-accent:       rgba(5, 150, 105, 0.35);
-  --border_accent:       rgba(5, 150, 105, 0.35);
+  --border-accent:       rgba(8, 145, 178, 0.36);
+  --border_accent:       rgba(8, 145, 178, 0.36);
 
   /* 2. Tipografía y Textos */
   --tx:                  #0f172a;
@@ -120,7 +120,7 @@
   --tx2:                 #334155;
   --tx3:                 #64748b;
   --txa:                 #ffffff;
-  --txe:                 #059669;
+  --txe:                 #0891b2;
   --ink:                 #0f172a;
   --muted:               #475569;
   --text-main:           #334155;
@@ -129,48 +129,48 @@
   --text_muted:          #64748b;
   --text-bright:         #0f172a;
 
-  /* 3. Colores de Identidad y Marca */
-  --mco:                 #059669;
-  --mco-hover:           #047857;
-  --mco-light:           rgba(5, 150, 105, 0.10);
-  --mco-glow:            rgba(5, 150, 105, 0.25);
-  --mbg:                 rgba(5, 150, 105, 0.12);
-  --p_v1:                #059669;
-  --p_v2:                #10b981;
-  --primary:             #059669;
-  --primary-hover:       #047857;
-  --primary_hv:          #047857;
-  --brand-primary:       #059669;
-  --brand-primary-hover: #047857;
-  --brand-soft:          rgba(5, 150, 105, 0.12);
-  --brand-accent:        #10b981;
-  --brand-accent-soft:   rgba(16, 185, 129, 0.12);
-  --brand-teal:          #047857;
+  /* 3. Colores de Identidad y Marca (dev.seowii.com) */
+  --mco:                 #0891b2;
+  --mco-hover:           #0e7490;
+  --mco-light:           rgba(8, 145, 178, 0.10);
+  --mco-glow:            rgba(6, 182, 212, 0.25);
+  --mbg:                 rgba(8, 145, 178, 0.12);
+  --p_v1:                #0891b2;
+  --p_v2:                #06b6d4;
+  --primary:             #0891b2;
+  --primary-hover:       #0e7490;
+  --primary_hv:          #0e7490;
+  --brand-primary:       #0891b2;
+  --brand-primary-hover: #0e7490;
+  --brand-soft:          rgba(8, 145, 178, 0.12);
+  --brand-accent:        #06b6d4;
+  --brand-accent-soft:   rgba(6, 182, 212, 0.12);
+  --brand-teal:          #0e7490;
   --brand-blue:          #0284c7;
   --brand-blue-hover:    #0369a1;
   --brand-sky:           #38bdf8;
   --brand-sky-hover:     #0284c7;
-  --brand-orange:        #059669;
-  --brand-orange-hover:  #047857;
-  --accent:              #10b981;
-  --accent-hover:        #059669;
-  --accent_hv:           #059669;
+  --brand-orange:        #0891b2;
+  --brand-orange-hover:  #0e7490;
+  --accent:              #06b6d4;
+  --accent-hover:        #0891b2;
+  --accent_hv:           #0891b2;
   --accent-cyan:         #06b6d4;
   --accent-gold:         #d97706;
   --accent-emerald:      #10b981;
-  --gold-vip-bg:         linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 50%, #d1fae5 100%);
-  --gold-vip-border:     rgba(5, 150, 105, 0.35);
-  --gradient-primary:    linear-gradient(135deg, #064e3b 0%, #059669 100%);
-  --gradient-btn:        linear-gradient(90deg, #047857 0%, #10b981 100%);
-  --gradient-card:       linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(240, 253, 244, 0.95) 100%);
-  --bt:                  #059669;
-  --hv:                  #047857;
-  --hva:                 #10b981;
+  --gold-vip-bg:         linear-gradient(135deg, #f0f9ff 0%, #ecfeff 50%, #cffafe 100%);
+  --gold-vip-border:     rgba(8, 145, 178, 0.35);
+  --gradient-primary:    linear-gradient(135deg, #0e7490 0%, #06b6d4 100%);
+  --gradient-btn:        linear-gradient(90deg, #0891b2 0%, #06b6d4 100%);
+  --gradient-card:       linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(240, 249, 255, 0.95) 100%);
+  --bt:                  #0891b2;
+  --hv:                  #0e7490;
+  --hva:                 #06b6d4;
 
   /* 4. Inputs, Formularios y Diálogos */
   --inp:                 #f1f5f9;
   --input-bg:            #f1f5f9;
-  --inp_brd:             rgba(5, 150, 105, 0.20);
+  --inp_brd:             rgba(8, 145, 178, 0.20);
   --modal-bg:            #ffffff;
   --modal_bg:            #ffffff;
   --modal_card:          #ffffff;
@@ -178,37 +178,37 @@
   /* 5. Cabeceras, Vidrio (Glass), Dock y Sombras */
   --header-bg:           rgba(255, 255, 255, 0.88);
   --header_bg:           rgba(255, 255, 255, 0.88);
-  --topbar-bg:           linear-gradient(90deg, #059669 0%, #10b981 50%, #047857 100%);
-  --topbar_bg:           linear-gradient(90deg, #059669 0%, #10b981 50%, #047857 100%);
+  --topbar-bg:           linear-gradient(90deg, #0e7490 0%, #0891b2 50%, #06b6d4 100%);
+  --topbar_bg:           linear-gradient(90deg, #0e7490 0%, #0891b2 50%, #06b6d4 100%);
   --topbar-text:         #ffffff;
   --glass-surface:       rgba(255, 255, 255, 0.85);
   --glass-card:          rgba(255, 255, 255, 0.96);
   --glass-card-hover:    rgba(255, 255, 255, 0.99);
-  --glass-raised:        #f0fdf4;
+  --glass-raised:        #f0f9ff;
   --glass-dock:          rgba(255, 255, 255, 0.96);
   --glass-bg:            rgba(255, 255, 255, 0.78);
   --glass_bg:            rgba(255, 255, 255, 0.78);
-  --glass-brd:           rgba(5, 150, 105, 0.18);
-  --glass_brd:           rgba(5, 150, 105, 0.18);
+  --glass-brd:           rgba(8, 145, 178, 0.18);
+  --glass_brd:           rgba(8, 145, 178, 0.18);
   --glass-shd:           0 10px 32px 0 rgba(15, 23, 42, 0.05), inset 0 1px 1px 0 rgba(255, 255, 255, 0.9);
   --glass_shd:           0 10px 32px 0 rgba(15, 23, 42, 0.05), inset 0 1px 1px 0 rgba(255, 255, 255, 0.9);
   --glass-blur:          20px;
   --shadow-sm:           0 2px 8px rgba(15, 23, 42, 0.04);
   --shadow-glass:        0 10px 30px rgba(15, 23, 42, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.8);
-  --shadow-vip:          0 14px 40px rgba(5, 150, 105, 0.12);
+  --shadow-vip:          0 14px 40px rgba(8, 145, 178, 0.12);
   --shadow-card:         0 0.8vh 2.5vh rgba(15, 23, 42, 0.06);
   --shd_card:            0 0.8vh 2.5vh rgba(15, 23, 42, 0.06);
-  --shadow-hover:        0 1.5vh 4vh rgba(5, 150, 105, 0.16);
-  --shd_hover:           0 1.5vh 4vh rgba(5, 150, 105, 0.16);
+  --shadow-hover:        0 1.5vh 4vh rgba(8, 145, 178, 0.16);
+  --shd_hover:           0 1.5vh 4vh rgba(8, 145, 178, 0.16);
   --shadow-xl:           0 15px 35px rgba(15, 23, 42, 0.08);
 
   /* 6. Colores nuevos y pros para el tema */
-  --color-primary:       #059669;
-  --color-primary-hover: #047857;
-  --color-primary-light: #ecfdf5;
-  --color-primary-soft:  #d1fae5;
-  --color-accent:        #10b981;
-  --color-accent-glow:   rgba(16, 185, 129, 0.28);
+  --color-primary:       #0891b2;
+  --color-primary-hover: #0e7490;
+  --color-primary-light: #ecfeff;
+  --color-primary-soft:  #cffafe;
+  --color-accent:        #06b6d4;
+  --color-accent-glow:   rgba(6, 182, 212, 0.28);
   --color-gold:          #d97706;
   --color-gold-light:    #fef3c7;
   --color-gold-soft:     #fde68a;
@@ -227,7 +227,7 @@
 /* 🌙 TEMA NOCHE (DARK) - MEDIANOCHE & VIBRANTE                */
 /* ============================================================ */
 :root[data-theme="noche"] {
-  /* 1. Lienzos y Superficies */
+  /* 1. Lienzos y Superficies (Navy Matte - dev.seowii.com) */
   --bg:                  #0a1827;
   --bg1:                 #0a1827;
   --bg2:                 #0f2238;
@@ -236,8 +236,8 @@
   --bg5:                 #234468;
   --bg-body:             #0a1827;
   --bg_body:             #0a1827;
-  --mesh-bg:             radial-gradient(at 0% 0%, #064e3b 0px, transparent 55%), 
-                         radial-gradient(at 100% 0%, #065f46 0px, transparent 55%), 
+  --mesh-bg:             radial-gradient(at 0% 0%, #0c3547 0px, transparent 55%), 
+                         radial-gradient(at 100% 0%, #0f2942 0px, transparent 55%), 
                          radial-gradient(at 50% 100%, #0a1827 0px, transparent 50%), 
                          #0a1827;
   --wb:                  #0f2238;
@@ -249,18 +249,18 @@
   --bg_card:             #0f2238;
   --bg-card-hover:       #152d47;
   --bg_card_hv:          #152d47;
-  --bg-subtle:           rgba(16, 185, 129, 0.04);
-  --bg-neutral-subtle:   rgba(19, 41, 64, 0.65);
+  --bg-subtle:           rgba(6, 182, 212, 0.06);
+  --bg-neutral-subtle:   rgba(19, 41, 64, 0.72);
   --line:                #1c3857;
   --brd:                 #1c3857;
   --border:              #1c3857;
-  --border-card:         rgba(16, 185, 129, 0.16);
-  --border_card:         rgba(16, 185, 129, 0.16);
-  --border-soft:         rgba(16, 185, 129, 0.16);
-  --border_soft:         rgba(16, 185, 129, 0.16);
+  --border-card:         rgba(34, 211, 238, 0.18);
+  --border_card:         rgba(34, 211, 238, 0.18);
+  --border-soft:         rgba(34, 211, 238, 0.16);
+  --border_soft:         rgba(34, 211, 238, 0.16);
   --border-light:        rgba(255, 255, 255, 0.08);
-  --border-accent:       rgba(16, 185, 129, 0.40);
-  --border_accent:       rgba(16, 185, 129, 0.40);
+  --border-accent:       rgba(34, 211, 238, 0.42);
+  --border_accent:       rgba(34, 211, 238, 0.42);
 
   /* 2. Tipografía y Textos */
   --tx:                  #f8fafc;
@@ -268,7 +268,7 @@
   --tx2:                 #cbd5e1;
   --tx3:                 #94a3b8;
   --txa:                 #0a1827;
-  --txe:                 #10b981;
+  --txe:                 #22d3ee;
   --ink:                 #f8fafc;
   --muted:               #94a3b8;
   --text-main:           #cbd5e1;
@@ -277,48 +277,48 @@
   --text_muted:          #94a3b8;
   --text-bright:         #ffffff;
 
-  /* 3. Colores de Identidad y Marca */
-  --mco:                 #10b981;
-  --mco-hover:           #34d399;
-  --mco-light:           rgba(16, 185, 129, 0.16);
-  --mco-glow:            rgba(16, 185, 129, 0.40);
-  --mbg:                 rgba(16, 185, 129, 0.16);
-  --p_v1:                #10b981;
-  --p_v2:                #34d399;
-  --primary:             #10b981;
-  --primary-hover:       #34d399;
-  --primary_hv:          #34d399;
-  --brand-primary:       #10b981;
-  --brand-primary-hover: #34d399;
-  --brand-soft:          rgba(16, 185, 129, 0.16);
-  --brand-accent:        #34d399;
-  --brand-accent-soft:   rgba(52, 211, 153, 0.16);
-  --brand-teal:          #064e3b;
+  /* 3. Colores de Identidad y Marca (dev.seowii.com) */
+  --mco:                 #06b6d4;
+  --mco-hover:           #22d3ee;
+  --mco-light:           rgba(6, 182, 212, 0.16);
+  --mco-glow:            rgba(34, 211, 238, 0.35);
+  --mbg:                 rgba(6, 182, 212, 0.16);
+  --p_v1:                #06b6d4;
+  --p_v2:                #22d3ee;
+  --primary:             #06b6d4;
+  --primary-hover:       #22d3ee;
+  --primary_hv:          #22d3ee;
+  --brand-primary:       #06b6d4;
+  --brand-primary-hover: #22d3ee;
+  --brand-soft:          rgba(6, 182, 212, 0.16);
+  --brand-accent:        #22d3ee;
+  --brand-accent-soft:   rgba(34, 211, 238, 0.16);
+  --brand-teal:          #0e7490;
   --brand-blue:          #38bdf8;
   --brand-blue-hover:    #0284c7;
   --brand-sky:           #38bdf8;
   --brand-sky-hover:     #0284c7;
-  --brand-orange:        #10b981;
-  --brand-orange-hover:  #34d399;
-  --accent:              #34d399;
-  --accent-hover:        #10b981;
-  --accent_hv:           #10b981;
-  --accent-cyan:         #00f0ff;
+  --brand-orange:        #06b6d4;
+  --brand-orange-hover:  #22d3ee;
+  --accent:              #22d3ee;
+  --accent-hover:        #06b6d4;
+  --accent_hv:           #06b6d4;
+  --accent-cyan:         #22d3ee;
   --accent-gold:         #fbbf24;
   --accent-emerald:      #34d399;
-  --gold-vip-bg:         linear-gradient(135deg, rgba(6, 78, 59, 0.95) 0%, rgba(15, 34, 56, 0.95) 100%);
-  --gold-vip-border:     rgba(16, 185, 129, 0.40);
-  --gradient-primary:    linear-gradient(135deg, #064e3b 0%, #10b981 100%);
-  --gradient-btn:        linear-gradient(90deg, #059669 0%, #34d399 100%);
-  --gradient-card:       linear-gradient(135deg, rgba(15, 34, 56, 0.95) 0%, rgba(10, 24, 39, 0.95) 100%);
-  --bt:                  #10b981;
-  --hv:                  #34d399;
-  --hva:                 #34d399;
+  --gold-vip-bg:         linear-gradient(135deg, rgba(12, 53, 71, 0.95) 0%, rgba(15, 34, 56, 0.95) 100%);
+  --gold-vip-border:     rgba(34, 211, 238, 0.40);
+  --gradient-primary:    linear-gradient(135deg, #0e7490 0%, #06b6d4 100%);
+  --gradient-btn:        linear-gradient(90deg, #0891b2 0%, #22d3ee 100%);
+  --gradient-card:       linear-gradient(135deg, rgba(15, 34, 56, 0.96) 0%, rgba(10, 24, 39, 0.96) 100%);
+  --bt:                  #06b6d4;
+  --hv:                  #22d3ee;
+  --hva:                 #22d3ee;
 
   /* 4. Inputs, Formularios y Diálogos */
   --inp:                 #0a1827;
   --input-bg:            #0a1827;
-  --inp_brd:             rgba(16, 185, 129, 0.25);
+  --inp_brd:             rgba(34, 211, 238, 0.25);
   --modal-bg:            #0f2238;
   --modal_bg:            #0f2238;
   --modal_card:          #0f2238;
@@ -326,37 +326,37 @@
   /* 5. Cabeceras, Vidrio (Glass), Dock y Sombras */
   --header-bg:           rgba(10, 24, 39, 0.88);
   --header_bg:           rgba(10, 24, 39, 0.88);
-  --topbar-bg:           linear-gradient(90deg, #064e3b 0%, #059669 50%, #10b981 100%);
-  --topbar_bg:           linear-gradient(90deg, #064e3b 0%, #059669 50%, #10b981 100%);
+  --topbar-bg:           linear-gradient(90deg, #0e7490 0%, #0891b2 50%, #06b6d4 100%);
+  --topbar_bg:           linear-gradient(90deg, #0e7490 0%, #0891b2 50%, #06b6d4 100%);
   --topbar-text:         #ffffff;
-  --glass-surface:       rgba(15, 34, 56, 0.88);
-  --glass-card:          rgba(15, 34, 56, 0.88);
-  --glass-card-hover:    rgba(21, 45, 71, 0.95);
+  --glass-surface:       rgba(15, 34, 56, 0.90);
+  --glass-card:          rgba(15, 34, 56, 0.90);
+  --glass-card-hover:    rgba(21, 45, 71, 0.96);
   --glass-raised:        #152d47;
   --glass-dock:          rgba(15, 34, 56, 0.97);
-  --glass-bg:            rgba(15, 34, 56, 0.85);
-  --glass_bg:            rgba(15, 34, 56, 0.85);
-  --glass-brd:           rgba(16, 185, 129, 0.25);
-  --glass_brd:           rgba(16, 185, 129, 0.25);
-  --glass-shd:           0 12px 36px 0 rgba(0, 0, 0, 0.55), inset 0 1px 1px 0 rgba(16, 185, 129, 0.20);
-  --glass_shd:           0 12px 36px 0 rgba(0, 0, 0, 0.55), inset 0 1px 1px 0 rgba(16, 185, 129, 0.20);
+  --glass-bg:            rgba(15, 34, 56, 0.86);
+  --glass_bg:            rgba(15, 34, 56, 0.86);
+  --glass-brd:           rgba(34, 211, 238, 0.24);
+  --glass_brd:           rgba(34, 211, 238, 0.24);
+  --glass-shd:           0 12px 36px 0 rgba(0, 0, 0, 0.55), inset 0 1px 1px 0 rgba(34, 211, 238, 0.16);
+  --glass_shd:           0 12px 36px 0 rgba(0, 0, 0, 0.55), inset 0 1px 1px 0 rgba(34, 211, 238, 0.16);
   --glass-blur:          24px;
   --shadow-sm:           0 2px 10px rgba(0, 0, 0, 0.35);
   --shadow-glass:        0 12px 38px rgba(0, 0, 0, 0.60), inset 0 1px 0 rgba(255, 255, 255, 0.07);
-  --shadow-vip:          0 16px 44px rgba(16, 185, 129, 0.25);
+  --shadow-vip:          0 16px 44px rgba(6, 182, 212, 0.22);
   --shadow-card:         0 1vh 3vh rgba(0, 0, 0, 0.55);
   --shd_card:            0 1vh 3vh rgba(0, 0, 0, 0.55);
-  --shadow-hover:        0 1.8vh 4.5vh rgba(16, 185, 129, 0.25);
-  --shd_hover:           0 1.8vh 4.5vh rgba(16, 185, 129, 0.25);
+  --shadow-hover:        0 1.8vh 4.5vh rgba(6, 182, 212, 0.22);
+  --shd_hover:           0 1.8vh 4.5vh rgba(6, 182, 212, 0.22);
   --shadow-xl:           0 20px 40px rgba(0, 0, 0, 0.70);
 
   /* 6. Colores nuevos y pros para el tema */
-  --color-primary:       #10b981;
-  --color-primary-hover: #34d399;
-  --color-primary-light: rgba(16, 185, 129, 0.14);
-  --color-primary-soft:  rgba(52, 211, 153, 0.22);
-  --color-accent:        #34d399;
-  --color-accent-glow:   rgba(52, 211, 153, 0.35);
+  --color-primary:       #06b6d4;
+  --color-primary-hover: #22d3ee;
+  --color-primary-light: rgba(6, 182, 212, 0.14);
+  --color-primary-soft:  rgba(34, 211, 238, 0.22);
+  --color-accent:        #22d3ee;
+  --color-accent-glow:   rgba(34, 211, 238, 0.35);
   --color-gold:          #fbbf24;
   --color-gold-light:    rgba(251, 191, 36, 0.14);
   --color-gold-soft:     rgba(251, 191, 36, 0.25);

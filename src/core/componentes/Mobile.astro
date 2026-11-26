@@ -1,0 +1,20 @@
+---
+// src/core/componentes/Mobile.astro
+import { configurar } from '@semillas';
+
+const { navPrincipal } = configurar;
+const navMobile = navPrincipal.slice(0, 5);
+---
+
+<nav class="dv-mobile" id="dvMobile" transition:persist="dv-mobile" aria-label="Navegación móvil">
+  {navMobile.map((item) => (
+    <a id={`dvMob_${item.id}`} href={item.href} class="dv-mob-item" data-nav-link data-href={item.href}>
+      <i class={item.icono}></i>
+      <span>{item.label}</span>
+    </a>
+  ))}
+  <button id="dvMob_tema" type="button" class="dv-mob-item" data-action="toggle-tema" aria-label="Cambiar tema">
+    <i class="fa-solid fa-moon" data-tema-ico="1"></i>
+    <span>Tema</span>
+  </button>
+</nav>

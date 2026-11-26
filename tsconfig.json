@@ -4,18 +4,16 @@
     "paths": {
       "@/*": ["./src/*"],
       "@core/*": ["./src/core/*"],
+      "@componentes/*": ["./src/core/componentes/*"],
+      "@layouts/*": ["./src/core/layouts/*"],
+      "@wicss/*": ["./src/core/wicss/*"],
       "@servicios/*": ["./src/core/servicios/*"],
-      "@gemini": ["./src/core/servicios/gemini.js"],
-      "@semillas": ["./src/semillas/configurar.js"],
-      "@semillas/*": ["./src/semillas/*"],
       "@widev": ["./src/core/widev/widev.js"],
       "@widev/*": ["./src/core/widev/*"],
-      "@wii": ["./src/wii.js"],
+      "@semillas": ["./src/semillas/configurar.js"],
+      "@semillas/*": ["./src/semillas/*"],
       "@feature/*": ["./src/feature/*"],
-      "@personal/*": ["./src/feature/personal/*"],
-      "@inicio/*": ["./src/feature/inicio/*"],
-      "@idioma": ["./src/core/idioma/idioma.ts"],
-      "@idioma/*": ["./src/core/idioma/*"]
+      "@wii": ["./src/wii.js"]
     }
   },
   "include": [".astro/types.d.ts", "**/*"],

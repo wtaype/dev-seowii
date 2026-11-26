@@ -1,1 +1,72 @@
-﻿
+﻿---
+// src/core/layouts/Principal.astro
+import { ClientRouter } from 'astro:transitions';
+import { configurar } from '@semillas';
+import Sidebar from '@componentes/Sidebar.astro';
+import Mobile from '@componentes/Mobile.astro';
+import Acerca from '@componentes/Acerca.astro';
+
+import witemaCss from '@wicss/witema.css?inline';
+import fontsCss from '@wicss/fonts.css?inline';
+import faCss from '@wicss/fontawesome.css?inline';
+import appCss from '@wicss/app.css?inline';
+
+interface Props {
+  titulo?: string;
+  descripcion?: string;
+}
+
+const {
+  titulo = `${configurar.app} — ${configurar.slogan}`,
+  descripcion = 'Suite de herramientas dev, optimización WebP, lectores JSON/MD y auditoría SEO/Speed.'
+} = Astro.props;
+
+const globalCss = `${witemaCss}\n${fontsCss}\n${faCss}\n${appCss}`;
+const { temaDefecto, storageKeys } = configurar;
+---
+
+<!doctype html>
+<html lang="es" data-theme={temaDefecto}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{titulo}</title>
+    <meta name="description" content={descripcion} />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <ClientRouter fallback="swap" />
+
+    <script is:inline define:vars={{ temaDefecto, keyTema: storageKeys.tema, keySb: storageKeys.sidebar }}>
+      (() => {
+        try {
+          const t = localStorage.getItem(keyTema) || temaDefecto || 'luz';
+          document.documentElement.dataset.theme = t;
+          if (localStorage.getItem(keySb) === '1') {
+            document.documentElement.classList.add('dv-collapsed');
+          }
+        } catch {}
+      })();
+    </script>
+
+    <style set:html={globalCss} data-astro-transition-persist="global-css"></style>
+  </head>
+
+  <body>
+    <div class="wii-shell">
+      <Sidebar />
+
+      <div class="wii-main-area">
+        <main id="wimain" class="wii-content">
+          <slot />
+        </main>
+      </div>
+
+      <Mobile />
+    </div>
+
+    <Acerca />
+
+    <script>
+      import '@layouts/principal.js';
+    </script>
+  </body>
+</html>

@@ -3,7 +3,7 @@
 
 import { db } from '@core/servicios/firebase.js';
 import { doc, setDoc, serverTimestamp } from 'firebase/firestore';
-import { getUsuarioActivo } from '@personal/modulos/app/dataApp.js';
+const getUsuarioActivo = () => null;
 
 function generarCodigo(prefijo) {
   const anio = new Date().getFullYear();

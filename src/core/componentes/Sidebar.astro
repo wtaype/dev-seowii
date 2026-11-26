@@ -1,0 +1,73 @@
+---
+// src/core/componentes/Sidebar.astro
+import { configurar } from '@semillas';
+
+const { app, slogan, navPrincipal, navInferior } = configurar;
+---
+
+<aside class="dv-sidebar" id="dvSidebar" transition:persist="dv-sidebar" aria-label="Menú principal">
+  <a href="/" class="dv-brand" data-nav-link>
+    <span class="dv-brand-ico" aria-hidden="true">
+      <i class="fa-solid fa-terminal"></i>
+    </span>
+    <span class="dv-brand-txt">
+      <strong>{app}</strong>
+      <small>{slogan}</small>
+    </span>
+  </a>
+
+  <nav class="dv-nav-top">
+    {navPrincipal.map((item) => (
+      <a
+        id={`dvSb_${item.id}`}
+        href={item.href}
+        class="dv-nav-item"
+        data-nav-link
+        data-href={item.href}
+        title={item.label}
+      >
+        <span class="dv-nav-ico"><i class={item.icono}></i></span>
+        <span class="dv-nav-txt">
+          <strong>{item.label}</strong>
+          <small>{item.sub}</small>
+        </span>
+      </a>
+    ))}
+  </nav>
+
+  <div class="dv-nav-bottom">
+    {navInferior.map((item) =>
+      item.tipo === 'link' ? (
+        <a
+          id={`dvSb_${item.id}`}
+          href={item.href}
+          class="dv-util-item"
+          data-nav-link
+          data-href={item.href}
+          title={item.label}
+        >
+          <span class="dv-util-ico"><i class={item.icono}></i></span>
+          <span class="dv-util-lbl">{item.label}</span>
+        </a>
+      ) : (
+        <button
+          id={`dvSb_${item.id}`}
+          type="button"
+          class="dv-util-item"
+          data-action={item.accion}
+          title={item.label || item.labelLuz}
+        >
+          <span class="dv-util-ico">
+            <i
+              class={item.icono || item.iconoLuz}
+              data-tema-ico={item.accion === 'toggle-tema' ? '1' : undefined}
+            ></i>
+          </span>
+          <span class="dv-util-lbl" data-tema-lbl={item.accion === 'toggle-tema' ? '1' : undefined}>
+            {item.label || item.labelLuz}
+          </span>
+        </button>
+      )
+    )}
+  </div>
+</aside>

@@ -3,13 +3,11 @@ import Principal from '@core/layouts/Principal.astro';
 import Terminos from '@feature/acercas/secciones/Terminos.astro';
 import { tAcercas } from '@feature/acercas/idioma/idioma.js';
 import { app } from '@semillas';
-import { datosApp } from '@feature/personal/modulos/app/dataApp.js';
 
 const idioma = 'es';
 const t = tAcercas('terminos', idioma);
-const nombre = datosApp.marca?.nombre || app.marca?.nombre || '';
 ---
 
-<Principal idioma={idioma} ruta="/terminos" title={`${t.page_title} · ${nombre}`} description={t.desc}>
+<Principal titulo={`${t.page_title} · ${app}`} descripcion={t.desc}>
   <Terminos idioma={idioma} />
 </Principal>

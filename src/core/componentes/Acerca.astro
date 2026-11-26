@@ -1,0 +1,36 @@
+---
+// src/core/componentes/Acerca.astro
+import { configurar } from '@semillas';
+
+const { app, slogan, by, version, enlacesAcerca } = configurar;
+---
+
+<div class="dv-modal-backdrop" id="dvModalAcerca" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="dvAcercaTitle">
+  <div class="dv-modal-card">
+    <header class="dv-modal-head">
+      <div class="dv-modal-brand">
+        <span class="dv-modal-ico"><i class="fa-solid fa-terminal"></i></span>
+        <div>
+          <h2 id="dvAcercaTitle">{app}</h2>
+          <p>{slogan} · v{version} · {by}</p>
+        </div>
+      </div>
+      <button type="button" class="dv-modal-close" data-action="close-acerca" aria-label="Cerrar">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </header>
+
+    <p class="dv-modal-desc">
+      Suite ultrarrápida para desarrollo web, optimización de imágenes, lectura técnica y auditoría SEO/Speed 100% en tu navegador.
+    </p>
+
+    <div class="dv-modal-links">
+      {enlacesAcerca.map((link) => (
+        <a href={link.href} class="dv-modal-pill" data-action="close-acerca">
+          <i class={link.icono}></i>
+          <span>{link.label}</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</div>

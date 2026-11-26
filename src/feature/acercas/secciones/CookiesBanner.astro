@@ -2,7 +2,8 @@
 // src/feature/acercas/secciones/CookiesBanner.astro
 // 🍪 Banner Flotante de Consentimiento (0ms bloqueo FCP/LCP · 100% witema.css · LocalStorage)
 
-import { buildRuta, type Idioma } from '@idioma';
+type Idioma = 'es' | 'en' | 'pt';
+const buildRuta = (r: string) => r;
 import { tAcercas } from '../idioma/idioma.js';
 
 interface Props {

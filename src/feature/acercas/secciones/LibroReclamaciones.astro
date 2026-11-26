@@ -3,8 +3,8 @@
 // 📖 Libro de Reclamaciones Virtual — Wizard 5 Pasos (INDECOPI · Ley N° 29571 · Ley N° 31435)
 
 import { app } from '@semillas';
-import { datosApp } from '@feature/personal/modulos/app/dataApp.js';
-import type { Idioma } from '@idioma';
+const datosApp: Record<string, any> = {};
+type Idioma = 'es' | 'en' | 'pt';
 import { tAcercas } from '../idioma/idioma.js';
 import '../acercas.css';
 
