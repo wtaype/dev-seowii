@@ -1,7 +1,7 @@
 {
   "titleStart": "Learn",
   "titleAccent": "Web Dev & SEO",
-  "sub": "Essential resources, recommended fonts, and 5 practical tutorials from zero to production.",
+  "sub": "Essential resources, recommended fonts, and 7 practical tutorials from zero to production.",
   "searchPlaceholder": "Search resource, framework, font or command (e.g. astro, cloudflare, poppins)...",
   "clearSearch": "Clear",
   "goldTitle": "Golden Tip",
@@ -42,7 +42,30 @@
       "label": "5. Pro Combo + SEO",
       "sub": "Astro + FB + CF + Vitals",
       "gold": "Split responsibilities: Astro + Cloudflare for free global edge speed, Firebase for Auth/Firestore, and /imgwii + /seo-test before launch."
+    },
+    "t6_email_routing": {
+      "label": "6. CF Email Routing",
+      "sub": "Free @domain email",
+      "gold": "If you send a test email from the same destination Gmail to your @domain, Gmail hides it to prevent loops. Always test from a different inbox."
+    },
+    "t7_resend_worker": {
+      "label": "7. Worker + Resend",
+      "sub": "Forms to your Gmail",
+      "gold": "Never prefix your Resend API key with PUBLIC_ in .env. Store it as a Secret in Cloudflare Workers and always include a User-Agent header."
     }
+  },
+  "cfHelper": {
+    "title": "Direct Links Generator for Your Cloudflare",
+    "desc": "Enter your Cloudflare Account ID (visible in dash.cloudflare.com/YOUR_ID) and domain to open your panels directly (saved locally in your browser only).",
+    "idLabel": "Cloudflare Account ID",
+    "idPlaceholder": "e.g. a1b2c3d4e5f60718293a4b5c6d7e8f90",
+    "domLabel": "Your Domain",
+    "domPlaceholder": "e.g. my-business.com",
+    "btnEmail": "Email Routing",
+    "btnDns": "DNS Records",
+    "btnWorkers": "Workers & Pages",
+    "btnResend": "Resend Domains",
+    "btnResendKeys": "Resend API Keys"
   },
   "recursos": {
     "badge": "Developer Starter Kit",
@@ -239,6 +262,52 @@
         "<title>, meta description, single H1, and canonical verified in /seo-test.",
         "LCP < 2.5s, CLS < 0.1, and zero render-blocking scripts verified in /speed-test.",
         "public/_headers active on Cloudflare with immutable Cache-Control for /_astro/*."
+      ]
+    },
+    "t6_email_routing": {
+      "badge": "Tutorial 6 of 7 · Free Business Email",
+      "title": "Set Up Free Email Routing on Cloudflare",
+      "desc": "Receive emails at contact@my-business.com straight in your personal Gmail for free, in under 3 minutes.",
+      "example": "John wants emails sent to contact@my-business.com to arrive directly in his john.dev@gmail.com inbox.",
+      "steps": [
+        {
+          "title": "Step 1 · Add and verify your destination Gmail",
+          "desc": "In Cloudflare open your domain -> Email -> Email Routing -> Destination addresses, add your Gmail, and click 'Verify email address' in your inbox.",
+          "codeIndex": 0
+        },
+        {
+          "title": "Step 2 · Enable DNS records and add DMARC",
+          "desc": "Click 'Add missing records' in Email Routing (adds MX + SPF automatically) and add this TXT record in DNS -> Records for better deliverability:",
+          "codeIndex": 1
+        },
+        {
+          "title": "Step 3 · Create your rule and prevent Gmail Spam",
+          "desc": "Under Routing rules create contact@my-business.com -> Send to an email -> your Gmail. Then add a Gmail filter so it never goes to Spam:",
+          "codeIndex": 2
+        }
+      ]
+    },
+    "t7_resend_worker": {
+      "badge": "Tutorial 7 of 7 · Real Contact Forms",
+      "title": "Connect Cloudflare Worker + Resend (Forms)",
+      "desc": "Deliver messages from your /contacto form straight to your Gmail using Resend (3,000 free emails/mo) secured behind Cloudflare Workers.",
+      "example": "John connects 'my-business.com' to a central Worker 'mail.my-business.com' without exposing his API key or Gmail in client code.",
+      "steps": [
+        {
+          "title": "Step 1 · Verify your domain on Resend and add 2 Secrets",
+          "desc": "On resend.com/domains add your domain (Cloudflare auto-verifies in 1 click). Then create a 'Sending access' API Key and save both Secrets in your Worker:",
+          "codeIndex": 0
+        },
+        {
+          "title": "Step 2 · Secure Worker code (CORS + Honeypot + User-Agent)",
+          "desc": "Create a Cloudflare Worker and paste this code that restricts Origin to your domain and locks sender/recipient on the server:",
+          "codeIndex": 1
+        },
+        {
+          "title": "Step 3 · Connect your HTML + JS form with Honeypot",
+          "desc": "Add a hidden bot-trap input (name='website') and POST form data to your Worker (custom domain or workers.dev):",
+          "codeIndex": 2
+        }
       ]
     }
   }

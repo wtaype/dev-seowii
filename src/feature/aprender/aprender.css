@@ -549,3 +549,67 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* Generador de links directos Cloudflare */
+.dv-ap-cf-box {
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+  padding: 1.3vh;
+  border-radius: var(--r_m);
+  background: linear-gradient(145deg, rgba(14, 165, 233, 0.09), rgba(14, 165, 233, 0.02));
+  border: 1px solid rgba(14, 165, 233, 0.32);
+}
+
+.dv-ap-cf-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9vh;
+}
+
+.dv-ap-cf-head i {
+  color: var(--primary);
+  margin-top: 0.3vh;
+}
+
+.dv-ap-cf-head h3 {
+  font-size: var(--fz_s3);
+  font-weight: 700;
+  color: var(--tx1);
+}
+
+.dv-ap-cf-head p {
+  font-size: var(--fz_s2);
+  color: var(--tx3);
+  line-height: 1.45;
+}
+
+.dv-ap-cf-inputs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9vh;
+}
+
+.dv-ap-cf-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4vh;
+}
+
+.dv-ap-cf-field span {
+  font-size: var(--fz_s1);
+  font-weight: 600;
+  color: var(--tx2);
+}
+
+.dv-ap-cf-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6vh;
+}
+
+@media (max-width: 900px) {
+  .dv-ap-cf-inputs {
+    grid-template-columns: 1fr;
+  }
+}

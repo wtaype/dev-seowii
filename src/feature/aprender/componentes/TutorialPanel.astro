@@ -4,10 +4,12 @@ interface Props {
   t: Record<string, any>;
   tutorialId: string;
   snippets: string[];
+  showCfHelper?: boolean;
 }
 
-const { t, tutorialId, snippets } = Astro.props;
+const { t, tutorialId, snippets, showCfHelper = false } = Astro.props;
 const tut = t.tutorials[tutorialId];
+const cf = t.cfHelper || {};
 ---
 
 <div class="dv-ap-panel" data-ap-panel={tutorialId} hidden>
@@ -43,6 +45,56 @@ const tut = t.tutorials[tutorialId];
         </tbody>
       </table>
     </div>
+  )}
+
+  {/* Generador de links directos a Cloudflare (100% local, sin datos privados) */}
+  {showCfHelper && (
+    <section class="dv-ap-cf-box" data-ap-item data-search={`cloudflare link account id dominio dns workers resend ${cf.title || ''}`.toLowerCase()}>
+      <div class="dv-ap-cf-head">
+        <i class="fa-solid fa-wand-magic-sparkles"></i>
+        <div>
+          <h3>{cf.title}</h3>
+          <p>{cf.desc}</p>
+        </div>
+      </div>
+      <div class="dv-ap-cf-inputs">
+        <label class="dv-ap-cf-field">
+          <span>{cf.idLabel}</span>
+          <input type="text" class="dv-input dv-ap-cf-id" placeholder={cf.idPlaceholder} autocomplete="off" />
+        </label>
+        <label class="dv-ap-cf-field">
+          <span>{cf.domLabel}</span>
+          <input type="text" class="dv-input dv-ap-cf-dom" placeholder={cf.domPlaceholder} autocomplete="off" />
+        </label>
+      </div>
+      <div class="dv-ap-cf-links">
+        <a href="https://dash.cloudflare.com/" target="_blank" rel="noopener noreferrer" class="dv-btn dv-btn-sm dv-btn-pri" data-cf-tpl="https://dash.cloudflare.com/{id}/{dom}/email/routing/overview" data-cf-acct="https://dash.cloudflare.com/{id}/email-service/routing">
+          <i class="fa-solid fa-envelope"></i>
+          <span>{cf.btnEmail}</span>
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </a>
+        <a href="https://dash.cloudflare.com/" target="_blank" rel="noopener noreferrer" class="dv-btn dv-btn-sm" data-cf-tpl="https://dash.cloudflare.com/{id}/{dom}/dns/records" data-cf-acct="https://dash.cloudflare.com/{id}/domains">
+          <i class="fa-solid fa-network-wired"></i>
+          <span>{cf.btnDns}</span>
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </a>
+        <a href="https://dash.cloudflare.com/" target="_blank" rel="noopener noreferrer" class="dv-btn dv-btn-sm" data-cf-tpl="https://dash.cloudflare.com/{id}/workers-and-pages" data-cf-acct="https://dash.cloudflare.com/{id}/workers-and-pages">
+          <i class="fa-solid fa-cloud-bolt"></i>
+          <span>{cf.btnWorkers}</span>
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </a>
+        <a href="https://resend.com/domains" target="_blank" rel="noopener noreferrer" class="dv-btn dv-btn-sm">
+          <i class="fa-solid fa-globe"></i>
+          <span>{cf.btnResend}</span>
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </a>
+        <a href="https://resend.com/api-keys" target="_blank" rel="noopener noreferrer" class="dv-btn dv-btn-sm">
+          <i class="fa-solid fa-key"></i>
+          <span>{cf.btnResendKeys}</span>
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </a>
+      </div>
+    </section>
   )}
 
   {/* Pasos numerados con comandos CLI copiables */}

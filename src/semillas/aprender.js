@@ -7,7 +7,9 @@ export const APRENDER_SECCIONES = [
   { id: 't2_firebase', icono: 'fa-solid fa-fire' },
   { id: 't3_vercel', icono: 'fa-solid fa-triangle-exclamation' },
   { id: 't4_cloudflare', icono: 'fa-solid fa-cloud-bolt' },
-  { id: 't5_combo', icono: 'fa-solid fa-rocket' }
+  { id: 't5_combo', icono: 'fa-solid fa-rocket' },
+  { id: 't6_email_routing', icono: 'fa-solid fa-envelope-open-text' },
+  { id: 't7_resend_worker', icono: 'fa-solid fa-paper-plane' }
 ];
 
 export const RECURSOS_LINKS = {
@@ -147,5 +149,15 @@ export const SNIPPETS_TUTORIALES = {
     'pnpm create astro@latest mi-negocio-pro -- --template minimal\ncd mi-negocio-pro\npnpm add firebase @astrojs/sitemap',
     '/* src/lib/firebase.js */\nimport { initializeApp } from "firebase/app";\nimport { getFirestore } from "firebase/firestore";\n\nconst app = initializeApp({\n  apiKey: import.meta.env.PUBLIC_FB_KEY,\n  projectId: import.meta.env.PUBLIC_FB_PROJECT\n});\nexport const db = getFirestore(app);',
     '<title>Mi Negocio Pro | Servicios Digitales</title>\n<meta name="description" content="Descripción clara entre 110 y 160 caracteres." />\n<link rel="canonical" href="https://mi-negocio.com/" />\n<meta property="og:image" content="https://mi-negocio.com/og-cover.webp" />'
+  ],
+  t6_email_routing: [
+    'Custom address: contacto@mi-negocio.com\nAction: Send to an email\nDestination: juan.dev@gmail.com',
+    'Type: TXT\nName: _dmarc\nContent: v=DMARC1; p=none; rua=mailto:contacto@mi-negocio.com\nTTL: Auto',
+    'Para (To): contacto@mi-negocio.com\nAcción: No marcar nunca como spam'
+  ],
+  t7_resend_worker: [
+    '// Secrets en Cloudflare Worker -> Settings -> Variables and Secrets\nRESEND_CONTACTO = re_tu_clave_sending_access\nCORREO_REENVIO  = juan.dev@gmail.com',
+    'const ORIGIN_RE = /^https:\\/\\/([a-z0-9-]+\\.)?mi-negocio\\.com$|^http:\\/\\/(localhost|127\\.0\\.0\\.1)(:\\d+)?$/i;\n\nexport default {\n  async fetch(request, env) {\n    const origin = request.headers.get("Origin") || "";\n    if (request.method === "OPTIONS") {\n      return new Response(null, { status: 204, headers: { "Access-Control-Allow-Origin": origin, "Access-Control-Allow-Methods": "POST,OPTIONS", "Access-Control-Allow-Headers": "Content-Type" } });\n    }\n    if (request.method !== "POST" || (origin && !ORIGIN_RE.test(origin))) {\n      return Response.json({ ok: false }, { status: 403 });\n    }\n    const body = await request.json();\n    if (body.website) return Response.json({ ok: true }); // Honeypot\n\n    const res = await fetch("https://api.resend.com/emails", {\n      method: "POST",\n      headers: {\n        Authorization: `Bearer ${env.RESEND_CONTACTO}`,\n        "Content-Type": "application/json",\n        "User-Agent": "mi-negocio-correo/1.0"\n      },\n      body: JSON.stringify({\n        from: `${body.app || "mi-negocio.com"} <contacto@mi-negocio.com>`,\n        to: [env.CORREO_REENVIO],\n        subject: `${body.app || "mi-negocio.com"} — ${body.asunto || "Nuevo mensaje"}`,\n        html: `<p><b>${body.nombre}</b> (${body.correo}):</p><p>${body.mensaje}</p>`,\n        reply_to: body.correo\n      })\n    });\n    return Response.json(await res.json(), { status: res.status, headers: { "Access-Control-Allow-Origin": origin } });\n  }\n};',
+    '<input type="text" name="website" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true" />\n\n// En tu JS del formulario:\nawait fetch("https://correo.mi-negocio.com", {\n  method: "POST",\n  headers: { "Content-Type": "application/json" },\n  body: JSON.stringify({ app: "mi-negocio.com", ...datosFormulario })\n});'
   ]
 };

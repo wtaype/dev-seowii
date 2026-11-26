@@ -3,6 +3,7 @@ import { savels, getls } from '@widev/storage.js';
 import { wicopy } from '@widev/copy.js';
 
 const LS_KEY = 'dev_aprender_tab';
+const LS_CF_KEY = 'dev_aprender_cf';
 
 export function initAprender() {
   const root = document.getElementById('dvAprenderView');
@@ -109,6 +110,36 @@ export function initAprender() {
     if (!text) return;
     wicopy(text, btn, i18n.copiedMsg || 'Copiado');
   });
+
+  const cfIds = [...root.querySelectorAll('.dv-ap-cf-id')];
+  const cfDoms = [...root.querySelectorAll('.dv-ap-cf-dom')];
+  const cfLinks = [...root.querySelectorAll('[data-cf-tpl]')];
+
+  const syncCfLinks = (idVal, domVal) => {
+    const cleanId = String(idVal || '').trim().replace(/[^a-z0-9]/gi, '');
+    const cleanDom = String(domVal || '').trim().replace(/^https?:\/\//i, '').replace(/\/.*$/, '');
+    savels(LS_CF_KEY, { id: cleanId, dom: cleanDom });
+    cfIds.forEach((el) => { if (el.value !== cleanId) el.value = cleanId; });
+    cfDoms.forEach((el) => { if (el.value !== cleanDom) el.value = cleanDom; });
+    cfLinks.forEach((a) => {
+      const tpl = a.dataset.cfTpl || '';
+      const acct = a.dataset.cfAcct || '';
+      const url = cleanId && (!tpl.includes('{dom}') || cleanDom)
+        ? tpl.replace('{id}', cleanId).replace('{dom}', cleanDom)
+        : cleanId && acct
+          ? acct.replace('{id}', cleanId)
+          : cleanDom && tpl.includes('{dom}')
+            ? tpl.replace('https://dash.cloudflare.com/{id}', 'https://dash.cloudflare.com/?to=/:account').replace('{dom}', cleanDom)
+            : 'https://dash.cloudflare.com/';
+      a.href = url;
+      a.title = url;
+    });
+  };
+
+  const savedCf = getls(LS_CF_KEY) || {};
+  syncCfLinks(savedCf.id || '', savedCf.dom || '');
+  cfIds.forEach((el) => el.addEventListener('input', () => syncCfLinks(el.value, cfDoms[0]?.value || '')));
+  cfDoms.forEach((el) => el.addEventListener('input', () => syncCfLinks(cfIds[0]?.value || '', el.value)));
 
   activarTab(activeTab);
 }
