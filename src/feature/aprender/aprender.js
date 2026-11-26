@@ -1,5 +1,6 @@
 // src/feature/aprender/aprender.js
-import { savels, getls, toast, copiar } from '@widev/widev.js';
+import { savels, getls } from '@widev/storage.js';
+import { wicopy } from '@widev/copy.js';
 
 const LS_KEY = 'dev_aprender_tab';
 
@@ -106,8 +107,7 @@ export function initAprender() {
     if (!btn) return;
     const text = btn.dataset.copy;
     if (!text) return;
-    copiar(text);
-    toast(i18n.copiedMsg || 'Copiado', 'success');
+    wicopy(text, btn, i18n.copiedMsg || 'Copiado');
   });
 
   activarTab(activeTab);
