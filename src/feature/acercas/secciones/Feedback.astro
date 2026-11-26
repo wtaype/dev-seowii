@@ -1,0 +1,89 @@
+---
+// src/feature/acercas/secciones/Feedback.astro
+// ⭐ Buzón de Feedback & Experiencia del Cliente (0 imágenes · Firestore · .conwii 85vw)
+
+import type { Idioma } from '@idioma';
+import { tAcercas } from '../idioma/idioma.js';
+import '../acercas.css';
+
+interface Props {
+  idioma?: Idioma;
+}
+
+const { idioma = 'es' } = Astro.props;
+const t = tAcercas('feedback', idioma);
+const cats = Array.isArray(t.cats) ? t.cats : [];
+---
+
+<section class="acercas-page-wrap" aria-label={t.page_title || 'Feedback'}>
+  <div class="conwii">
+    <header class="acercas-hero-header">
+      {t.badge && <div class="acercas-badge-pill">{t.badge}</div>}
+      <h1 class="acercas-hero-title">
+        {t.titulo_start} {t.titulo_highlight && <span>{t.titulo_highlight}</span>}
+      </h1>
+      {t.desc && <p class="acercas-hero-desc">{t.desc}</p>}
+    </header>
+
+    <div class="acercas-form-card">
+      <form id="formFeedback" class="acercas-form-grid">
+        <div class="acercas-field is-full">
+          <label>{t.lbl_rating}</label>
+          <div class="feedback-stars-row" id="feedbackStarsRow" role="radiogroup" aria-label={t.lbl_rating}>
+            {[5, 4, 3, 2, 1].map((n) => (
+              <label class="feedback-star-pill">
+                <input type="radio" name="rating" value={n} checked={n === 5} />
+                <span>
+                  <i class="fa-solid fa-star" aria-hidden="true"></i>
+                  <span>{n}/5</span>
+                </span>
+              </label>
+            ))}
+          </div>
+        </div>
+
+        <div class="acercas-field">
+          <label for="fbCategoria">{t.lbl_cat}</label>
+          <select id="fbCategoria" name="categoria" class="acercas-select" required>
+            {cats.map((c: string) => (
+              <option value={c}>{c}</option>
+            ))}
+          </select>
+        </div>
+
+        <div class="acercas-field">
+          <label for="fbNombre">{t.lbl_nombre}</label>
+          <input id="fbNombre" name="nombre" class="acercas-input" type="text" placeholder={t.ph_nombre} />
+        </div>
+
+        <div class="acercas-field is-full">
+          <label for="fbComentario">{t.lbl_comentario}</label>
+          <textarea id="fbComentario" name="comentario" class="acercas-textarea" rows="4" required placeholder={t.ph_comentario}></textarea>
+        </div>
+
+        <div class="acercas-field is-full">
+          <button type="submit" id="fbBtnSubmit" class="acercas-submit-btn">
+            <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+            <span>{t.btn_enviar}</span>
+          </button>
+        </div>
+      </form>
+
+      <div id="feedbackSuccessBox" class="acercas-success-box" aria-live="polite">
+        <div class="acercas-success-icon">
+          <i class="fa-solid fa-heart" aria-hidden="true"></i>
+        </div>
+        <h2>{t.exito_tit}</h2>
+        <p>{t.exito_desc}</p>
+        <button type="button" id="btnNuevoFeedback" class="acercas-reset-btn">
+          <i class="fa-solid fa-rotate-right" aria-hidden="true"></i>
+          <span>{t.btn_nuevo}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import './acercasPage.js';
+</script>

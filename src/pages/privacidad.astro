@@ -1,0 +1,12 @@
+---
+import Principal from '@core/layouts/Principal.astro';
+import Privacidad from '@feature/acercas/secciones/Privacidad.astro';
+import { tAcercas } from '@feature/acercas/idioma/idioma.js';
+
+const idioma = 'es';
+const t = tAcercas('privacidad', idioma);
+---
+
+<Principal titulo={t.page_title} descripcion={t.desc} idioma={idioma} feature="inicio">
+  <Privacidad idioma={idioma} />
+</Principal>

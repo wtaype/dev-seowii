@@ -1,0 +1,164 @@
+---
+// src/feature/acercas/secciones/Nosotros.astro
+// 🏛️ Página Nosotros (0 Imágenes · Puro Texto Estructurado + Gráficos CSS · 0ms · .conwii 85vw)
+
+import { app } from '@semillas';
+import { datosApp } from '@feature/personal/modulos/app/dataApp.js';
+import type { Idioma } from '@idioma';
+import { tAcercas } from '../idioma/idioma.js';
+import '../acercas.css';
+
+interface Props {
+  idioma?: Idioma;
+}
+
+const { idioma = 'es' } = Astro.props;
+const t = tAcercas('nosotros', idioma);
+
+// Cascada Sagrada: datosApp (Firestore) -> app (seowii.js) -> ""
+const marcaApp = (datosApp.marca || {}) as Record<string, any>;
+const contactoApp = (datosApp.contacto || {}) as Record<string, any>;
+const titularApp = (datosApp.hero?.titular || {}) as Record<string, any>;
+
+const nombreMarca = marcaApp.nombre || app.marca?.nombre || '';
+const razonSocial = marcaApp.razonSocial || app.marca?.razonSocial || nombreMarca;
+const fundador = titularApp.nombre || app.fundador?.nombre || '';
+const universidad = titularApp.universidad || app.fundador?.universidad || '';
+const sede = contactoApp.sedePrincipal || app.contacto?.sedePrincipal || '';
+const correo = contactoApp.correo || app.contacto?.correo || '';
+
+const tituloHighlight = (t.titulo_highlight || '').replace('{marca}', razonSocial || nombreMarca);
+const historiaP1 = (t.historia_p1 || '').replace('{marca}', razonSocial || nombreMarca);
+const historiaP2 = (t.historia_p2 || '')
+  .replace('{fundador}', fundador)
+  .replace('{universidad}', universidad);
+
+const metricas = Array.isArray(t.metricas) ? t.metricas : [];
+const valores = Array.isArray(t.valores) ? t.valores : [];
+const proceso = Array.isArray(t.proceso) ? t.proceso : [];
+const pilares = Array.isArray(t.pilares) ? t.pilares : [];
+---
+
+<section class="acercas-page-wrap" aria-label={t.page_title || 'Nosotros'}>
+  <div class="conwii">
+    <!-- Encabezado Corporativo -->
+    <header class="acercas-hero-header">
+      {t.badge && <div class="acercas-badge-pill">{t.badge}</div>}
+      <h1 class="acercas-hero-title">
+        {t.titulo_start} {tituloHighlight && <span>{tituloHighlight}</span>}
+      </h1>
+      {t.desc && <p class="acercas-hero-desc">{t.desc}</p>}
+
+      <div class="acercas-meta-strip">
+        {sede && (
+          <span class="acercas-meta-chip">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>{sede}</span>
+          </span>
+        )}
+        {correo && (
+          <span class="acercas-meta-chip">
+            <i class="fa-solid fa-envelope"></i>
+            <span>{correo}</span>
+          </span>
+        )}
+        {universidad && (
+          <span class="acercas-meta-chip">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <span>{universidad}</span>
+          </span>
+        )}
+      </div>
+    </header>
+
+    <!-- Bloque 1: Historia + Gráficos de Métricas (0 imágenes) -->
+    <div class="nosotros-intro-grid">
+      <article class="nosotros-story-card">
+        <div class="nosotros-story-body">
+          <h2 class="nosotros-story-title">{t.historia_titulo}</h2>
+          <p class="nosotros-story-text">{historiaP1}</p>
+          {historiaP2 && <p class="nosotros-story-text">{historiaP2}</p>}
+          {t.historia_p3 && <p class="nosotros-story-text">{t.historia_p3}</p>}
+        </div>
+
+        <div class="nosotros-mv-grid">
+          <div class="nosotros-mv-box">
+            <h3>{t.mision_tit}</h3>
+            <p>{t.mision_desc}</p>
+          </div>
+          <div class="nosotros-mv-box">
+            <h3>{t.vision_tit}</h3>
+            <p>{t.vision_desc}</p>
+          </div>
+        </div>
+      </article>
+
+      <aside class="nosotros-metrics-card">
+        <h2 class="nosotros-section-sub">{t.metricas_titulo}</h2>
+        <div class="nosotros-metrics-list">
+          {metricas.map((m: any) => (
+            <div class="nosotros-metric-row">
+              <div class="nosotros-metric-head">
+                <span class="nosotros-metric-label">{m.label}</span>
+                <strong class="nosotros-metric-val">{m.valor}</strong>
+              </div>
+              <div class="nosotros-metric-track">
+                <div class="nosotros-metric-fill" data-pct={m.pct}></div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </aside>
+    </div>
+
+    <!-- Bloque 2: Principios de Cultura Técnica -->
+    {valores.length > 0 && (
+      <div class="nosotros-block-section">
+        <h2 class="nosotros-block-heading">{t.valores_titulo}</h2>
+        <div class="nosotros-pilares-grid">
+          {valores.map((v: any) => (
+            <article class="nosotros-pilar-card">
+              <div class="nosotros-emoji-badge">{v.emoji}</div>
+              <h3>{v.titulo}</h3>
+              <p>{v.desc}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <!-- Bloque 3: Metodología de Ingeniería en 4 Fases -->
+    {proceso.length > 0 && (
+      <div class="nosotros-block-section">
+        <h2 class="nosotros-block-heading">{t.proceso_titulo}</h2>
+        <div class="nosotros-pilares-grid">
+          {proceso.map((pr: any) => (
+            <article class="nosotros-pilar-card">
+              <div class="nosotros-step-num">{pr.paso}</div>
+              <h3>{pr.titulo}</h3>
+              <p>{pr.desc}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <!-- Bloque 4: Pilares de Garantía -->
+    {pilares.length > 0 && (
+      <div class="nosotros-block-section">
+        <h2 class="nosotros-block-heading">{t.pilares_titulo}</h2>
+        <div class="nosotros-pilares-grid">
+          {pilares.map((p: any) => (
+            <article class="nosotros-pilar-card">
+              <div class="nosotros-pilar-icon">
+                <i class={p.icono}></i>
+              </div>
+              <h3>{p.titulo}</h3>
+              <p>{p.desc}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    )}
+  </div>
+</section>

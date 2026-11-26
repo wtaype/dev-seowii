@@ -1,0 +1,102 @@
+---
+// src/feature/acercas/secciones/Privacidad.astro
+// 🔒 Política de Privacidad y Protección de Datos Personales (Ley N° 29733 · .conwii 85vw)
+
+import { app } from '@semillas';
+import { datosApp } from '@feature/personal/modulos/app/dataApp.js';
+import type { Idioma } from '@idioma';
+import { tAcercas } from '../idioma/idioma.js';
+import '../acercas.css';
+
+interface Props {
+  idioma?: Idioma;
+}
+
+const { idioma = 'es' } = Astro.props;
+const t = tAcercas('privacidad', idioma);
+
+const marcaApp = (datosApp.marca || {}) as Record<string, any>;
+const contactoApp = (datosApp.contacto || {}) as Record<string, any>;
+
+const nombreMarca = marcaApp.nombre || app.marca?.nombre || '';
+const razonSocial = marcaApp.razonSocial || app.marca?.razonSocial || nombreMarca;
+const sede = contactoApp.sedePrincipal || app.contacto?.sedePrincipal || '';
+const correo = contactoApp.correo || app.contacto?.correo || '';
+
+const desc = (t.desc || '').replace('{marca}', razonSocial || nombreMarca);
+const clausulas = Array.isArray(t.clausulas) ? t.clausulas : [];
+---
+
+<section class="acercas-page-wrap" aria-label={t.page_title || 'Privacidad'}>
+  <div class="conwii">
+    <header class="acercas-hero-header">
+      {t.badge && <div class="acercas-badge-pill">{t.badge}</div>}
+      <h1 class="acercas-hero-title">
+        {t.titulo_start} {t.titulo_highlight && <span>{t.titulo_highlight}</span>}
+      </h1>
+      {desc && <p class="acercas-hero-desc">{desc}</p>}
+
+      <div class="acercas-meta-strip">
+        {razonSocial && (
+          <span class="acercas-meta-chip">
+            <i class="fa-solid fa-building-shield"></i>
+            <span>{razonSocial}</span>
+          </span>
+        )}
+        {sede && (
+          <span class="acercas-meta-chip">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>{sede}</span>
+          </span>
+        )}
+        {t.vigencia && (
+          <span class="acercas-meta-chip">
+            <i class="fa-solid fa-calendar-check"></i>
+            <span>{t.vigencia}</span>
+          </span>
+        )}
+      </div>
+    </header>
+
+    {clausulas.length > 0 && (
+      <nav class="tm_index_band" aria-label={t.indice_tit || 'Índice'}>
+        {t.indice_tit && <span class="tm_index_lbl">{t.indice_tit}</span>}
+        <div class="tm_index_links">
+          {clausulas.map((c: any, idx: number) => (
+            <a class="tm_index_pill" href={`#priv_sec_${idx + 1}`}>
+              <span>{c.num}.</span>
+              <span>{c.titulo}</span>
+            </a>
+          ))}
+        </div>
+      </nav>
+    )}
+
+    <div class="legal-cards-grid">
+      {clausulas.map((c: any, idx: number) => (
+        <article class="legal-clause-card" id={`priv_sec_${idx + 1}`}>
+          <div class="legal-clause-head">
+            <span class="legal-clause-num">{c.num}</span>
+            {c.icono && (
+              <span class="legal-clause-icon" aria-hidden="true">
+                <i class={c.icono}></i>
+              </span>
+            )}
+            <h2>{c.titulo}</h2>
+          </div>
+          <p>{(c.texto || '').replace('{correo}', correo).replace('{sede}', sede).replace('{marca}', razonSocial || nombreMarca)}</p>
+          {Array.isArray(c.items) && c.items.length > 0 && (
+            <ul class="tm_list">
+              {c.items.map((item: string) => (
+                <li>
+                  <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+                  <span>{(item || '').replace('{correo}', correo).replace('{sede}', sede)}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

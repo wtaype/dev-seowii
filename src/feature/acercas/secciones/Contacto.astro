@@ -1,0 +1,146 @@
+---
+// src/feature/acercas/secciones/Contacto.astro
+// 📬 Centro de Contacto Directo (0 imágenes · Cascada Sagrada · .conwii 85vw)
+
+import { app } from '@semillas';
+import { datosApp } from '@feature/personal/modulos/app/dataApp.js';
+import type { Idioma } from '@idioma';
+import { tAcercas } from '../idioma/idioma.js';
+import '../acercas.css';
+
+interface Props {
+  idioma?: Idioma;
+}
+
+const { idioma = 'es' } = Astro.props;
+const t = tAcercas('contacto', idioma);
+
+const marcaApp = (datosApp.marca || {}) as Record<string, any>;
+const contactoApp = (datosApp.contacto || {}) as Record<string, any>;
+
+const nombreMarca = marcaApp.nombre || app.marca?.nombre || '';
+const razonSocial = marcaApp.razonSocial || app.marca?.razonSocial || nombreMarca;
+const sede = contactoApp.sedePrincipal || app.contacto?.sedePrincipal || '';
+const mapsUrl = contactoApp.mapsUrl || app.contacto?.mapsUrl || '';
+const correo = contactoApp.correo || app.contacto?.correo || '';
+const plataformas = contactoApp.plataformas || app.contacto?.plataformas || '';
+const cel =
+  contactoApp.celular ||
+  contactoApp.whatsapp ||
+  contactoApp.telefono ||
+  app.contacto?.celular ||
+  app.contacto?.whatsapp ||
+  app.contacto?.telefono ||
+  '';
+const celLimpio = String(cel).replace(/\D/g, '');
+const waHref = celLimpio ? `https://wa.me/${celLimpio}` : '';
+const desc = (t.desc || '').replace('{marca}', razonSocial || nombreMarca);
+---
+
+<section class="acercas-page-wrap" aria-label={t.page_title || 'Contacto'}>
+  <div class="conwii">
+    <header class="acercas-hero-header">
+      {t.badge && <div class="acercas-badge-pill">{t.badge}</div>}
+      <h1 class="acercas-hero-title">
+        {t.titulo_start} {t.titulo_highlight && <span>{t.titulo_highlight}</span>}
+      </h1>
+      {desc && <p class="acercas-hero-desc">{desc}</p>}
+    </header>
+
+    <div class="contacto-channels-grid">
+      <article class="contacto-channel-card">
+        <span class="legal-clause-icon" aria-hidden="true"><i class="fa-brands fa-whatsapp"></i></span>
+        <h2>{t.card_wa_tit}</h2>
+        <p>{cel}</p>
+        {waHref && (
+          <a href={waHref} target="_blank" rel="noopener noreferrer" class="contacto-channel-link">
+            <span>{t.card_wa_btn}</span>
+            <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+          </a>
+        )}
+      </article>
+
+      <article class="contacto-channel-card">
+        <span class="legal-clause-icon" aria-hidden="true"><i class="fa-solid fa-envelope"></i></span>
+        <h2>{t.card_mail_tit}</h2>
+        <p>{correo}</p>
+        {correo && (
+          <a href={`mailto:${correo}`} class="contacto-channel-link">
+            <span>{t.card_mail_btn}</span>
+            <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+          </a>
+        )}
+      </article>
+
+      <article class="contacto-channel-card">
+        <span class="legal-clause-icon" aria-hidden="true"><i class="fa-solid fa-location-dot"></i></span>
+        <h2>{t.card_sede_tit}</h2>
+        <p>{sede}</p>
+        {mapsUrl && (
+          <a href={mapsUrl} target="_blank" rel="noopener noreferrer" class="contacto-channel-link">
+            <span>{t.card_sede_btn}</span>
+            <i class="fa-solid fa-map-location-dot" aria-hidden="true"></i>
+          </a>
+        )}
+      </article>
+
+      <article class="contacto-channel-card">
+        <span class="legal-clause-icon" aria-hidden="true"><i class="fa-solid fa-video"></i></span>
+        <h2>{t.card_plat_tit}</h2>
+        <p>{plataformas}</p>
+      </article>
+    </div>
+
+    <div class="acercas-form-card">
+      <div class="contacto-form-head">
+        <h2>{t.form_tit}</h2>
+        <p>{t.form_desc}</p>
+      </div>
+
+      <form id="formContactoDirecto" class="acercas-form-grid">
+        <div class="acercas-field">
+          <label for="cntNombre">{t.lbl_nombre}</label>
+          <input id="cntNombre" name="nombre" class="acercas-input" type="text" required placeholder={t.ph_nombre} />
+        </div>
+
+        <div class="acercas-field">
+          <label for="cntCorreo">{t.lbl_correo}</label>
+          <input id="cntCorreo" name="correo" class="acercas-input" type="email" required placeholder={t.ph_correo} />
+        </div>
+
+        <div class="acercas-field is-full">
+          <label for="cntAsunto">{t.lbl_asunto}</label>
+          <input id="cntAsunto" name="asunto" class="acercas-input" type="text" required placeholder={t.ph_asunto} />
+        </div>
+
+        <div class="acercas-field is-full">
+          <label for="cntMensaje">{t.lbl_mensaje}</label>
+          <textarea id="cntMensaje" name="mensaje" class="acercas-textarea" rows="4" required placeholder={t.ph_mensaje}></textarea>
+        </div>
+
+        <div class="acercas-field is-full">
+          <button type="submit" id="cntBtnSubmit" class="acercas-submit-btn">
+            <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+            <span>{t.btn_enviar}</span>
+          </button>
+        </div>
+      </form>
+
+      <div id="contactoSuccessBox" class="acercas-success-box" aria-live="polite">
+        <div class="acercas-success-icon">
+          <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+        </div>
+        <h2>{t.exito_tit}</h2>
+        <p>{t.exito_desc}</p>
+        <button type="button" id="btnNuevoContacto" class="acercas-reset-btn">
+          <i class="fa-solid fa-rotate-right" aria-hidden="true"></i>
+          <span>{t.btn_nuevo}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import './acercasPage.js';
+</script>

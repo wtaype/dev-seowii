@@ -1,0 +1,12 @@
+---
+import Principal from '@core/layouts/Principal.astro';
+import Feedback from '@feature/acercas/secciones/Feedback.astro';
+import { tAcercas } from '@feature/acercas/idioma/idioma.js';
+
+const idioma = 'es';
+const t = tAcercas('feedback', idioma);
+---
+
+<Principal titulo={t.page_title} descripcion={t.desc} idioma={idioma} feature="inicio">
+  <Feedback idioma={idioma} />
+</Principal>

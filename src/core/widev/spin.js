@@ -1,0 +1,43 @@
+// src/core/widev/spin.js
+// spin v10.5: Animación de estados de carga en botones con preservación segura del marcado original (incluyendo iconos)
+// Soporta sintaxis wiSpin(btn, true, txt), wiSpin(btn, 'txt') y retorno de objeto { restaurar: () => ... }
+
+export const wiSpin = (btn, act = true, txt = '') => {
+  if (typeof document === 'undefined') return { restaurar: () => {} };
+
+  let el = typeof btn === 'string' ? document.querySelector(btn) : btn;
+  if (el && (el).jquery) el = (el)[0];
+  if (!el) return { restaurar: () => {} };
+
+  // Detectar si act es texto descriptivo directo: wiSpin(btn, 'Traduciendo...')
+  const esTextoEnAct = typeof act === 'string';
+  const activar = esTextoEnAct ? true : Boolean(act);
+  const loadingText = esTextoEnAct ? act : (txt || 'Cargando...');
+
+  if (activar) {
+    // 1. Guardar el HTML original (con textos e iconos originales) solo si no se ha guardado ya
+    if (!el.getAttribute('data-txt')) {
+      el.setAttribute('data-txt', el.innerHTML);
+    }
+    el.disabled = true;
+    el.innerHTML = `${loadingText} <i class="fa-solid fa-spinner fa-spin spin_icon_margin"></i>`;
+
+    return {
+      restaurar: () => wiSpin(el, false)
+    };
+  } else {
+    el.disabled = false;
+    // 2. Restaurar el HTML original resguardado
+    const originalHTML = el.getAttribute('data-txt');
+    if (originalHTML !== null) {
+      el.innerHTML = originalHTML;
+    } else if (txt) {
+      el.textContent = txt;
+    } else {
+      el.textContent = 'Continuar';
+    }
+    // 3. Limpiar el atributo para permitir futuros usos del spinner en el mismo botón
+    el.removeAttribute('data-txt');
+    return { restaurar: () => {} };
+  }
+};

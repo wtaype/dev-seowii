@@ -1,0 +1,104 @@
+---
+// src/feature/acercas/secciones/Cookies.astro
+// 🍪 Política de Cookies y Almacenamiento Local (0 imágenes · Cascada Sagrada · .conwii 85vw)
+
+import { app } from '@semillas';
+import { datosApp } from '@feature/personal/modulos/app/dataApp.js';
+import type { Idioma } from '@idioma';
+import { tAcercas } from '../idioma/idioma.js';
+import '../acercas.css';
+
+interface Props {
+  idioma?: Idioma;
+}
+
+const { idioma = 'es' } = Astro.props;
+const t = tAcercas('cookies', idioma);
+
+const marcaApp = (datosApp.marca || {}) as Record<string, any>;
+const contactoApp = (datosApp.contacto || {}) as Record<string, any>;
+
+const nombreMarca = marcaApp.nombre || app.marca?.nombre || '';
+const razonSocial = marcaApp.razonSocial || app.marca?.razonSocial || nombreMarca;
+const correo = contactoApp.correo || app.contacto?.correo || '';
+
+const desc = (t.desc || '').replace('{marca}', razonSocial || nombreMarca);
+const clausulas = Array.isArray(t.clausulas) ? t.clausulas : [];
+const filas = Array.isArray(t.filas) ? t.filas : [];
+---
+
+<section class="acercas-page-wrap" aria-label={t.page_title || 'Cookies'}>
+  <div class="conwii">
+    <header class="acercas-hero-header">
+      {t.badge && <div class="acercas-badge-pill">{t.badge}</div>}
+      <h1 class="acercas-hero-title">
+        {t.titulo_start} {t.titulo_highlight && <span>{t.titulo_highlight}</span>}
+      </h1>
+      {desc && <p class="acercas-hero-desc">{desc}</p>}
+
+      <div class="acercas-meta-strip">
+        {razonSocial && (
+          <span class="acercas-meta-chip">
+            <i class="fa-solid fa-building"></i>
+            <span>{razonSocial}</span>
+          </span>
+        )}
+        {t.vigencia && (
+          <span class="acercas-meta-chip">
+            <i class="fa-solid fa-calendar-check"></i>
+            <span>{t.vigencia}</span>
+          </span>
+        )}
+      </div>
+    </header>
+
+    <div class="legal-cards-grid">
+      {clausulas.map((c: any) => (
+        <article class="legal-clause-card">
+          <div class="legal-clause-head">
+            <span class="legal-clause-num">{c.num}</span>
+            {c.icono && (
+              <span class="legal-clause-icon" aria-hidden="true">
+                <i class={c.icono}></i>
+              </span>
+            )}
+            <h2>{c.titulo}</h2>
+          </div>
+          <p>{(c.texto || '').replace('{correo}', correo)}</p>
+        </article>
+      ))}
+    </div>
+
+    {filas.length > 0 && (
+      <section class="cookies-table-card" aria-label={t.tabla_tit}>
+        <h2 class="reclamos-faq-title">
+          <i class="fa-solid fa-database" aria-hidden="true"></i>
+          <span>{t.tabla_tit}</span>
+        </h2>
+        <div class="cookies-table-scroll">
+          <table class="cookies-table">
+            <thead>
+              <tr>
+                <th>{t.col_clave}</th>
+                <th>{t.col_tipo}</th>
+                <th>{t.col_proposito}</th>
+                <th>{t.col_duracion}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {filas.map((f: any) => (
+                <tr>
+                  <td><code class="cookies-key-badge">{f.clave}</code></td>
+                  <td>{f.tipo}</td>
+                  <td>{f.proposito}</td>
+                  <td>{f.duracion}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    )}
+
+  </div>
+</section>

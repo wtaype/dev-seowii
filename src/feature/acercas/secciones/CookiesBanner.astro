@@ -1,0 +1,210 @@
+---
+// src/feature/acercas/secciones/CookiesBanner.astro
+// 🍪 Banner Flotante de Consentimiento (0ms bloqueo FCP/LCP · 100% witema.css · LocalStorage)
+
+import { buildRuta, type Idioma } from '@idioma';
+import { tAcercas } from '../idioma/idioma.js';
+
+interface Props {
+  idioma?: Idioma;
+}
+
+const { idioma = 'es' } = Astro.props;
+const t = tAcercas('cookies', idioma);
+const cookiesUrl = buildRuta('/cookies', idioma);
+---
+
+<aside
+  class="wi-cookies-banner"
+  id="wiCookiesBanner"
+  role="region"
+  aria-live="polite"
+  aria-label={t.page_title || 'Cookies'}
+>
+  <p class="wi-cookies-txt">
+    <i class="fa-solid fa-cookie-bite wi-cookies-ico" aria-hidden="true"></i>
+    <span>{t.banner_msg}</span>
+    <a href={cookiesUrl} class="wi-cookies-link">{t.banner_info}</a>
+  </p>
+  <div class="wi-cookies-btns">
+    <button type="button" class="wi-cookies-aceptar" id="wiCkAceptar">
+      <i class="fa-solid fa-check" aria-hidden="true"></i>
+      <span>{t.banner_aceptar}</span>
+    </button>
+    <button type="button" class="wi-cookies-rechazar" id="wiCkRechazar">
+      <span>{t.banner_rechazar}</span>
+    </button>
+  </div>
+</aside>
+
+<style>
+  .wi-cookies-banner {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    z-index: 9990;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--r_card, 1vh);
+    padding: 14px 20px;
+    box-shadow: var(--shadow-vip);
+    max-width: min(92vw, 660px);
+    width: max-content;
+    transform: translateY(140%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform var(--tr_s, 0.35s ease), opacity var(--tr_f, 0.25s ease);
+    font-family: var(--ff_P, 'Poppins', sans-serif);
+  }
+
+  .wi-cookies-banner.is-visible {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .wi-cookies-txt {
+    margin: 0;
+    font-size: var(--fz_s3, 12.5px);
+    color: var(--text-main);
+    line-height: 1.5;
+  }
+
+  .wi-cookies-ico {
+    color: var(--color-primary);
+    margin-right: 6px;
+  }
+
+  .wi-cookies-link {
+    color: var(--color-primary);
+    font-weight: 700;
+    text-decoration: underline;
+    margin-left: 4px;
+  }
+
+  .wi-cookies-btns {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  .wi-cookies-aceptar,
+  .wi-cookies-rechazar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 9px 16px;
+    border-radius: var(--r_m, 1vh);
+    font-family: var(--ff_P, 'Poppins', sans-serif);
+    font-size: var(--fz_s2, 12px);
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform var(--tr_f), border-color var(--tr_f);
+  }
+
+  .wi-cookies-aceptar {
+    border: none;
+    background: var(--gradient-btn);
+    color: var(--white);
+  }
+
+  .wi-cookies-rechazar {
+    background: var(--bg-neutral-subtle, var(--bg3));
+    border: 1px solid var(--border-card);
+    color: var(--text-bright);
+  }
+
+  .wi-cookies-aceptar:hover,
+  .wi-cookies-rechazar:hover {
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: 900px) {
+    .wi-cookies-banner {
+      left: 14px;
+      right: 14px;
+      bottom: 84px;
+      width: auto;
+      max-width: none;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 12px;
+    }
+
+    .wi-cookies-btns {
+      width: 100%;
+    }
+
+    .wi-cookies-aceptar,
+    .wi-cookies-rechazar {
+      flex: 1;
+    }
+  }
+</style>
+
+<script>
+  const CK_KEY = 'wi_cookies_consent';
+
+  function initCookiesBanner() {
+    const banner = document.getElementById('wiCookiesBanner');
+    if (!banner) return;
+
+    try {
+      if (localStorage.getItem(CK_KEY) !== null) {
+        banner.remove();
+        return;
+      }
+    } catch (e) {
+      banner.remove();
+      return;
+    }
+
+    const mostrar = () => {
+      setTimeout(() => {
+        try {
+          if (localStorage.getItem(CK_KEY) !== null) {
+            banner.remove();
+            return;
+          }
+        } catch (e) {}
+        banner.classList.add('is-visible');
+      }, 800);
+    };
+
+    if ('requestIdleCallback' in window) {
+      window.requestIdleCallback(mostrar, { timeout: 1500 });
+    } else {
+      mostrar();
+    }
+  }
+
+  function guardarConsentimiento(aceptado: boolean) {
+    const banner = document.getElementById('wiCookiesBanner');
+    if (!banner) return;
+    try {
+      localStorage.setItem(CK_KEY, JSON.stringify(aceptado));
+    } catch (e) {}
+    banner.classList.remove('is-visible');
+    setTimeout(() => banner.remove(), 350);
+  }
+
+  if (!(window as any).__wiCkBound) {
+    (window as any).__wiCkBound = true;
+    document.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement | null;
+      if (!target) return;
+      if (target.closest('#wiCkAceptar')) guardarConsentimiento(true);
+      else if (target.closest('#wiCkRechazar')) guardarConsentimiento(false);
+    });
+  }
+
+  document.addEventListener('astro:page-load', initCookiesBanner);
+  initCookiesBanner();
+</script>
