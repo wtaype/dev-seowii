@@ -46,7 +46,20 @@ const { t } = Astro.props;
     <div id="dvSeo_liveErr" class="dv-aj-status dv-seo-hidden" data-state="err"></div>
   </article>
 
-  <div class="dv-grid dv-grid-2 dv-seo-grid">
+  <article class="dv-card dv-seo-welcome" id="dvSeo_welcomeCard">
+    <div class="dv-seo-welcome-box">
+      <span class="dv-seo-welcome-ico"><i class="fa-solid fa-magnifying-glass-chart"></i></span>
+      <h2>{t.welcomeTitle}</h2>
+      <p>{t.welcomeSub}</p>
+      <div class="dv-seo-welcome-tags">
+        <span class="dv-pill-status">{t.welcomeTag1}</span>
+        <span class="dv-pill-status">{t.welcomeTag2}</span>
+        <span class="dv-pill-status">{t.welcomeTag3}</span>
+      </div>
+    </div>
+  </article>
+
+  <div class="dv-grid dv-grid-2 dv-seo-grid dv-seo-hidden" id="dvSeo_resultsGrid">
     <article class="dv-card dv-seo-panel">
       <div class="dv-seo-label-row">
         <span>{t.auditsTitle}</span>
@@ -102,24 +115,45 @@ const { t } = Astro.props;
         </div>
       </div>
 
-      <div class="dv-gauge-box">
-        <svg class="dv-gauge-svg" viewBox="0 0 200 115" aria-hidden="true">
-          <defs>
-            <linearGradient id="dvGaugeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="var(--error)" />
-              <stop offset="50%" stop-color="var(--warning)" />
-              <stop offset="100%" stop-color="var(--success)" />
-            </linearGradient>
-          </defs>
-          <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="var(--bg3)" stroke-width="14" stroke-linecap="round" />
-          <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="url(#dvGaugeGrad)" stroke-width="14" stroke-linecap="round" />
-          <g class="dv-gauge-needle" id="dvSeo_needle" style="transform: rotate(-90deg);">
-            <line x1="100" y1="100" x2="100" y2="30" stroke="var(--primary)" stroke-width="3.5" stroke-linecap="round" />
-            <circle cx="100" cy="100" r="6" fill="var(--primary)" />
-          </g>
-        </svg>
-        <div class="dv-gauge-score" id="dvSeo_gaugeScore">--</div>
-        <span class="dv-pill-status" id="dvSeo_gaugeBadge" data-state="ok">{t.gaugeTitle}</span>
+      <div class="dv-gauge-wrap">
+        <div class="dv-gauge-box">
+          <svg class="dv-gauge-svg" viewBox="0 0 200 115" aria-hidden="true">
+            <defs>
+              <linearGradient id="dvGaugeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="var(--error)" />
+                <stop offset="50%" stop-color="var(--warning)" />
+                <stop offset="100%" stop-color="var(--success)" />
+              </linearGradient>
+            </defs>
+            <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="var(--bg3)" stroke-width="14" stroke-linecap="round" />
+            <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="url(#dvGaugeGrad)" stroke-width="14" stroke-linecap="round" />
+            <g class="dv-gauge-needle" id="dvSeo_needle" style="transform: rotate(-90deg);">
+              <line x1="100" y1="100" x2="100" y2="30" stroke="var(--primary)" stroke-width="3.5" stroke-linecap="round" />
+              <circle cx="100" cy="100" r="6" fill="var(--primary)" />
+            </g>
+          </svg>
+          <div class="dv-gauge-score" id="dvSeo_gaugeScore">--</div>
+          <span class="dv-pill-status" id="dvSeo_gaugeBadge" data-state="ok">{t.gaugeTitle}</span>
+        </div>
+
+        <div class="dv-gauge-bars">
+          <div class="dv-gbar-item">
+            <div class="dv-gbar-head"><span>SEO</span><strong id="dvSeo_barTxtSeo">--</strong></div>
+            <div class="dv-gbar-track"><div class="dv-gbar-fill" id="dvSeo_barSeo" style="width:0%"></div></div>
+          </div>
+          <div class="dv-gbar-item">
+            <div class="dv-gbar-head"><span>Performance</span><strong id="dvSeo_barTxtPerf">--</strong></div>
+            <div class="dv-gbar-track"><div class="dv-gbar-fill" id="dvSeo_barPerf" style="width:0%"></div></div>
+          </div>
+          <div class="dv-gbar-item">
+            <div class="dv-gbar-head"><span>Accessibility</span><strong id="dvSeo_barTxtA11y">--</strong></div>
+            <div class="dv-gbar-track"><div class="dv-gbar-fill" id="dvSeo_barA11y" style="width:0%"></div></div>
+          </div>
+          <div class="dv-gbar-item">
+            <div class="dv-gbar-head"><span>Best Practices</span><strong id="dvSeo_barTxtBp">--</strong></div>
+            <div class="dv-gbar-track"><div class="dv-gbar-fill" id="dvSeo_barBp" style="width:0%"></div></div>
+          </div>
+        </div>
       </div>
     </article>
   </div>

@@ -24,6 +24,11 @@
   "shotTitle": "Load Screenshot",
   "aiTitle": "Gemini AI Optimization Plan",
   "emptyMsg": "Enter a URL above and click Run Speed Test to inspect the full report.",
+  "welcomeTitle": "Ready to measure your website's speed?",
+  "welcomeSub": "Enter a URL above and click Run Speed Test to inspect Core Web Vitals (LCP, FCP, CLS, TBT) and real optimization wins.",
+  "welcomeTag1": "Core Web Vitals",
+  "welcomeTag2": "Mobile & Desktop",
+  "welcomeTag3": "Speed Opportunities",
   "rateLimitMsg": "Free daily limit (3/day) reached. Add your own API key in Settings or try tomorrow.",
   "errGeneric": "Could not complete the test. Please check the URL."
 }

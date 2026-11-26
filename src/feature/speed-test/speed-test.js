@@ -1,5 +1,5 @@
 // src/feature/speed-test/speed-test.js
-// ⚡ Orquestador de Speed Test (PageSpeed Insights v5 + Core Web Vitals + Gemini AI)
+// ⚡ Orquestador de Speed Test (Core Web Vitals, Oportunidades, Captura Móvil/Desktop, IA corta y JSON)
 
 import { savels, getls } from '@widev/storage.js';
 import { wiMd } from '@widev/wimd.js';
@@ -7,7 +7,7 @@ import { wiGaleria } from '@widev/galeria.js';
 import { ejecutarPageSpeed, analizarConGemini } from '@servicios/googleApi.js';
 import { parseSpeedReport, scoreState } from './lib/vitals.js';
 
-const LS_KEY = 'dv_speed_last';
+const LS_KEY = 'dv_speed_cache';
 
 function getMsgs(root) {
   try {
@@ -23,7 +23,7 @@ function initSpeedTest() {
   root.dataset.ready = '1';
 
   if (!window.__dvSpdGaleria) {
-    window.__dvSpdGaleria = wiGaleria('.dv-seo-shot-img', { altFallback: 'Speed Screenshot' });
+    window.__dvSpdGaleria = wiGaleria('.dv-spd-shot-img', { altFallback: 'Speed Screenshot' });
   }
 
   const msg = getMsgs(root);
@@ -42,9 +42,12 @@ function initSpeedTest() {
   const oppsBox = document.getElementById('dvSpd_opps');
   const shotBox = document.getElementById('dvSpd_shotBox');
   const aiBox = document.getElementById('dvSpd_aiBox');
+  const welcomeCard = document.getElementById('dvSpd_welcomeCard');
+  const resultsGrid = document.getElementById('dvSpd_resultsGrid');
 
   let strategy = 'mobile';
-  let lastReport = getls(LS_KEY);
+  let cacheReports = getls(LS_KEY) || {};
+  let lastReport = cacheReports[strategy] || cacheReports.mobile || cacheReports.desktop || null;
   let progTimer = null;
 
   const startProgress = () => {
@@ -77,6 +80,8 @@ function initSpeedTest() {
   const render = (rep) => {
     if (!rep) return;
     lastReport = rep;
+    welcomeCard?.classList.add('dv-spd-hidden');
+    resultsGrid?.classList.remove('dv-spd-hidden');
     if (btnAi) btnAi.disabled = false;
     if (btnSaveJson) btnSaveJson.disabled = false;
 
@@ -120,7 +125,7 @@ function initSpeedTest() {
     }
 
     if (shotBox && rep.screenshot) {
-      shotBox.innerHTML = `<img class="dv-seo-shot-img" src="${rep.screenshot}" alt="${rep.url}" />`;
+      shotBox.innerHTML = `<img class="dv-spd-shot-img" src="${rep.screenshot}" alt="${rep.url}" />`;
     }
   };
 
@@ -129,24 +134,17 @@ function initSpeedTest() {
     render(lastReport);
   }
 
-  stratBtns.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      stratBtns.forEach((b) => b.classList.remove('active'));
-      btn.classList.add('active');
-      strategy = btn.getAttribute('data-spd-strat') || 'mobile';
-    });
-  });
-
-  btnRun?.addEventListener('click', async () => {
+  const runSpeedTest = async () => {
     errBox?.classList.add('dv-spd-hidden');
-    const span = btnRun.querySelector('span');
-    btnRun.disabled = true;
+    aiBox?.classList.add('dv-spd-hidden');
+    const span = btnRun?.querySelector('span');
+    if (btnRun) btnRun.disabled = true;
     if (span) span.textContent = msg.runningBtn || '...';
     startProgress();
 
     const res = await ejecutarPageSpeed(urlInput?.value, strategy);
     stopProgress();
-    btnRun.disabled = false;
+    if (btnRun) btnRun.disabled = false;
     if (span) span.textContent = msg.runBtn || 'Speed Test';
 
     if (!res.ok) {
@@ -158,9 +156,29 @@ function initSpeedTest() {
     }
 
     const rep = parseSpeedReport(res.data);
-    savels(LS_KEY, rep, 24);
+    cacheReports[strategy] = rep;
+    savels(LS_KEY, cacheReports, 24);
     render(rep);
+  };
+
+  stratBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const next = btn.getAttribute('data-spd-strat') || 'mobile';
+      if (next === strategy) return;
+      stratBtns.forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+      strategy = next;
+      const targetUrl = urlInput?.value?.trim().replace(/\/+$/, '');
+      const cached = cacheReports[strategy];
+      if (cached && cached.url?.replace(/\/+$/, '') === targetUrl) {
+        render(cached);
+      } else if (lastReport) {
+        runSpeedTest();
+      }
+    });
   });
+
+  btnRun?.addEventListener('click', runSpeedTest);
 
   btnSaveJson?.addEventListener('click', () => {
     if (!lastReport) return;
@@ -182,23 +200,21 @@ function initSpeedTest() {
     if (span) span.textContent = msg.aiRunning || '...';
 
     const summary = lastReport.vitals.map((v) => `${v.label}: ${v.value}`).join(', ');
-    const opps = lastReport.opps.map((o) => `- ${o.title} (${o.display})`).join('\n');
     const prompt =
       msg.idioma === 'en'
-        ? `Act as a web performance engineer. URL: ${lastReport.url} (Performance ${lastReport.scores.perf}/100, ${summary}). Opportunities:\n${opps}\nGive 5 concise fixes.`
-        : `Actúa como especialista en WPO y Core Web Vitals. URL: ${lastReport.url} (Performance ${lastReport.scores.perf}/100, ${summary}). Oportunidades:\n${opps}\nDame 5 mejoras prácticas y breves.`;
+        ? `Summarize in 2 short sentences (max 45 words) the top speed fix for ${lastReport.url} (Perf ${lastReport.scores.perf}, ${summary}).`
+        : `Resume en 2 frases muy cortas (máximo 45 palabras) qué optimizar primero en ${lastReport.url} (Performance ${lastReport.scores.perf}, ${summary}).`;
 
     const res = await analizarConGemini(prompt);
     btnAi.disabled = false;
-    if (span) span.textContent = msg.aiBtn || 'Gemini AI';
+    if (span) span.textContent = msg.aiBtn || 'IA';
 
-    if (!res.ok) {
-      if (aiBox) {
-        aiBox.innerHTML = `<p class="dv-sub">${res.errorCode === 'rate_limit' ? msg.rateLimitMsg : res.error}</p>`;
-      }
-      return;
+    if (aiBox) {
+      aiBox.classList.remove('dv-spd-hidden');
+      aiBox.innerHTML = res.ok
+        ? wiMd(res.text, msg.idioma || 'es')
+        : `<p class="dv-sub">${res.errorCode === 'rate_limit' ? msg.rateLimitMsg : res.error}</p>`;
     }
-    if (aiBox) aiBox.innerHTML = wiMd(res.text, msg.idioma || 'es');
   });
 }
 

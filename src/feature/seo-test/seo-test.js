@@ -82,6 +82,8 @@ function initSeoTest() {
   const metaRealBox = document.getElementById('dvSeo_metaRealBox');
   const shotBox = document.getElementById('dvSeo_shotBox');
   const aiBox = document.getElementById('dvSeo_aiBox');
+  const welcomeCard = document.getElementById('dvSeo_welcomeCard');
+  const resultsGrid = document.getElementById('dvSeo_resultsGrid');
   const needle = document.getElementById('dvSeo_needle');
   const gaugeScore = document.getElementById('dvSeo_gaugeScore');
   const gaugeBadge = document.getElementById('dvSeo_gaugeBadge');
@@ -138,20 +140,30 @@ function initSeoTest() {
   const renderLive = (parsed) => {
     if (!parsed) return;
     currentParsed = parsed;
+    welcomeCard?.classList.add('dv-seo-hidden');
+    resultsGrid?.classList.remove('dv-seo-hidden');
     if (btnAi) btnAi.disabled = false;
     if (btnSaveJson) btnSaveJson.disabled = false;
 
     const mapKpi = [
-      ['dvSeo_kpiSeo', 'dvSeo_valSeo', parsed.scores.seo],
-      ['dvSeo_kpiPerf', 'dvSeo_valPerf', parsed.scores.perf],
-      ['dvSeo_kpiA11y', 'dvSeo_valA11y', parsed.scores.a11y],
-      ['dvSeo_kpiBp', 'dvSeo_valBp', parsed.scores.bp]
+      ['dvSeo_kpiSeo', 'dvSeo_valSeo', 'dvSeo_barSeo', 'dvSeo_barTxtSeo', parsed.scores.seo],
+      ['dvSeo_kpiPerf', 'dvSeo_valPerf', 'dvSeo_barPerf', 'dvSeo_barTxtPerf', parsed.scores.perf],
+      ['dvSeo_kpiA11y', 'dvSeo_valA11y', 'dvSeo_barA11y', 'dvSeo_barTxtA11y', parsed.scores.a11y],
+      ['dvSeo_kpiBp', 'dvSeo_valBp', 'dvSeo_barBp', 'dvSeo_barTxtBp', parsed.scores.bp]
     ];
-    mapKpi.forEach(([boxId, valId, val]) => {
+    mapKpi.forEach(([boxId, valId, barId, txtId, val]) => {
+      const st = scoreState(val);
       const box = document.getElementById(boxId);
       const valEl = document.getElementById(valId);
+      const barEl = document.getElementById(barId);
+      const txtEl = document.getElementById(txtId);
       if (valEl) valEl.textContent = String(val);
-      if (box) box.dataset.state = scoreState(val);
+      if (box) box.dataset.state = st;
+      if (barEl) {
+        barEl.style.width = `${val}%`;
+        barEl.dataset.state = st;
+      }
+      if (txtEl) txtEl.textContent = `${val}%`;
     });
 
     updateGauge(parsed.scores.seo, parsed.scores.perf);
@@ -159,12 +171,48 @@ function initSeoTest() {
     if (metaRealBox) {
       const m = parsed.metaReal;
       if (m && (m.title || m.desc || m.h1)) {
+        let host = parsed.url || '';
+        let originUrl = parsed.url || '';
+        try {
+          const u = new URL(parsed.url);
+          host = u.hostname.replace(/^www\./, '');
+          originUrl = u.origin;
+        } catch {}
+        const fav = `https://www.google.com/s2/favicons?domain=${encodeURIComponent(host)}&sz=64`;
+        const siteLabel = host.split('.')[0] ? host.split('.')[0].replace(/^\w/, (c) => c.toUpperCase()) : host;
+        const headLabel =
+          msg.idioma === 'en' ? 'Google Result (Desktop & Mobile)' : 'Resultado en Google (Desktop & Móvil)';
+        const activeLabel = msg.idioma === 'en' ? '• SEO Active' : '• SEO Activo';
+        const verifiedLabel = msg.idioma === 'en' ? 'Verified Snippet' : 'Rich Snippet Verificado';
+
         metaRealBox.classList.remove('dv-seo-hidden');
         metaRealBox.innerHTML = `
-          <div class="dv-seo-meta-row"><strong>&lt;title&gt;</strong><span>${escapeHtml(m.title || '—')}</span></div>
-          <div class="dv-seo-meta-row"><strong>Description</strong><span>${escapeHtml(m.desc || '—')}</span></div>
-          <div class="dv-seo-meta-row"><strong>H1 / H2</strong><span>${escapeHtml(m.h1 || '—')} (${m.h2Count || 0} H2)</span></div>
-          <div class="dv-seo-meta-row"><strong>Canonical</strong><span>${escapeHtml(m.canonical || '—')}</span></div>
+          <div class="dv-gserp-wrap">
+            <div class="dv-gserp-head">
+              <span>${headLabel}</span>
+              <span class="dv-pill-status" data-state="ok">${activeLabel}</span>
+            </div>
+            <div class="dv-gserp-card">
+              <div class="dv-gserp-site">
+                <img class="dv-gserp-fav" src="${fav}" alt="" />
+                <div class="dv-gserp-site-txt">
+                  <strong>${escapeHtml(siteLabel)}</strong>
+                  <span>${escapeHtml(m.canonical || originUrl)}</span>
+                </div>
+              </div>
+              <div class="dv-gserp-body">
+                <div class="dv-gserp-copy">
+                  <div class="dv-gserp-title">${escapeHtml(m.title || '—')}</div>
+                  <div class="dv-gserp-desc">${escapeHtml(m.desc || '—')}</div>
+                </div>
+                ${m.ogImage ? `<img class="dv-gserp-thumb" src="${escapeHtml(m.ogImage)}" alt="" />` : ''}
+              </div>
+              <div class="dv-gserp-foot">
+                <span><i class="fa-solid fa-shield-halved"></i> ${verifiedLabel}</span>
+                <span>H1: ${escapeHtml(m.h1 || '—')} · ${m.h2Count || 0} H2</span>
+              </div>
+            </div>
+          </div>
         `;
       } else {
         metaRealBox.classList.add('dv-seo-hidden');

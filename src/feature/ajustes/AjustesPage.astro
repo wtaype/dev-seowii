@@ -1,7 +1,7 @@
 ---
 // src/feature/ajustes/AjustesPage.astro
 import './ajustes.css';
-import { getFeatureLang, langPrincipal, type Idioma } from '@idioma';
+import { getFeatureLang, buildRuta, langPrincipal, type Idioma } from '@idioma';
 
 interface Props {
   idioma?: Idioma;
@@ -35,7 +35,17 @@ const i18nPayload = JSON.stringify({
           <p class="dv-aj-sub">{t.sub}</p>
         </div>
       </div>
-      <span class="dv-pill-status">{t.badge}</span>
+      <div class="dv-gen-foot-btns">
+        <a href={buildRuta('/seo-test', idioma)} class="dv-btn dv-btn-sm" data-astro-prefetch="hover">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span>SEO Test</span>
+        </a>
+        <a href={buildRuta('/speed-test', idioma)} class="dv-btn dv-btn-sm" data-astro-prefetch="hover">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span>Speed Test</span>
+        </a>
+        <span class="dv-pill-status">{t.badge}</span>
+      </div>
     </header>
 
     <div class="dv-aj-status" id="dvAj_status" data-state="warn">{t.statusSystem}</div>

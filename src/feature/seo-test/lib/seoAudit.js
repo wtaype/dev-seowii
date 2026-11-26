@@ -15,18 +15,48 @@ function cleanDesc(raw = '') {
   return String(raw).replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').trim();
 }
 
+function parseHtmlMeta(html = '') {
+  const title = (html.match(/<title[^>]*>([\s\S]*?)<\/title>/i)?.[1] || '').trim();
+  const desc = (
+    html.match(/<meta[^>]+name=["']description["'][^>]+content=["']([^"']*)["']/i)?.[1] ||
+    html.match(/<meta[^>]+content=["']([^"']*)["'][^>]+name=["']description["']/i)?.[1] ||
+    ''
+  ).trim();
+  const ogImage = (
+    html.match(/<meta[^>]+property=["']og:image["'][^>]+content=["']([^"']*)["']/i)?.[1] ||
+    html.match(/<meta[^>]+content=["']([^"']*)["'][^>]+property=["']og:image["']/i)?.[1] ||
+    ''
+  ).trim();
+  const canonical = (
+    html.match(/<link[^>]+rel=["']canonical["'][^>]+href=["']([^"']*)["']/i)?.[1] ||
+    html.match(/<link[^>]+href=["']([^"']*)["'][^>]+rel=["']canonical["']/i)?.[1] ||
+    ''
+  ).trim();
+  const h1 = (html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i)?.[1]?.replace(/<[^>]+>/g, '') || '').trim();
+  const h2Count = (html.match(/<h2\b/gi) || []).length;
+  return { ok: true, title, desc, ogImage, canonical, h1, h2Count };
+}
+
 export async function fetchMetaReal(url = '') {
   try {
     const ctrl = new AbortController();
     const timer = setTimeout(() => ctrl.abort(), 5000);
     const res = await fetch(`/api/meta?url=${encodeURIComponent(url)}`, { signal: ctrl.signal });
     clearTimeout(timer);
+    if (res.ok) {
+      const data = await res.json();
+      if (data?.ok) return data;
+    }
+  } catch {}
+
+  // Fallback ligero para localhost (cuando astro dev corre sin worker.js)
+  try {
+    const res = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(url)}`);
     if (!res.ok) return null;
-    const data = await res.json();
-    return data?.ok ? data : null;
-  } catch {
-    return null;
-  }
+    const json = await res.json();
+    if (json?.contents) return parseHtmlMeta(json.contents);
+  } catch {}
+  return null;
 }
 
 export function evaluarSeo({ title = '', desc = '', url = '', h1 = '', ogImage = '' }) {

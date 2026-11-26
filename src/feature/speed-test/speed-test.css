@@ -26,6 +26,48 @@
   color: var(--tx3);
 }
 
+.dv-spd-urlbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8vh;
+  align-items: center;
+}
+
+.dv-spd-urlbar .dv-input {
+  flex: 1;
+  min-width: 240px;
+}
+
+.dv-spd-tabs {
+  display: inline-flex;
+  padding: 3px;
+  border-radius: var(--r_m);
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  gap: 3px;
+}
+
+.dv-spd-tab {
+  border: none;
+  background: transparent;
+  color: var(--tx2);
+  font-family: inherit;
+  font-size: var(--fz_s2);
+  font-weight: 600;
+  padding: 0.6vh 1vh;
+  border-radius: var(--r_s);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5vh;
+  text-decoration: none;
+}
+
+.dv-spd-tab.active {
+  background: var(--primary);
+  color: var(--txa);
+}
+
 .dv-spd-vitals {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -49,7 +91,7 @@
 }
 
 .dv-spd-vital strong {
-  font-size: var(--fz_m2);
+  font-size: var(--fz_m1);
   color: var(--tx1);
 }
 
@@ -82,12 +124,169 @@
   flex-shrink: 0;
 }
 
+.dv-spd-scores {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.9vh;
+}
+
+.dv-spd-kpi {
+  padding: 1vh;
+  border-radius: var(--r_m);
+  background: var(--bg1);
+  border: 1px solid var(--border);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25vh;
+}
+
+.dv-spd-kpi strong {
+  font-size: var(--fz_l1);
+  color: var(--primary);
+}
+
+.dv-spd-kpi[data-state="ok"] strong { color: var(--success); }
+.dv-spd-kpi[data-state="warn"] strong { color: var(--warning); }
+.dv-spd-kpi[data-state="err"] strong { color: var(--error); }
+
+.dv-spd-kpi span {
+  font-size: var(--fz_s1);
+  color: var(--tx3);
+  font-weight: 600;
+}
+
+.dv-spd-shot-box {
+  min-height: 30vh;
+  border-radius: var(--r_m);
+  border: 1px solid var(--border);
+  background: var(--bg1);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  padding: 1vh;
+}
+
+.dv-spd-shot-img {
+  max-width: 100%;
+  max-height: 38vh;
+  border-radius: var(--r_s);
+  object-fit: contain;
+  cursor: zoom-in;
+}
+
 .dv-spd-hidden {
   display: none !important;
 }
 
+.dv-seo-welcome {
+  flex: 1;
+  min-height: 52vh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+
+.dv-seo-welcome-box {
+  max-width: 540px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2vh;
+  padding: 2vh;
+}
+
+.dv-seo-welcome-ico {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--r_xl);
+  background: var(--primary-light);
+  border: 1px solid var(--border-accent);
+  color: var(--primary);
+  display: grid;
+  place-items: center;
+  font-size: var(--fz_l1);
+}
+
+.dv-seo-welcome-box h2 {
+  font-size: var(--fz_m4);
+  color: var(--tx1);
+}
+
+.dv-seo-welcome-box p {
+  font-size: var(--fz_s4);
+  color: var(--tx3);
+  line-height: 1.55;
+}
+
+.dv-seo-welcome-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.8vh;
+}
+
+.dv-seo-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65vh;
+  padding: 1.1vh 1.4vh;
+  border-radius: var(--r_m);
+  background: var(--bg1);
+  border: 1px solid var(--border-accent);
+}
+
+.dv-seo-progress-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: var(--fz_s2);
+  font-weight: 600;
+  color: var(--tx1);
+}
+
+.dv-seo-progress-track {
+  width: 100%;
+  height: 7px;
+  border-radius: var(--r_pill);
+  background: var(--bg3);
+  overflow: hidden;
+}
+
+.dv-seo-progress-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: var(--r_pill);
+  background: var(--gradient-btn);
+  transition: width 0.35s ease;
+}
+
+.dv-prog-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35vh;
+  font-size: var(--fz_s1);
+  color: var(--tx3);
+}
+
+.dv-prog-line[data-active="1"] {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.dv-seo-ai-short {
+  padding: 1vh 1.3vh;
+  border-radius: var(--r_m);
+  background: var(--primary-light);
+  border: 1px solid var(--border-accent);
+  color: var(--tx1);
+  font-size: var(--fz_s2);
+  line-height: 1.5;
+}
+
 @media (max-width: 760px) {
-  .dv-spd-vitals {
+  .dv-spd-vitals,
+  .dv-spd-scores {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
