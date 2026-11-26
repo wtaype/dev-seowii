@@ -1,0 +1,173 @@
+---
+// src/feature/imgwii/ImgwiiPage.astro
+import './imgwii.css';
+import { getFeatureLang, langPrincipal, type Idioma } from '@idioma';
+
+interface Props {
+  idioma?: Idioma;
+}
+
+const { idioma = langPrincipal } = Astro.props;
+const locales = import.meta.glob<Record<string, any>>('./idioma/*.json', {
+  eager: true,
+  import: 'default'
+});
+const t = getFeatureLang(locales, idioma);
+
+const i18nPayload = JSON.stringify({
+  summaryEmpty: t.summaryEmpty,
+  summaryFiles: t.summaryFiles,
+  summarySaved: t.summarySaved,
+  dlOne: t.dlOne,
+  delOne: t.delOne,
+  processing: t.processing,
+  progressText: t.progressText,
+  zipName: t.zipName
+});
+---
+
+<section class="dv-img-wrap" id="dvImgwiiView" data-i18n-msg={i18nPayload}>
+  <article class="dv-card">
+    <header class="dv-card-head">
+      <div class="dv-card-title">
+        <span class="dv-card-ico"><i class="fa-solid fa-images"></i></span>
+        <div>
+          <h1 class="dv-img-title">
+            {t.titleStart}<span class="dv-img-grad">{t.titleAccent}</span> {t.titleRest}
+          </h1>
+          <p class="dv-img-sub">{t.sub}</p>
+        </div>
+      </div>
+      <span class="dv-pill-status">{t.badge}</span>
+    </header>
+
+    <div class="dv-img-drop" id="dvImg_drop" tabindex="0" role="button">
+      <span class="dv-img-drop-ico"><i class="fa-solid fa-cloud-arrow-up"></i></span>
+      <strong>{t.dropTitle}</strong>
+      <span>{t.dropSub}</span>
+      <input id="dvImg_input" type="file" accept="image/*" multiple hidden />
+    </div>
+
+    <div class="dv-img-settings">
+      <span class="dv-img-settings-title">
+        <i class="fa-solid fa-sliders"></i>
+        {t.settingsTitle}
+      </span>
+
+      <div class="dv-img-bar">
+        <div class="dv-img-field">
+          <label>{t.format}</label>
+          <div class="dv-seg-group" id="dvImg_formatGroup" role="group" aria-label={t.format}>
+            <button type="button" class="dv-seg-btn active" data-format="image/webp">WebP</button>
+            <button type="button" class="dv-seg-btn" data-format="image/avif">AVIF</button>
+            <button type="button" class="dv-seg-btn" data-format="image/jpeg">JPEG</button>
+            <button type="button" class="dv-seg-btn" data-format="image/png">PNG</button>
+          </div>
+        </div>
+
+        <div class="dv-img-field">
+          <label for="dvImg_width">{t.width}</label>
+          <select id="dvImg_width" class="dv-input">
+            <option value="0" selected>{t.widthOrig}</option>
+            <option value="400">400 px</option>
+            <option value="800">800 px</option>
+            <option value="1200">1200 px</option>
+            <option value="1920">1920 px</option>
+          </select>
+        </div>
+
+        <div class="dv-img-field">
+          <label for="dvImg_quality">{t.quality}</label>
+          <div class="dv-img-qwrap">
+            <input id="dvImg_quality" type="number" class="dv-input" min="10" max="100" value="80" />
+            <span>%</span>
+          </div>
+        </div>
+
+        <div class="dv-img-field">
+          <label>{t.renameModeLabel}</label>
+          <div class="dv-seg-group" role="group" aria-label={t.renameModeLabel}>
+            <button type="button" class="dv-seg-btn active" data-rename-mode="yes">{t.renameYes}</button>
+            <button type="button" class="dv-seg-btn" data-rename-mode="no">{t.renameNo}</button>
+          </div>
+        </div>
+
+        <div class="dv-img-field dv-img-field-grow">
+          <label for="dvImg_prefix">{t.prefixLabel}</label>
+          <input id="dvImg_prefix" type="text" class="dv-input" value="seowii-img" placeholder={t.prefixPlaceholder} />
+        </div>
+
+        <div class="dv-img-bar-btns">
+          <button type="button" class="dv-btn dv-btn-sm" id="dvImg_btnApply">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <span>{t.btnApply}</span>
+          </button>
+          <button type="button" class="dv-btn dv-btn-sm" id="dvImg_btnClean">
+            <i class="fa-solid fa-broom"></i>
+            <span>{t.btnClean}</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="dv-img-progress-box dv-img-hidden" id="dvImg_progressBox">
+      <div class="dv-img-progress-head">
+        <span id="dvImg_progressLabel">{t.progressText}...</span>
+        <strong id="dvImg_progressPct">0%</strong>
+      </div>
+      <div class="dv-img-progress-track">
+        <div class="dv-img-progress-fill" id="dvImg_progressFill"></div>
+      </div>
+    </div>
+
+    <div class="dv-img-summary">
+      <div class="dv-img-stats-wrap">
+        <span class="dv-img-stats" id="dvImg_summary">{t.summaryEmpty}</span>
+        <span class="dv-img-save-badge dv-img-hidden" id="dvImg_totalBadge" data-state="ok"></span>
+      </div>
+      <div class="dv-gen-foot-btns">
+        <button type="button" class="dv-btn dv-btn-sm" id="dvImg_btnClear" disabled>
+          <i class="fa-solid fa-trash"></i>
+          <span>{t.btnClear}</span>
+        </button>
+        <button type="button" class="dv-btn dv-btn-primary dv-btn-sm" id="dvImg_btnZip" disabled>
+          <i class="fa-solid fa-file-zipper"></i>
+          <span>{t.btnDownloadZip}</span>
+        </button>
+      </div>
+    </div>
+  </article>
+
+  <article class="dv-card dv-img-welcome" id="dvImg_welcomeCard">
+    <div class="dv-img-welcome-box">
+      <span class="dv-img-welcome-ico"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
+      <h2>{t.welcomeTitle}</h2>
+      <p>{t.welcomeSub}</p>
+      <div class="dv-img-welcome-tags">
+        <span class="dv-pill-status">{t.welcomeTag1}</span>
+        <span class="dv-pill-status">{t.welcomeTag2}</span>
+        <span class="dv-pill-status">{t.welcomeTag3}</span>
+      </div>
+    </div>
+  </article>
+
+  <article class="dv-card dv-img-hidden" id="dvImg_tableCard">
+    <div class="dv-img-table-wrap">
+      <table class="dv-img-table">
+        <thead>
+          <tr>
+            <th>{t.colNum}</th>
+            <th>{t.colImg}</th>
+            <th>{t.colNow}</th>
+            <th>{t.colNew}</th>
+            <th>{t.colOrig}</th>
+            <th>{t.colOpt}</th>
+            <th>{t.colSave}</th>
+            <th>{t.colAct}</th>
+          </tr>
+        </thead>
+        <tbody id="dvImg_tbody"></tbody>
+      </table>
+    </div>
+  </article>
+</section>

@@ -3,25 +3,47 @@
 // ⭐ Enrutador único bilingüe: genera todas las rutas en ES (/) y EN (/en/...)
 import Principal from '@layouts/Principal.astro';
 import GeneralPage from '@feature/general/GeneralPage.astro';
+import ImgwiiPage from '@feature/imgwii/ImgwiiPage.astro';
 import { LISTA_IDIOMAS, buildRuta, getCoreLang, type Idioma } from '@idioma';
 
 export function getStaticPaths() {
-  return LISTA_IDIOMAS.map(({ code }) => {
-    const slug = buildRuta('/', code).replace(/^\//, '');
-    return {
-      params: { ruta: slug || undefined },
-      props: { idioma: code as Idioma, modulo: 'general' }
-    };
-  });
+  const modulos = [
+    { id: 'general', href: '/' },
+    { id: 'imgwii', href: '/imgwii' }
+  ];
+
+  return modulos.flatMap((mod) =>
+    LISTA_IDIOMAS.map(({ code }) => {
+      const slug = buildRuta(mod.href, code).replace(/^\//, '');
+      return {
+        params: { ruta: slug || undefined },
+        props: { idioma: code as Idioma, modulo: mod.id }
+      };
+    })
+  );
 }
 
-const { idioma } = Astro.props;
+const { idioma, modulo } = Astro.props;
 const t = getCoreLang(idioma);
+const titulo = `dev.seowii.com — ${t.nav?.[modulo]?.label || modulo}`;
 ---
 
-<Principal idioma={idioma} titulo={`dev.seowii.com — ${t.nav?.general?.label || 'General'}`}>
-  <GeneralPage idioma={idioma} />
-  <script>
-    import '@feature/general/general.js';
-  </script>
+<Principal idioma={idioma} titulo={titulo}>
+  {modulo === 'general' && (
+    <>
+      <GeneralPage idioma={idioma} />
+      <script>
+        import '@feature/general/general.js';
+      </script>
+    </>
+  )}
+
+  {modulo === 'imgwii' && (
+    <>
+      <ImgwiiPage idioma={idioma} />
+      <script>
+        import '@feature/imgwii/imgwii.js';
+      </script>
+    </>
+  )}
 </Principal>
