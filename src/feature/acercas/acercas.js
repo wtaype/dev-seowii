@@ -2,7 +2,7 @@
 // Orquestador compacto para Contacto y Feedback -> correo-seowii (Resend) + respaldo LocalStorage
 import { savels, getls } from '@widev/storage.js';
 
-const CORREO_API = 'https://correo-seowii.seowii100.workers.dev';
+const CORREO_API = 'https://correo.seowii.com';
 const FORMS = [
   ['formContactoDirecto', 'contactoSuccessBox', 'cntBtnSubmit', 'btnNuevoContacto', 'dv_contacto_msgs', 'contacto'],
   ['formFeedback', 'feedbackSuccessBox', 'fbBtnSubmit', 'btnNuevoFeedback', 'dv_feedback_msgs', 'feedback']
