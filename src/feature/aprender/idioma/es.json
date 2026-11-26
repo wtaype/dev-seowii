@@ -1,0 +1,245 @@
+{
+  "titleStart": "Aprender",
+  "titleAccent": "Desarrollo Web & SEO",
+  "sub": "Recursos esenciales, tipografías recomendadas y 5 tutoriales prácticos de cero a producción.",
+  "searchPlaceholder": "Buscar recurso, framework, fuente o comando (ej. astro, cloudflare, poppins)...",
+  "clearSearch": "Limpiar",
+  "goldTitle": "Consejo de Oro",
+  "copyBtn": "Copiar",
+  "copiedMsg": "Copiado al portapapeles",
+  "openBtn": "Abrir",
+  "copyUrlBtn": "Copiar URL",
+  "exampleLabel": "Ejemplo práctico:",
+  "emptyTitle": "Sin coincidencias para tu búsqueda",
+  "emptyDesc": "Prueba con términos como Astro, Firebase, Vercel, Cloudflare, Poppins o Font Awesome.",
+  "nav": {
+    "recursos": {
+      "label": "Recursos & Links",
+      "sub": "Iconos, Fuentes & Docs",
+      "gold": "Usa máximo 2 familias tipográficas (ej. Poppins + JetBrains Mono) y carga solo los pesos que realmente usas (400, 600, 700) para no penalizar el LCP."
+    },
+    "t1_frameworks": {
+      "label": "1. Elegir Framework",
+      "sub": "Astro vs Next vs Vite",
+      "gold": "Si tu web es informativa, landing, portafolio o blog que necesita posicionar en Google, elige Astro: envía 0 KB de JS por defecto."
+    },
+    "t2_firebase": {
+      "label": "2. Astro + Firebase",
+      "sub": "Hosting & Sitemap",
+      "gold": "En 'firebase init hosting' elige 'dist' como carpeta pública y responde NO a 'Single-Page App' para que Astro sirva cada ruta HTML limpia."
+    },
+    "t3_vercel": {
+      "label": "3. Astro + Vercel",
+      "sub": "Estático o SSR",
+      "gold": "Si tu web es 100% estática en Vercel, no instales ningún adaptador: conecta GitHub y Vercel detectará Astro automáticamente."
+    },
+    "t4_cloudflare": {
+      "label": "4. Astro + Cloudflare",
+      "sub": "Workers, _headers & pnpm",
+      "gold": "Si despliegas con pnpm en Cloudflare Workers, incluye 'packages: [\".\"]' en pnpm-workspace.yaml y NODE_VERSION = 22.14.0 para evitar errores de build."
+    },
+    "t5_combo": {
+      "label": "5. Combo Pro + SEO",
+      "sub": "Astro + FB + CF + Vitals",
+      "gold": "Separa responsabilidades: Astro + Cloudflare para velocidad global gratis, Firebase para Auth/Firestore y /imgwii + /seo-test antes de lanzar."
+    }
+  },
+  "recursos": {
+    "badge": "Kit Inicial del Programador",
+    "title": "Recursos, Iconos & Tipografías Esenciales",
+    "desc": "Herramientas oficiales verificadas para diseñar, tipografiar y desplegar proyectos web rápidos sin perder tiempo buscando enlaces.",
+    "example": "Juan inicia su proyecto 'mi-negocio.com' copiando el CDN de Font Awesome 6 Free y cargando Poppins (400–700) desde Google Fonts.",
+    "groups": {
+      "iconos": "Iconos & Identidad Visual",
+      "fuentes": "Top 5 Fuentes Recomendadas (Google Fonts)",
+      "ecosistema": "Documentación Oficial & Plataformas",
+      "suite": "Herramientas Seowii para Validar"
+    },
+    "items": {
+      "fontawesome": {
+        "title": "Font Awesome 6 Free",
+        "desc": "Iconos vectoriales gratuitos listos para usar con clases fa-solid / fa-brands. Copia el CDN directo para prototipar rápido."
+      },
+      "realfavicon": {
+        "title": "RealFaviconGenerator",
+        "desc": "Genera favicons SVG/PNG compatibles con Google Search, iOS, Android y pestañas modernas."
+      },
+      "googlefonts": {
+        "title": "Google Fonts",
+        "desc": "Catálogo oficial gratuito con entrega rápida por CDN y soporte nativo de display=swap."
+      },
+      "astrodocs": {
+        "title": "Documentación Oficial de Astro",
+        "desc": "Guías de islas, enrutamiento i18n, adaptadores de despliegue y optimización de assets."
+      },
+      "cloudflare": {
+        "title": "Cloudflare Workers & Pages",
+        "desc": "Hosting global en el edge con CDN gratis, SSL automático, 0ms cold start y _headers personalizados."
+      },
+      "firebase": {
+        "title": "Firebase Console",
+        "desc": "Auth, Firestore, Storage y Firebase Hosting en el plan gratuito Spark para proyectos reales."
+      },
+      "vercel": {
+        "title": "Vercel Platform",
+        "desc": "Despliegue automático por cada push en GitHub, previews por rama y soporte nativo para Astro y Next.js."
+      },
+      "pagespeed": {
+        "title": "Google PageSpeed Insights",
+        "desc": "Mide Core Web Vitals reales de campo y laboratorio directamente con Lighthouse."
+      }
+    },
+    "fontsDesc": {
+      "poppins": "Geométrica, amigable y muy legible. Ideal para SaaS, landings y dashboards.",
+      "jakarta": "Elegante y moderna. Muy usada en startups tech y paneles administrativos.",
+      "inter": "Diseñada específicamente para pantallas y textos densos de interfaz.",
+      "outfit": "Excelente presencia en títulos Hero y marcas digitales.",
+      "jetbrains": "Monoespaciada nítida para mostrar código, comandos CLI y JSON."
+    },
+    "suiteDesc": {
+      "imgwii": "Convierte tus JPG/PNG a WebP o AVIF antes de subir a producción.",
+      "seo-test": "Verifica título, descripción, vista previa SERP y genera tus _headers.",
+      "speed-test": "Audita FCP, LCP, CLS y peso total de tu web ya desplegada."
+    }
+  },
+  "tutorials": {
+    "t1_frameworks": {
+      "badge": "Tutorial 1 de 5 · Arquitectura",
+      "title": "¿Qué Framework elegir? Comparativa Real",
+      "desc": "No uses un cañón para matar una mosca. Elegir bien el framework ahorra meses de mantenimiento y define tu nota en Google Speed.",
+      "example": "Juan quiere crear la web de 'mi-negocio.com' para captar clientes en Google. Compara Astro vs Next.js vs Vite/React antes de escribir código.",
+      "tableHeaders": ["Framework", "Ideal para...", "JS Inicial", "SEO Nativo", "Costo Hosting"],
+      "tableRows": [
+        ["Astro", "Landings, blogs, webs pro, portafolios", "0 KB (Islas)", "10/10 Excelente", "Gratis (CF / Vercel / FB)"],
+        ["Next.js", "SaaS complejas, apps con login + SSR", "Medio / Alto", "Muy bueno (SSR)", "Gratis / Pago por uso"],
+        ["Vite + React", "Dashboards internos, herramientas SPA", "Alto (Bundle)", "Bajo sin SSR", "Gratis (Estático)"],
+        ["HTML + CSS", "Micrositios de 1 página sin componentes", "0 KB", "10/10 Excelente", "Gratis"]
+      ],
+      "steps": [
+        {
+          "title": "Paso 1 · Si buscas SEO y 95–100 en Speed: Astro",
+          "desc": "Astro compila HTML limpio y solo hidrata JavaScript donde realmente hace falta. Es el estándar actual para sitios rápidos y posicionamiento.",
+          "codeIndex": 0
+        },
+        {
+          "title": "Paso 2 · Si construyes una SaaS con estado complejo: Next.js",
+          "desc": "Cuando casi toda la pantalla depende de sesiones de usuario, mutaciones en servidor y rutas protegidas dinámicas, Next.js brilla.",
+          "codeIndex": 1
+        },
+        {
+          "title": "Paso 3 · Si es un panel privado donde Google no entra: Vite + React",
+          "desc": "Para sistemas internos (ERP, POS, admin privado) no necesitas indexación SEO; Vite arranca en milisegundos.",
+          "codeIndex": 2
+        }
+      ]
+    },
+    "t2_firebase": {
+      "badge": "Tutorial 2 de 5 · Deploy Google",
+      "title": "Crear y subir Astro + Firebase Hosting",
+      "desc": "Despliega tu sitio Astro en la red global de Google Firebase en minutos, con SSL gratis y listo para conectar Auth o Firestore.",
+      "example": "Juan crea el proyecto para 'mi-negocio.com' con Astro minimal y lo publica gratis en el plan Spark de Firebase.",
+      "steps": [
+        {
+          "title": "Paso 1 · Crear proyecto Astro e instalar Firebase + Sitemap",
+          "desc": "Arranca con la plantilla minimal (limpia, sin basura) y agrega firebase y @astrojs/sitemap para SEO.",
+          "codeIndex": 0
+        },
+        {
+          "title": "Paso 2 · Inicializar Firebase Hosting",
+          "desc": "Inicia sesión, elige 'Hosting', indica 'dist' como carpeta pública y responde 'No' a reescribir todo a index.html.",
+          "codeIndex": 1
+        },
+        {
+          "title": "Paso 3 · Compilar y publicar en producción",
+          "desc": "Genera la carpeta dist/ optimizada y súbela a Firebase. Si usas solo archivos estáticos, es 100% gratis en plan Spark.",
+          "codeIndex": 2
+        }
+      ]
+    },
+    "t3_vercel": {
+      "badge": "Tutorial 3 de 5 · Deploy Git",
+      "title": "Crear y subir Astro + Vercel",
+      "desc": "La forma más rápida de tener despliegues automáticos por cada commit en GitHub, tanto en modo estático como SSR.",
+      "example": "Juan sube el código de 'mi-negocio.com' a GitHub, importa el repo en Vercel y obtiene HTTPS + previews automáticos.",
+      "steps": [
+        {
+          "title": "Paso 1 · Sitio Astro Estático (Cero configuración)",
+          "desc": "Crea tu proyecto, súbelo a GitHub e impórtalo en Vercel. Vercel detecta 'astro build' y la carpeta 'dist' automáticamente.",
+          "codeIndex": 0
+        },
+        {
+          "title": "Paso 2 · ¿Necesitas rutas dinámicas SSR o APIs?",
+          "desc": "Solo si usas renderizado bajo demanda en el servidor, instala el adaptador oficial de Vercel.",
+          "codeIndex": 1
+        },
+        {
+          "title": "Paso 3 · Verificar astro.config.mjs para SSR",
+          "desc": "El comando anterior actualiza tu configuración así. Recuerda declarar tus variables de entorno en Vercel Settings.",
+          "codeIndex": 2
+        }
+      ]
+    },
+    "t4_cloudflare": {
+      "badge": "Tutorial 4 de 5 · Edge & Velocidad",
+      "title": "Crear y subir Astro + Cloudflare Workers / Pages",
+      "desc": "Cloudflare Workers es la recomendación actual para Astro en el edge: ancho de banda ilimitado en estáticos, 0ms de arranque y caché total.",
+      "example": "Juan despliega 'mi-negocio.com' en Cloudflare Workers con wrangler.jsonc, pnpm-workspace.yaml y cabeceras _headers de seguridad.",
+      "steps": [
+        {
+          "title": "Paso 1 · Opción rápida desde cero con C3",
+          "desc": "Si empiezas un proyecto nuevo, Cloudflare tiene un asistente oficial que deja Astro y Wrangler configurados.",
+          "codeIndex": 0
+        },
+        {
+          "title": "Paso 2 · Clave si usas pnpm en Cloudflare Builds",
+          "desc": "Agrega pnpm-workspace.yaml en la raíz y define NODE_VERSION = 22.14.0 en las variables del dashboard para builds sin fallos.",
+          "codeIndex": 1
+        },
+        {
+          "title": "Paso 3 · Configurar wrangler.jsonc para assets + Worker",
+          "desc": "Apunta 'assets.directory' a './dist' para servir tu HTML/CSS/WebP desde el edge más cercano al usuario.",
+          "codeIndex": 2
+        },
+        {
+          "title": "Paso 4 · Añadir public/_headers para caché y seguridad",
+          "desc": "Acelera las visitas repetidas cacheando /_astro/* por 1 año y protege tu sitio contra clickjacking.",
+          "codeIndex": 3
+        },
+        {
+          "title": "Paso 5 · Compilar y desplegar",
+          "desc": "Conecta tu repo GitHub a Cloudflare Workers o despliega directo desde tu terminal:",
+          "codeIndex": 4
+        }
+      ]
+    },
+    "t5_combo": {
+      "badge": "Tutorial 5 de 5 · Arquitectura Pro",
+      "title": "Combo Pro: Astro + Firebase + Cloudflare + Checklist SEO",
+      "desc": "Combina lo mejor de ambos mundos: frontend Astro alojado gratis en Cloudflare Workers + base de datos/Auth en Firebase + optimización Seowii.",
+      "example": "Juan publica 'mi-negocio.com' en Cloudflare con un formulario conectado a Firestore, imágenes WebP y 100/100 en /seo-test.",
+      "steps": [
+        {
+          "title": "Paso 1 · Base Astro + SDK Firebase + Sitemap",
+          "desc": "Instala solo lo necesario para mantener el bundle ligero y generar sitemap.xml automáticamente.",
+          "codeIndex": 0
+        },
+        {
+          "title": "Paso 2 · Conectar Firebase usando variables PUBLIC_",
+          "desc": "En Astro, las variables visibles en el navegador llevan prefijo PUBLIC_. Nunca subas claves privadas de servidor al cliente.",
+          "codeIndex": 1
+        },
+        {
+          "title": "Paso 3 · Checklist Meta Tags + Open Graph antes de publicar",
+          "desc": "Asegura título (30–60 chars), descripción (110–160 chars), canonical HTTPS e imagen og-cover.webp (optimizada en /imgwii).",
+          "codeIndex": 2
+        }
+      ],
+      "checklist": [
+        "Imágenes convertidas a WebP o AVIF con /imgwii (peso menor a 120 KB por hero).",
+        "Etiqueta <title>, meta description, H1 único y canonical validados en /seo-test.",
+        "LCP < 2.5s, CLS < 0.1 y cero scripts bloqueantes verificados en /speed-test.",
+        "Archivo public/_headers activo en Cloudflare con Cache-Control para /_astro/*."
+      ]
+    }
+  }
+}

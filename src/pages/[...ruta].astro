@@ -1,6 +1,6 @@
 ---
 // src/pages/[...ruta].astro
-// ⭐ Enrutador único bilingüe: genera todas las rutas en ES (/) y EN (/en/...)
+// ⭐ Enrutador único bilingüe — Genera todas las rutas en ES (/) y EN (/en/...)
 import Principal from '@layouts/Principal.astro';
 import GeneralPage from '@feature/general/GeneralPage.astro';
 import ImgwiiPage from '@feature/imgwii/ImgwiiPage.astro';
@@ -9,9 +9,13 @@ import LectorMdPage from '@feature/lector-md/LectorMdPage.astro';
 import SeoTestPage from '@feature/seo-test/SeoTestPage.astro';
 import SpeedTestPage from '@feature/speed-test/SpeedTestPage.astro';
 import AjustesPage from '@feature/ajustes/AjustesPage.astro';
+import AprenderPage from '@feature/aprender/AprenderPage.astro';
+import { app } from '@wii';
 import { LISTA_IDIOMAS, buildRuta, getCoreLang, type Idioma } from '@idioma';
 
+// Genera las rutas estáticas por cada módulo y cada idioma soportado en LISTA_IDIOMAS
 export function getStaticPaths() {
+  // 1. Para añadir un nuevo módulo, agrega su id y ruta base aquí (y su componente abajo en PAGES)
   const modulos = [
     { id: 'general', href: '/' },
     { id: 'imgwii', href: '/imgwii' },
@@ -19,87 +23,53 @@ export function getStaticPaths() {
     { id: 'lector-md', href: '/lector-md' },
     { id: 'seo-test', href: '/seo-test' },
     { id: 'speed-test', href: '/speed-test' },
-    { id: 'ajustes', href: '/ajustes' }
-  ];
+    { id: 'ajustes', href: '/ajustes' },
+    { id: 'aprender', href: '/aprender' }
+  ] as const;
 
-  return modulos.flatMap((mod) =>
-    LISTA_IDIOMAS.map(({ code }) => {
-      const slug = buildRuta(mod.href, code).replace(/^\//, '');
-      return {
-        params: { ruta: slug || undefined },
-        props: { idioma: code as Idioma, modulo: mod.id }
-      };
-    })
+  return modulos.flatMap(({ id, href }) =>
+    LISTA_IDIOMAS.map(({ code }) => ({
+      params: { ruta: buildRuta(href, code).replace(/^\//, '') || undefined },
+      props: { idioma: code as Idioma, modulo: id }
+    }))
   );
 }
 
+// 2. Mapa maestro de componentes por módulo (evita repetir condicionales en el HTML)
+const PAGES = {
+  general: GeneralPage,
+  imgwii: ImgwiiPage,
+  'lector-json': LectorJsonPage,
+  'lector-md': LectorMdPage,
+  'seo-test': SeoTestPage,
+  'speed-test': SpeedTestPage,
+  ajustes: AjustesPage,
+  aprender: AprenderPage
+};
+
+// Resuelve idioma, título dinámico desde @wii y componente activo de la ruta actual
 const { idioma, modulo } = Astro.props;
 const t = getCoreLang(idioma);
 const label = t.nav?.[modulo]?.label || t.util?.[modulo] || modulo;
-const titulo = `dev.seowii.com — ${label}`;
+const titulo = `${app} — ${label}`;
+const Page = PAGES[modulo];
 ---
 
+<!-- Contenedor neutro (display:contents) para identificar el módulo activo sin alterar el layout - 
+Carga dinámica bajo demanda del script cliente de cada feature (../feature/<mod>/<mod>.js) -->
 <Principal idioma={idioma} titulo={titulo}>
-  {modulo === 'general' && (
-    <>
-      <GeneralPage idioma={idioma} />
-      <script>
-        import '@feature/general/general.js';
-      </script>
-    </>
-  )}
+  <div id="dvModuloRoot" data-modulo={modulo} style="display:contents">
+    <Page idioma={idioma} />
+  </div>
 
-  {modulo === 'imgwii' && (
-    <>
-      <ImgwiiPage idioma={idioma} />
-      <script>
-        import '@feature/imgwii/imgwii.js';
-      </script>
-    </>
-  )}
-
-  {modulo === 'lector-json' && (
-    <>
-      <LectorJsonPage idioma={idioma} />
-      <script>
-        import '@feature/lector-json/lector-json.js';
-      </script>
-    </>
-  )}
-
-  {modulo === 'lector-md' && (
-    <>
-      <LectorMdPage idioma={idioma} />
-      <script>
-        import '@feature/lector-md/lector-md.js';
-      </script>
-    </>
-  )}
-
-  {modulo === 'seo-test' && (
-    <>
-      <SeoTestPage idioma={idioma} />
-      <script>
-        import '@feature/seo-test/seo-test.js';
-      </script>
-    </>
-  )}
-
-  {modulo === 'speed-test' && (
-    <>
-      <SpeedTestPage idioma={idioma} />
-      <script>
-        import '@feature/speed-test/speed-test.js';
-      </script>
-    </>
-  )}
-
-  {modulo === 'ajustes' && (
-    <>
-      <AjustesPage idioma={idioma} />
-      <script>
-        import '@feature/ajustes/ajustes.js';
-      </script>
-    </>
-  )}
+  <script>
+    const scripts = import.meta.glob('../feature/*/*.js');
+    const cargarModulo = () => {
+      const mod = document.getElementById('dvModuloRoot')?.dataset.modulo;
+      const ruta = mod ? `../feature/${mod}/${mod}.js` : '';
+      if (ruta && scripts[ruta]) scripts[ruta]();
+    };
+    cargarModulo();
+    document.addEventListener('astro:page-load', cargarModulo);
+  </script>
 </Principal>

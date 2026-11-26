@@ -1,0 +1,87 @@
+---
+// src/feature/aprender/componentes/TutorialPanel.astro
+interface Props {
+  t: Record<string, any>;
+  tutorialId: string;
+  snippets: string[];
+}
+
+const { t, tutorialId, snippets } = Astro.props;
+const tut = t.tutorials[tutorialId];
+---
+
+<div class="dv-ap-panel" data-ap-panel={tutorialId} hidden>
+  <header class="dv-ap-panel-head">
+    <span class="dv-ap-badge">{tut.badge}</span>
+    <h2 class="dv-ap-h2">{tut.title}</h2>
+    <p class="dv-ap-desc">{tut.desc}</p>
+    <div class="dv-ap-example">
+      <i class="fa-solid fa-user-astronaut"></i>
+      <span><strong>{t.exampleLabel}</strong> {tut.example}</span>
+    </div>
+  </header>
+
+  {/* Tabla comparativa opcional (Tutorial 1) */}
+  {tut.tableHeaders && tut.tableRows && (
+    <div class="dv-ap-table-wrap" data-ap-item data-search={`${tut.title} ${tut.tableRows.flat().join(' ')}`.toLowerCase()}>
+      <table class="dv-ap-table">
+        <thead>
+          <tr>
+            {tut.tableHeaders.map((th: string) => (
+              <th>{th}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {tut.tableRows.map((row: string[]) => (
+            <tr>
+              {row.map((cell: string, idx: number) => (
+                <td class={idx === 0 ? 'dv-ap-td-strong' : ''}>{cell}</td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )}
+
+  {/* Pasos numerados con comandos CLI copiables */}
+  <div class="dv-ap-steps">
+    {tut.steps.map((step: { title: string; desc: string; codeIndex: number }) => {
+      const code = snippets[step.codeIndex] || '';
+      const searchStr = `${tut.title} ${step.title} ${step.desc} ${code}`.toLowerCase();
+      return (
+        <article class="dv-ap-step-card" data-ap-item data-search={searchStr}>
+          <div class="dv-ap-step-head">
+            <h3>{step.title}</h3>
+            {code && (
+              <button type="button" class="dv-btn dv-btn-sm dv-ap-copy" data-copy={code}>
+                <i class="fa-regular fa-copy"></i>
+                <span>{t.copyBtn}</span>
+              </button>
+            )}
+          </div>
+          <p class="dv-ap-step-desc">{step.desc}</p>
+          {code && (
+            <pre class="dv-ap-pre"><code>{code}</code></pre>
+          )}
+        </article>
+      );
+    })}
+  </div>
+
+  {/* Checklist final opcional (Tutorial 5) */}
+  {tut.checklist && (
+    <section class="dv-ap-checklist" data-ap-item data-search={`checklist seo speed webp ${tut.checklist.join(' ')}`.toLowerCase()}>
+      <h3 class="dv-ap-h3"><i class="fa-solid fa-list-check"></i> Checklist Pre-Lanzamiento</h3>
+      <ul>
+        {tut.checklist.map((item: string) => (
+          <li>
+            <i class="fa-solid fa-circle-check"></i>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+</div>

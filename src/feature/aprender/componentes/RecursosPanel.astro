@@ -1,0 +1,150 @@
+---
+// src/feature/aprender/componentes/RecursosPanel.astro
+import { RECURSOS_LINKS } from '../../../semillas/aprender.js';
+import { buildRuta, type Idioma } from '@idioma';
+
+interface Props {
+  t: Record<string, any>;
+  idioma: Idioma;
+}
+
+const { t, idioma } = Astro.props;
+const rec = t.recursos;
+---
+
+<div class="dv-ap-panel" data-ap-panel="recursos">
+  <header class="dv-ap-panel-head">
+    <span class="dv-ap-badge">{rec.badge}</span>
+    <h2 class="dv-ap-h2">{rec.title}</h2>
+    <p class="dv-ap-desc">{rec.desc}</p>
+    <div class="dv-ap-example">
+      <i class="fa-solid fa-lightbulb"></i>
+      <span><strong>{t.exampleLabel}</strong> {rec.example}</span>
+    </div>
+  </header>
+
+  {/* 1. Iconos & Identidad Visual */}
+  <section class="dv-ap-group" data-ap-group>
+    <h3 class="dv-ap-h3"><i class="fa-solid fa-icons"></i> {rec.groups.iconos}</h3>
+    <div class="dv-ap-cards-2">
+      {RECURSOS_LINKS.iconos.map((item) => {
+        const info = rec.items[item.id];
+        const searchStr = `${info.title} ${info.desc} ${item.tags.join(' ')}`.toLowerCase();
+        return (
+          <article class="dv-ap-card" data-ap-item data-search={searchStr}>
+            <div class="dv-ap-card-top">
+              <span class="dv-ap-ico"><i class={item.icono}></i></span>
+              <div class="dv-ap-card-meta">
+                <h4>{info.title}</h4>
+                <p>{info.desc}</p>
+              </div>
+            </div>
+            {item.snippet && (
+              <div class="dv-ap-code-box">
+                <code>{item.snippet}</code>
+                <button type="button" class="dv-btn dv-btn-sm dv-ap-copy" data-copy={item.snippet}>
+                  <i class="fa-regular fa-copy"></i>
+                  <span>{t.copyBtn}</span>
+                </button>
+              </div>
+            )}
+            <div class="dv-ap-card-actions">
+              <a href={item.url} target="_blank" rel="noopener noreferrer" class="dv-btn dv-btn-sm dv-btn-pri">
+                <span>{t.openBtn}</span>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+              <button type="button" class="dv-btn dv-btn-sm dv-ap-copy" data-copy={item.url}>
+                <i class="fa-solid fa-link"></i>
+                <span>{t.copyUrlBtn}</span>
+              </button>
+            </div>
+          </article>
+        );
+      })}
+    </div>
+  </section>
+
+  {/* 2. Top 5 Fuentes Recomendadas */}
+  <section class="dv-ap-group" data-ap-group>
+    <h3 class="dv-ap-h3"><i class="fa-solid fa-font"></i> {rec.groups.fuentes}</h3>
+    <div class="dv-ap-fonts-grid">
+      {RECURSOS_LINKS.fuentes.map((font) => {
+        const desc = rec.fontsDesc[font.id];
+        const searchStr = `${font.nombre} ${desc} ${font.tags.join(' ')}`.toLowerCase();
+        return (
+          <article class="dv-ap-font-card" data-ap-item data-search={searchStr}>
+            <div class="dv-ap-font-head">
+              <div>
+                <h4>{font.nombre}</h4>
+                <span class="dv-ap-pill-sm">{font.pesos}</span>
+              </div>
+              <div class="dv-ap-font-btns">
+                <a href={font.url} target="_blank" rel="noopener noreferrer" class="dv-btn dv-btn-sm" title={t.openBtn}>
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+                <button type="button" class="dv-btn dv-btn-sm dv-ap-copy" data-copy={font.snippet} title={t.copyBtn}>
+                  <i class="fa-regular fa-copy"></i>
+                  <span>&lt;link&gt;</span>
+                </button>
+              </div>
+            </div>
+            <p class="dv-ap-font-desc">{desc}</p>
+          </article>
+        );
+      })}
+    </div>
+  </section>
+
+  {/* 3. Documentación Oficial & Plataformas */}
+  <section class="dv-ap-group" data-ap-group>
+    <h3 class="dv-ap-h3"><i class="fa-solid fa-book-open"></i> {rec.groups.ecosistema}</h3>
+    <div class="dv-ap-links-grid">
+      {RECURSOS_LINKS.ecosistema.map((item) => {
+        const info = rec.items[item.id];
+        const searchStr = `${info.title} ${info.desc} ${item.tags.join(' ')}`.toLowerCase();
+        return (
+          <article class="dv-ap-link-card" data-ap-item data-search={searchStr}>
+            <div class="dv-ap-card-top">
+              <span class="dv-ap-ico"><i class={item.icono}></i></span>
+              <div class="dv-ap-card-meta">
+                <h4>{info.title}</h4>
+                <p>{info.desc}</p>
+              </div>
+            </div>
+            <div class="dv-ap-card-actions">
+              <a href={item.url} target="_blank" rel="noopener noreferrer" class="dv-btn dv-btn-sm dv-btn-pri">
+                <span>{t.openBtn}</span>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+              <button type="button" class="dv-btn dv-btn-sm dv-ap-copy" data-copy={item.url}>
+                <i class="fa-solid fa-link"></i>
+                <span>{t.copyUrlBtn}</span>
+              </button>
+            </div>
+          </article>
+        );
+      })}
+    </div>
+  </section>
+
+  {/* 4. Suite Seowii interna */}
+  <section class="dv-ap-group" data-ap-group>
+    <h3 class="dv-ap-h3"><i class="fa-solid fa-toolbox"></i> {rec.groups.suite}</h3>
+    <div class="dv-ap-links-grid">
+      {RECURSOS_LINKS.suiteInterna.map((tool) => {
+        const desc = rec.suiteDesc[tool.id];
+        const searchStr = `${tool.id} ${desc} seowii`.toLowerCase();
+        return (
+          <a href={buildRuta(tool.href, idioma)} class="dv-ap-suite-card" data-ap-item data-search={searchStr} data-astro-prefetch="hover">
+            <span class="dv-ap-ico"><i class={tool.icono}></i></span>
+            <div class="dv-ap-card-meta">
+              <h4>{tool.href}</h4>
+              <p>{desc}</p>
+            </div>
+            <i class="fa-solid fa-chevron-right dv-ap-arrow"></i>
+          </a>
+        );
+      })}
+    </div>
+  </section>
+</div>

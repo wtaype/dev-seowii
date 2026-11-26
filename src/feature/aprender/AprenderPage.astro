@@ -1,0 +1,108 @@
+---
+// src/feature/aprender/AprenderPage.astro
+import './aprender.css';
+import RecursosPanel from './componentes/RecursosPanel.astro';
+import TutorialPanel from './componentes/TutorialPanel.astro';
+import { APRENDER_SECCIONES, SNIPPETS_TUTORIALES } from '../../semillas/aprender.js';
+import { getFeatureLang, langPrincipal, type Idioma } from '@idioma';
+
+interface Props {
+  idioma?: Idioma;
+}
+
+const { idioma = langPrincipal } = Astro.props;
+const locales = import.meta.glob<Record<string, any>>('./idioma/*.json', {
+  eager: true,
+  import: 'default'
+});
+const t = getFeatureLang(locales, idioma);
+
+const goldMap = Object.fromEntries(
+  APRENDER_SECCIONES.map((s) => [s.id, t.nav[s.id]?.gold || ''])
+);
+
+const i18nPayload = JSON.stringify({
+  copiedMsg: t.copiedMsg,
+  goldMap
+});
+---
+
+<section class="dv-ap-wrap" id="dvAprenderView" data-i18n-ap={i18nPayload}>
+  {/* Header + Buscador instantáneo */}
+  <article class="dv-card dv-ap-header-card">
+    <header class="dv-card-head">
+      <div class="dv-card-title">
+        <span class="dv-card-ico"><i class="fa-solid fa-graduation-cap"></i></span>
+        <div>
+          <h1 class="dv-ap-title">
+            {t.titleStart} · <span class="dv-ap-grad">{t.titleAccent}</span>
+          </h1>
+          <p class="dv-ap-sub">{t.sub}</p>
+        </div>
+      </div>
+    </header>
+
+    <div class="dv-ap-search-bar">
+      <i class="fa-solid fa-magnifying-glass dv-ap-search-ico"></i>
+      <input
+        type="search"
+        id="dvApSearch"
+        class="dv-ap-search-input"
+        placeholder={t.searchPlaceholder}
+        autocomplete="off"
+      />
+      <button type="button" id="dvApClearSearch" class="dv-btn dv-btn-sm" hidden>
+        <i class="fa-solid fa-xmark"></i>
+        <span>{t.clearSearch}</span>
+      </button>
+    </div>
+  </article>
+
+  {/* Cuerpo principal: Sub-nav + Consejo de Oro | Contenido */}
+  <div class="dv-ap-grid">
+    <aside class="dv-ap-aside">
+      <nav class="dv-card dv-ap-nav" id="dvApNav" aria-label={t.titleStart}>
+        {APRENDER_SECCIONES.map((sec, idx) => {
+          const item = t.nav[sec.id];
+          return (
+            <button
+              type="button"
+              class={`dv-ap-nav-btn ${idx === 0 ? 'is-active' : ''}`}
+              data-ap-tab={sec.id}
+            >
+              <span class="dv-ap-nav-ico"><i class={sec.icono}></i></span>
+              <span class="dv-ap-nav-txt">
+                <strong>{item.label}</strong>
+                <small>{item.sub}</small>
+              </span>
+            </button>
+          );
+        })}
+      </nav>
+
+      <article class="dv-card dv-ap-gold-card">
+        <div class="dv-ap-gold-head">
+          <i class="fa-solid fa-crown"></i>
+          <span>{t.goldTitle}</span>
+        </div>
+        <p class="dv-ap-gold-text" id="dvApGoldText">{t.nav.recursos.gold}</p>
+      </article>
+    </aside>
+
+    <main class="dv-card dv-ap-main">
+      <RecursosPanel t={t} idioma={idioma} />
+
+      <TutorialPanel t={t} tutorialId="t1_frameworks" snippets={SNIPPETS_TUTORIALES.t1_frameworks} />
+      <TutorialPanel t={t} tutorialId="t2_firebase" snippets={SNIPPETS_TUTORIALES.t2_firebase} />
+      <TutorialPanel t={t} tutorialId="t3_vercel" snippets={SNIPPETS_TUTORIALES.t3_vercel} />
+      <TutorialPanel t={t} tutorialId="t4_cloudflare" snippets={SNIPPETS_TUTORIALES.t4_cloudflare} />
+      <TutorialPanel t={t} tutorialId="t5_combo" snippets={SNIPPETS_TUTORIALES.t5_combo} />
+
+      <div class="dv-ap-empty" id="dvApEmpty" hidden>
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <h3>{t.emptyTitle}</h3>
+        <p>{t.emptyDesc}</p>
+      </div>
+    </main>
+  </div>
+</section>

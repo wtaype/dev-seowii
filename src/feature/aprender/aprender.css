@@ -1,0 +1,551 @@
+/* src/feature/aprender/aprender.css */
+/* Estilos modulares de Aprender · 100% tokens de witema.css */
+
+.dv-ap-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4vh;
+  min-height: 94vh;
+}
+
+.dv-ap-header-card {
+  gap: 1.2vh;
+}
+
+.dv-ap-title {
+  font-size: var(--fz_m3);
+  font-weight: 700;
+  color: var(--tx1);
+}
+
+.dv-ap-grad {
+  background: var(--gradient-btn);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dv-ap-sub {
+  font-size: var(--fz_s2);
+  color: var(--tx3);
+}
+
+.dv-ap-search-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.8vh;
+  background: var(--bg1);
+  border: 1px solid var(--border);
+  border-radius: var(--r_m);
+  padding: 0.6vh 1vh;
+  transition: border-color var(--tr_fast);
+}
+
+.dv-ap-search-bar:focus-within {
+  border-color: var(--primary);
+}
+
+.dv-ap-search-ico {
+  color: var(--tx3);
+  font-size: var(--fz_s3);
+}
+
+.dv-ap-search-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--tx1);
+  font-size: var(--fz_s3);
+  font-family: inherit;
+  min-width: 0;
+}
+
+.dv-ap-search-input::placeholder {
+  color: var(--tx3);
+}
+
+/* Grid principal 2 columnas */
+.dv-ap-grid {
+  display: grid;
+  grid-template-columns: 27vh minmax(0, 1fr);
+  gap: 1.4vh;
+  align-items: start;
+}
+
+.dv-ap-aside {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2vh;
+  position: sticky;
+  top: 1.4vh;
+}
+
+.dv-ap-nav {
+  padding: 1vh;
+  gap: 0.5vh;
+}
+
+.dv-ap-nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 1vh;
+  width: 100%;
+  text-align: left;
+  padding: 0.95vh 1.1vh;
+  border-radius: var(--r_m);
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--tx2);
+  cursor: pointer;
+  font-family: inherit;
+  transition: all var(--tr_fast);
+}
+
+.dv-ap-nav-btn:hover {
+  background: var(--bg1);
+  color: var(--tx1);
+}
+
+.dv-ap-nav-btn.is-active {
+  background: rgba(14, 165, 233, 0.12);
+  border-color: rgba(14, 165, 233, 0.35);
+  color: var(--tx1);
+}
+
+.dv-ap-nav-btn.has-match:not(.is-active) {
+  border-color: rgba(22, 163, 74, 0.35);
+}
+
+.dv-ap-nav-ico {
+  width: 3.2vh;
+  height: 3.2vh;
+  border-radius: var(--r_s);
+  display: grid;
+  place-items: center;
+  background: var(--bg1);
+  color: var(--primary);
+  font-size: var(--fz_s3);
+  flex-shrink: 0;
+}
+
+.dv-ap-nav-txt {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.dv-ap-nav-txt strong {
+  font-size: var(--fz_s3);
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dv-ap-nav-txt small {
+  font-size: var(--fz_s1);
+  color: var(--tx3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Consejo de Oro */
+.dv-ap-gold-card {
+  background: linear-gradient(145deg, rgba(245, 158, 11, 0.12), rgba(14, 165, 233, 0.05));
+  border-color: rgba(245, 158, 11, 0.32);
+  gap: 0.8vh;
+}
+
+.dv-ap-gold-head {
+  display: flex;
+  align-items: center;
+  gap: 0.7vh;
+  font-size: var(--fz_s3);
+  font-weight: 700;
+  color: var(--warning);
+}
+
+.dv-ap-gold-text {
+  font-size: var(--fz_s2);
+  line-height: 1.5;
+  color: var(--tx2);
+}
+
+/* Panel derecho */
+.dv-ap-main {
+  gap: 1.6vh;
+}
+
+.dv-ap-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8vh;
+}
+
+.dv-ap-panel[hidden] {
+  display: none;
+}
+
+.dv-ap-panel-head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7vh;
+  padding-bottom: 1.2vh;
+  border-bottom: 1px solid var(--border);
+}
+
+.dv-ap-badge {
+  align-self: flex-start;
+  padding: 0.35vh 1vh;
+  border-radius: var(--r_full);
+  background: rgba(14, 165, 233, 0.14);
+  color: var(--primary);
+  font-size: var(--fz_s1);
+  font-weight: 700;
+}
+
+.dv-ap-h2 {
+  font-size: var(--fz_m2);
+  font-weight: 700;
+  color: var(--tx1);
+}
+
+.dv-ap-desc {
+  font-size: var(--fz_s3);
+  color: var(--tx2);
+  line-height: 1.55;
+}
+
+.dv-ap-example {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8vh;
+  margin-top: 0.4vh;
+  padding: 1vh 1.2vh;
+  border-radius: var(--r_m);
+  background: var(--bg1);
+  border-left: 3px solid var(--primary);
+  font-size: var(--fz_s2);
+  color: var(--tx2);
+  line-height: 1.45;
+}
+
+.dv-ap-example i {
+  color: var(--primary);
+  margin-top: 0.25vh;
+}
+
+/* Grupos de Recursos */
+.dv-ap-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+}
+
+.dv-ap-h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.7vh;
+  font-size: var(--fz_m1);
+  font-weight: 700;
+  color: var(--tx1);
+}
+
+.dv-ap-h3 i {
+  color: var(--primary);
+}
+
+.dv-ap-cards-2,
+.dv-ap-links-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1vh;
+}
+
+.dv-ap-fonts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(23vh, 1fr));
+  gap: 1vh;
+}
+
+.dv-ap-card,
+.dv-ap-link-card,
+.dv-ap-font-card,
+.dv-ap-suite-card,
+.dv-ap-step-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9vh;
+  padding: 1.2vh;
+  border-radius: var(--r_m);
+  background: var(--bg1);
+  border: 1px solid var(--border);
+  transition: border-color var(--tr_fast), transform var(--tr_fast);
+}
+
+.dv-ap-card:hover,
+.dv-ap-link-card:hover,
+.dv-ap-font-card:hover,
+.dv-ap-suite-card:hover,
+.dv-ap-step-card:hover {
+  border-color: rgba(14, 165, 233, 0.4);
+}
+
+.dv-ap-card-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 1vh;
+}
+
+.dv-ap-ico {
+  width: 3.6vh;
+  height: 3.6vh;
+  border-radius: var(--r_m);
+  display: grid;
+  place-items: center;
+  background: rgba(14, 165, 233, 0.12);
+  color: var(--primary);
+  font-size: var(--fz_m1);
+  flex-shrink: 0;
+}
+
+.dv-ap-card-meta {
+  flex: 1;
+  min-width: 0;
+}
+
+.dv-ap-card-meta h4,
+.dv-ap-font-head h4 {
+  font-size: var(--fz_s3);
+  font-weight: 700;
+  color: var(--tx1);
+  margin-bottom: 0.2vh;
+}
+
+.dv-ap-card-meta p,
+.dv-ap-font-desc {
+  font-size: var(--fz_s2);
+  color: var(--tx3);
+  line-height: 1.45;
+}
+
+.dv-ap-code-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8vh;
+  padding: 0.7vh 0.9vh;
+  border-radius: var(--r_s);
+  background: var(--bg2);
+  border: 1px solid var(--border);
+}
+
+.dv-ap-code-box code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: var(--fz_s1);
+  color: var(--tx2);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dv-ap-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6vh;
+  margin-top: auto;
+}
+
+.dv-ap-font-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.6vh;
+}
+
+.dv-ap-pill-sm {
+  display: inline-block;
+  font-size: var(--fz_s1);
+  color: var(--primary);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.dv-ap-font-btns {
+  display: flex;
+  gap: 0.4vh;
+}
+
+.dv-ap-suite-card {
+  flex-direction: row;
+  align-items: center;
+  text-decoration: none;
+}
+
+.dv-ap-arrow {
+  color: var(--tx3);
+  font-size: var(--fz_s2);
+}
+
+/* Tabla comparativa */
+.dv-ap-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--r_m);
+  background: var(--bg1);
+}
+
+.dv-ap-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fz_s2);
+  text-align: left;
+}
+
+.dv-ap-table th,
+.dv-ap-table td {
+  padding: 1vh 1.2vh;
+  border-bottom: 1px solid var(--border);
+}
+
+.dv-ap-table th {
+  color: var(--tx3);
+  font-weight: 700;
+  font-size: var(--fz_s1);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.dv-ap-table tr:last-child td {
+  border-bottom: none;
+}
+
+.dv-ap-td-strong {
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* Pasos de Tutorial */
+.dv-ap-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1vh;
+}
+
+.dv-ap-step-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1vh;
+}
+
+.dv-ap-step-head h3 {
+  font-size: var(--fz_s3);
+  font-weight: 700;
+  color: var(--tx1);
+}
+
+.dv-ap-step-desc {
+  font-size: var(--fz_s2);
+  color: var(--tx2);
+  line-height: 1.5;
+}
+
+.dv-ap-pre {
+  margin: 0;
+  padding: 1.1vh 1.2vh;
+  border-radius: var(--r_m);
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  overflow-x: auto;
+}
+
+.dv-ap-pre code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: var(--fz_s2);
+  color: var(--tx1);
+  line-height: 1.55;
+  white-space: pre;
+}
+
+/* Checklist Tutorial 5 */
+.dv-ap-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9vh;
+  padding: 1.3vh;
+  border-radius: var(--r_m);
+  background: rgba(22, 163, 74, 0.08);
+  border: 1px solid rgba(22, 163, 74, 0.28);
+}
+
+.dv-ap-checklist ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7vh;
+}
+
+.dv-ap-checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8vh;
+  font-size: var(--fz_s2);
+  color: var(--tx2);
+}
+
+.dv-ap-checklist li i {
+  color: var(--success);
+  margin-top: 0.2vh;
+}
+
+.dv-ap-empty {
+  text-align: center;
+  padding: 4vh 2vh;
+  color: var(--tx3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8vh;
+}
+
+.dv-ap-empty i {
+  font-size: var(--fz_l1);
+  color: var(--primary);
+  opacity: 0.7;
+}
+
+.dv-ap-empty h3 {
+  font-size: var(--fz_m1);
+  color: var(--tx1);
+}
+
+.dv-ap-empty[hidden],
+[data-ap-item][hidden],
+[data-ap-group][hidden] {
+  display: none !important;
+}
+
+@media (max-width: 900px) {
+  .dv-ap-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dv-ap-aside {
+    position: static;
+  }
+
+  .dv-ap-nav {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18vh, 1fr));
+  }
+
+  .dv-ap-cards-2,
+  .dv-ap-links-grid {
+    grid-template-columns: 1fr;
+  }
+}
