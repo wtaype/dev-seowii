@@ -5,13 +5,15 @@ import Principal from '@layouts/Principal.astro';
 import GeneralPage from '@feature/general/GeneralPage.astro';
 import ImgwiiPage from '@feature/imgwii/ImgwiiPage.astro';
 import LectorJsonPage from '@feature/lector-json/LectorJsonPage.astro';
+import LectorMdPage from '@feature/lector-md/LectorMdPage.astro';
 import { LISTA_IDIOMAS, buildRuta, getCoreLang, type Idioma } from '@idioma';
 
 export function getStaticPaths() {
   const modulos = [
     { id: 'general', href: '/' },
     { id: 'imgwii', href: '/imgwii' },
-    { id: 'lector-json', href: '/lector-json' }
+    { id: 'lector-json', href: '/lector-json' },
+    { id: 'lector-md', href: '/lector-md' }
   ];
 
   return modulos.flatMap((mod) =>
@@ -54,6 +56,15 @@ const titulo = `dev.seowii.com — ${t.nav?.[modulo]?.label || modulo}`;
       <LectorJsonPage idioma={idioma} />
       <script>
         import '@feature/lector-json/lector-json.js';
+      </script>
+    </>
+  )}
+
+  {modulo === 'lector-md' && (
+    <>
+      <LectorMdPage idioma={idioma} />
+      <script>
+        import '@feature/lector-md/lector-md.js';
       </script>
     </>
   )}

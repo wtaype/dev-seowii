@@ -1,0 +1,89 @@
+---
+// src/feature/lector-md/LectorMdPage.astro
+import './lector-md.css';
+import { getFeatureLang, langPrincipal, type Idioma } from '@idioma';
+import { SAMPLE_MD } from './lib/mdUtils.js';
+
+interface Props {
+  idioma?: Idioma;
+}
+
+const { idioma = langPrincipal } = Astro.props;
+const locales = import.meta.glob<Record<string, any>>('./idioma/*.json', {
+  eager: true,
+  import: 'default'
+});
+const t = getFeatureLang(locales, idioma);
+
+const i18nPayload = JSON.stringify({
+  copied: t.copiedMsg,
+  words: t.words,
+  lines: t.lines,
+  minRead: t.minRead,
+  idioma
+});
+---
+
+<section class="dv-md-wrap" id="dvMdView" data-i18n-msg={i18nPayload}>
+  <article class="dv-card">
+    <header class="dv-card-head">
+      <div class="dv-card-title">
+        <span class="dv-card-ico"><i class="fa-solid fa-file-lines"></i></span>
+        <div>
+          <h1 class="dv-md-title">
+            {t.titleStart}<span class="dv-md-grad">{t.titleAccent}</span> {t.titleRest}
+          </h1>
+          <p class="dv-md-sub">{t.sub}</p>
+        </div>
+      </div>
+      <span class="dv-pill-status">{t.badge}</span>
+    </header>
+  </article>
+
+  <div class="dv-grid dv-grid-2 dv-md-grid">
+    <article class="dv-card dv-md-panel">
+      <div class="dv-md-toolbar">
+        <div class="dv-md-btns">
+          <button type="button" class="dv-btn dv-btn-sm" id="dvMd_btnUpload">
+            <i class="fa-solid fa-upload"></i>
+            <span>{t.uploadBtn}</span>
+          </button>
+          <input type="file" id="dvMd_fileInput" accept=".md,.markdown,.txt" hidden />
+          <button type="button" class="dv-btn dv-btn-sm" id="dvMd_btnSample">
+            <i class="fa-solid fa-flask"></i>
+            <span>{t.sampleBtn}</span>
+          </button>
+          <button type="button" class="dv-btn dv-btn-sm" id="dvMd_btnClear">
+            <i class="fa-solid fa-broom"></i>
+            <span>{t.clearBtn}</span>
+          </button>
+        </div>
+        <button type="button" class="dv-btn dv-btn-primary dv-btn-sm" id="dvMd_btnCopyMd">
+          <i class="fa-regular fa-copy"></i>
+          <span>{t.copyMdBtn}</span>
+        </button>
+      </div>
+
+      <textarea id="dvMd_editor" class="dv-textarea dv-md-editor" spellcheck="false">{SAMPLE_MD}</textarea>
+      <div id="dvMd_stats" class="dv-md-stats"></div>
+    </article>
+
+    <article class="dv-card dv-md-panel">
+      <div class="dv-md-toolbar">
+        <span class="dv-pill-status">{t.previewTitle}</span>
+        <div class="dv-md-btns">
+          <button type="button" class="dv-btn dv-btn-sm" id="dvMd_btnDlMd">
+            <i class="fa-solid fa-download"></i>
+            <span>{t.dlMdBtn}</span>
+          </button>
+          <button type="button" class="dv-btn dv-btn-primary dv-btn-sm" id="dvMd_btnCopyHtml">
+            <i class="fa-solid fa-code"></i>
+            <span>{t.copyHtmlBtn}</span>
+          </button>
+        </div>
+      </div>
+
+      <div id="dvMd_preview" class="dv-md-preview"></div>
+    </article>
+  </div>
+</section>

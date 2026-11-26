@@ -1,0 +1,20 @@
+{
+  "pageTitle": "MD Reader · Live Markdown Editor & Preview",
+  "pageDesc": "Write, preview, and export Markdown (.md) files to clean HTML live in your browser.",
+  "titleStart": "MD ",
+  "titleAccent": "Reader",
+  "titleRest": "· Live Markdown",
+  "sub": "Paste or upload your README.md, preview formatting live, and export HTML or .md",
+  "badge": "WIMD v2.1",
+  "uploadBtn": "Upload .md",
+  "sampleBtn": "Sample",
+  "clearBtn": "Clear",
+  "dlMdBtn": "Download .md",
+  "copyHtmlBtn": "Copy HTML",
+  "copyMdBtn": "Copy MD",
+  "copiedMsg": "Copied!",
+  "words": "words",
+  "lines": "lines",
+  "minRead": "min read",
+  "previewTitle": "Live Preview"
+}

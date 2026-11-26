@@ -1,0 +1,20 @@
+{
+  "pageTitle": "Lector MD · Editor & Vista Previa Markdown",
+  "pageDesc": "Escribe, previsualiza y exporta archivos Markdown (.md) a HTML en vivo 100% en tu navegador.",
+  "titleStart": "Lector ",
+  "titleAccent": "MD",
+  "titleRest": "· Markdown en Vivo",
+  "sub": "Pega o sube tu README.md, revisa el formato al instante y exporta a HTML o .md",
+  "badge": "WIMD v2.1",
+  "uploadBtn": "Subir .md",
+  "sampleBtn": "Ejemplo",
+  "clearBtn": "Limpiar",
+  "dlMdBtn": "Bajar .md",
+  "copyHtmlBtn": "Copiar HTML",
+  "copyMdBtn": "Copiar MD",
+  "copiedMsg": "¡Copiado!",
+  "words": "palabras",
+  "lines": "líneas",
+  "minRead": "min lectura",
+  "previewTitle": "Vista Previa"
+}
