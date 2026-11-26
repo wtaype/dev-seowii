@@ -2,16 +2,18 @@
 // src/feature/acercas/secciones/Feedback.astro
 // ⭐ Buzón de Feedback & Experiencia del Cliente (0 imágenes · Firestore · .conwii 85vw)
 
-type Idioma = 'es' | 'en' | 'pt';
-import { tAcercas } from '../idioma/idioma.js';
-import '../acercas.css';
+import { getFeatureLang, langPrincipal, type Idioma } from '@idioma';
 
 interface Props {
   idioma?: Idioma;
 }
 
-const { idioma = 'es' } = Astro.props;
-const t = tAcercas('feedback', idioma);
+const { idioma = langPrincipal } = Astro.props;
+const locales = import.meta.glob<Record<string, any>>('../idioma/*.json', {
+  eager: true,
+  import: 'default'
+});
+const t = getFeatureLang(locales, idioma).feedback || {};
 const cats = Array.isArray(t.cats) ? t.cats : [];
 ---
 
@@ -83,7 +85,3 @@ const cats = Array.isArray(t.cats) ? t.cats : [];
     </div>
   </div>
 </section>
-
-<script>
-  import './acercasPage.js';
-</script>

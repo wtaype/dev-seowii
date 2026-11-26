@@ -1,0 +1,288 @@
+{
+  "nosotros": {
+    "page_title": "About Us",
+    "badge": "🏛️ Organization & Software Engineering",
+    "titulo_start": "Meet",
+    "titulo_highlight": "{marca}",
+    "desc": "We are a digital engineering studio specialized in sub-second web architectures, native mobile apps, and custom business software with full technological sovereignty.",
+    "historia_titulo": "🚀 High-Performance Digital Engineering, No Middlemen",
+    "historia_p1": "At {marca}, we build proprietary technology for organizations that cannot afford slow websites, generic templates, or third-party lock-in. Every platform is built from scratch with clean, scalable, audited code.",
+    "historia_p2": "Under the technical leadership of {fundador} ({universidad}), we integrate enterprise engineering standards, extreme Core Web Vitals optimization, cloud security, and full Git repository handover.",
+    "historia_p3": "We operate with contractual transparency, milestone-based deliverables, and direct engineering support for growing companies and enterprises.",
+    "metricas_titulo": "📊 Engineering & Delivery Metrics",
+    "metricas": [
+      { "valor": "+30", "label": "Platforms in Production", "pct": "96%" },
+      { "valor": "100/100", "label": "Google Core Web Vitals", "pct": "100%" },
+      { "valor": "< 1.0s", "label": "Average Load Time", "pct": "98%" },
+      { "valor": "100%", "label": "Source Code Ownership", "pct": "100%" }
+    ],
+    "mision_tit": "🎯 Corporate Mission",
+    "mision_desc": "Boost each client's digital competitiveness through ultra-fast, secure, scalable proprietary software—eliminating unnecessary monthly rents and operational bottlenecks.",
+    "vision_tit": "🔭 Strategic Vision",
+    "vision_desc": "Consolidate our position as a leading engineering reference in sub-second web architecture and cloud/mobile solutions with full technological ownership for clients.",
+    "valores_titulo": "⚡ Principles of Our Technical Culture",
+    "valores": [
+      { "emoji": "⚡", "titulo": "Speed Obsession", "desc": "Every millisecond impacts SEO and conversion. We design with zero unnecessary JS and instant loading." },
+      { "emoji": "🔐", "titulo": "Sovereignty & Security", "desc": "Your company owns the code, database, domains, and credentials from day one." },
+      { "emoji": "📐", "titulo": "Scalable Architecture", "desc": "Clean layer separation, maintainable code, and real readiness to scale in traffic and features." },
+      { "emoji": "🤝", "titulo": "Full Transparency", "desc": "Clear scopes, live staging previews, and direct communication with no intermediaries." }
+    ],
+    "proceso_titulo": "🛠️ 4-Phase Engineering Methodology",
+    "proceso": [
+      { "paso": "01", "titulo": "Discovery & Architecture", "desc": "Technical goal alignment, optimal stack definition, data model, and roadmap." },
+      { "paso": "02", "titulo": "UI/UX & Visual System", "desc": "Clean interfaces focused on conversion, mobile accessibility, and brand consistency." },
+      { "paso": "03", "titulo": "Build & Optimization", "desc": "Modular development, 100/100 performance testing, security, and API/Cloud integrations." },
+      { "paso": "04", "titulo": "Deploy & Git Handover", "desc": "Production launch, technical training, documentation, and full source code delivery." }
+    ],
+    "pilares_titulo": "🏆 Enterprise Guarantee Pillars",
+    "pilares": [
+      { "icono": "fa-solid fa-gauge-high", "titulo": "Sub-1s Speed", "desc": "Modern architecture tuned to load under 1 second and score 100/100 on Core Web Vitals." },
+      { "icono": "fa-solid fa-code-branch", "titulo": "100% Your Code", "desc": "We deliver the full Git repository and master credentials with zero platform lock-in." },
+      { "icono": "fa-solid fa-handshake", "titulo": "Direct Contact", "desc": "Direct coordination with the engineer leading your project from diagnosis to launch." },
+      { "icono": "fa-solid fa-shield-halved", "titulo": "Warranty & Support", "desc": "Real testing, post-delivery support, and formal invoicing for operational peace of mind." }
+    ]
+  },
+  "terminos": {
+    "page_title": "Terms of Service",
+    "badge": "⚖️ Contractual Framework & Guarantees",
+    "titulo_start": "Terms & Conditions of",
+    "titulo_highlight": "Service",
+    "desc": "Clear, transparent, and binding conditions governing contracting, software development, source code delivery, and support at {marca}.",
+    "vigencia": "Effective: November 2026",
+    "indice_tit": "Quick Index:",
+    "clausulas": [
+      {
+        "num": "01",
+        "icono": "fa-solid fa-file-signature",
+        "titulo": "Scope, Technical Proposal & Acceptance",
+        "texto": "Every project begins with a formal technical proposal specifying architecture, modules, deliverables, timeline, and fixed budget.",
+        "items": [
+          "Development starts after written proposal approval and initial milestone payment.",
+          "Additional features outside the approved scope are quoted as an independent addendum.",
+          "Delivery timelines are counted in business days from receipt of client assets."
+        ]
+      },
+      {
+        "num": "02",
+        "icono": "fa-solid fa-code-branch",
+        "titulo": "Intellectual Property & 100% Code Ownership",
+        "texto": "Unlike agencies that rent templates, we guarantee full technological ownership upon final payment.",
+        "items": [
+          "Full handover of the Git repository, clean source code, and deployment credentials.",
+          "Zero forced monthly fees or platform lock-in for using the delivered software.",
+          "Brand assets, copy, and media provided by the client remain their exclusive property."
+        ]
+      },
+      {
+        "num": "03",
+        "icono": "fa-solid fa-credit-card",
+        "titulo": "Payment Terms, Currency & Billing",
+        "texto": "We operate with full transparency in USD or PEN through formal payment channels.",
+        "items": [
+          "One-time project payment structured by milestones (kickoff and final production delivery).",
+          "Accepted methods: Bank transfer, Yape, Plin, Card, PayPal, and Cash.",
+          "Official electronic invoice issued for every payment."
+        ]
+      },
+      {
+        "num": "04",
+        "icono": "fa-solid fa-laptop-code",
+        "titulo": "Live Staging & Review Rounds",
+        "texto": "We validate quality and speed transparently throughout the build process.",
+        "items": [
+          "Private access to a live staging URL to test responsive design, flows, and performance.",
+          "Up to 3 comprehensive review and adjustment rounds before production launch.",
+          "Technical optimization aligned with Core Web Vitals and SEO best practices."
+        ]
+      },
+      {
+        "num": "05",
+        "icono": "fa-solid fa-shield-halved",
+        "titulo": "Technical Warranty & Post-Launch Support",
+        "texto": "We stand behind every line of code delivered to ensure your business continuity.",
+        "items": [
+          "30 calendar days of free warranty against any bug or issue in the delivered code.",
+          "Operational training so your team can manage content and panels independently.",
+          "Warranty does not cover third-party modifications made after handover."
+        ]
+      },
+      {
+        "num": "06",
+        "icono": "fa-solid fa-lock",
+        "titulo": "Confidentiality & Credential Protection",
+        "texto": "All commercial, financial, database, and access information shared is treated under strict confidentiality.",
+        "items": [
+          "Credentials are used exclusively for authorized setup, deployment, and testing.",
+          "We recommend rotating master keys once formal repository handover is complete."
+        ]
+      },
+      {
+        "num": "07",
+        "icono": "fa-solid fa-scale-balanced",
+        "titulo": "Governing Law & Jurisdiction",
+        "texto": "These Terms are governed by the applicable laws of the Republic of Peru.",
+        "items": [
+          "Any dispute will first be addressed directly for an amicable resolution.",
+          "Competent jurisdiction in the courts of Lima, Peru."
+        ]
+      },
+      {
+        "num": "08",
+        "icono": "fa-solid fa-envelope-open-text",
+        "titulo": "Updates & Legal Contact",
+        "texto": "We may update these terms to reflect operational or regulatory improvements.",
+        "items": [
+          "For contractual inquiries or legal notices, write directly to {correo}.",
+          "In-person appointments by prior scheduling at {sede}."
+        ]
+      }
+    ]
+  },
+  "cookies": {
+    "page_title": "Cookie Policy",
+    "badge": "🍪 Digital Transparency",
+    "titulo_start": "Cookie",
+    "titulo_highlight": "Policy",
+    "desc": "At {marca} we respect your privacy. Here we detail the exact local storage keys and cookies used to deliver a fast, secure experience.",
+    "vigencia": "Effective: November 2026",
+    "clausulas": [
+      {
+        "num": "01",
+        "icono": "fa-solid fa-cookie-bite",
+        "titulo": "What are cookies and local storage?",
+        "texto": "They are small entries saved in your browser (such as LocalStorage or technical cookies) that remember your preferences without hurting speed or privacy."
+      },
+      {
+        "num": "02",
+        "icono": "fa-solid fa-sliders",
+        "titulo": "Categories we use",
+        "texto": "We only use strictly necessary storage so the app runs in milliseconds: visual theme (Light/Dark), language (ES/EN), and local tool cache."
+      },
+      {
+        "num": "03",
+        "icono": "fa-solid fa-shield-halved",
+        "titulo": "Zero invasive trackers",
+        "texto": "We never sell or share your browsing history with third-party ad networks. Your usage on our platform stays private."
+      },
+      {
+        "num": "04",
+        "icono": "fa-solid fa-laptop-file",
+        "titulo": "Browser controls",
+        "texto": "You can clear or block storage anytime from Chrome, Edge, Safari, or Firefox settings. Questions? Write to {correo}."
+      }
+    ],
+    "tabla_tit": "Technical Registry of Active Keys",
+    "col_clave": "Key / Name",
+    "col_tipo": "Category",
+    "col_proposito": "Purpose",
+    "col_duracion": "Duration",
+    "filas": [
+      { "clave": "witema", "tipo": "Essential", "proposito": "Stores your visual theme preference (Light or Dark) without flicker.", "duracion": "Persistent" },
+      { "clave": "dv_sidebar_collapsed", "tipo": "Preference", "proposito": "Remembers whether the sidebar is expanded or collapsed.", "duracion": "Persistent" },
+      { "clave": "dv_aprender_tab", "tipo": "Preference", "proposito": "Restores your last viewed guide in Learn.", "duracion": "Persistent" },
+      { "clave": "dv_seo_cache / dv_speed_cache", "tipo": "Functional", "proposito": "Caches your latest local SEO/Speed report for instant reload.", "duracion": "Local" }
+    ]
+  },
+  "privacidad": {
+    "page_title": "Privacy Policy",
+    "badge": "🔒 Personal Data Protection",
+    "titulo_start": "Privacy",
+    "titulo_highlight": "Policy",
+    "desc": "At {marca} we protect your personal data and digital assets in strict compliance with applicable data protection regulations.",
+    "vigencia": "Effective: November 2026",
+    "indice_tit": "Quick index:",
+    "clausulas": [
+      {
+        "num": "01",
+        "icono": "fa-solid fa-database",
+        "titulo": "Data We Collect",
+        "texto": "We only request the information needed to quote, execute software projects, issue invoices, and answer inquiries.",
+        "items": [
+          "Name or company name, email address, and contact phone.",
+          "Technical project details voluntarily shared by you."
+        ]
+      },
+      {
+        "num": "02",
+        "icono": "fa-solid fa-bullseye",
+        "titulo": "Purpose of Processing",
+        "texto": "Your data is used solely to provide technical support, 1-on-1 consulting, formal billing, and deliverable tracking.",
+        "items": [
+          "We never sell, rent, or transfer databases to third parties.",
+          "Zero marketing spam without your prior consent."
+        ]
+      },
+      {
+        "num": "03",
+        "icono": "fa-solid fa-shield-halved",
+        "titulo": "Security & Infrastructure",
+        "texto": "Operational records are handled over encrypted HTTPS/TLS infrastructure with strict access controls.",
+        "items": [
+          "Client credentials and repositories are safeguarded under professional confidentiality.",
+          "Upon handover, we recommend rotating administrative keys."
+        ]
+      },
+      {
+        "num": "04",
+        "icono": "fa-solid fa-user-lock",
+        "titulo": "Your Privacy Rights",
+        "texto": "You may exercise your rights of Access, Rectification, Cancellation, and Opposition at any time free of charge.",
+        "items": [
+          "Send your request directly to {correo} with your name and request.",
+          "In-person support by appointment at {sede}."
+        ]
+      }
+    ]
+  },
+  "contacto": {
+    "page_title": "Contact",
+    "badge": "📬 Direct Engineering Support",
+    "titulo_start": "Let's Talk About Your",
+    "titulo_highlight": "Next Project",
+    "desc": "No call centers or middlemen. Coordinate directly with the engineering team at {marca} through your preferred channel.",
+    "card_wa_tit": "Direct WhatsApp",
+    "card_wa_btn": "Message on WhatsApp",
+    "card_mail_tit": "Corporate Email",
+    "card_mail_btn": "Send Email",
+    "card_sede_tit": "Headquarters",
+    "card_sede_btn": "View on Google Maps",
+    "card_plat_tit": "Online Meetings",
+    "form_tit": "Send Us a Direct Message",
+    "form_desc": "Tell us briefly about your goal and we will get back to you shortly.",
+    "lbl_nombre": "Full Name *",
+    "ph_nombre": "e.g. John Carter",
+    "lbl_correo": "Email Address *",
+    "ph_correo": "email@company.com",
+    "lbl_asunto": "Subject / Project *",
+    "ph_asunto": "e.g. Corporate Website or Cloud System",
+    "lbl_mensaje": "Message *",
+    "ph_mensaje": "Briefly describe what you need to build...",
+    "btn_enviar": "Send Inquiry",
+    "exito_tit": "Message Received!",
+    "exito_desc": "Thank you for reaching out. Our team will review your inquiry and reply shortly.",
+    "btn_nuevo": "Send Another Inquiry"
+  },
+  "feedback": {
+    "page_title": "Feedback",
+    "badge": "⭐ Your Opinion Improves Our Studio",
+    "titulo_start": "Share Your",
+    "titulo_highlight": "Experience",
+    "desc": "We value every comment to keep perfecting our speed, architecture, and personalized support.",
+    "lbl_rating": "Overall Rating *",
+    "lbl_cat": "Evaluated Area *",
+    "cats": [
+      "Web Experience & Speed",
+      "Engineering & Code Quality",
+      "1-on-1 Technical Consulting",
+      "Post-Delivery Support"
+    ],
+    "lbl_nombre": "Your Name (Optional)",
+    "ph_nombre": "e.g. John Carter",
+    "lbl_comentario": "Your Comment or Suggestion *",
+    "ph_comentario": "What did you like most or what can we improve?",
+    "btn_enviar": "Submit Feedback",
+    "exito_tit": "Thank You for Your Feedback!",
+    "exito_desc": "Your review has been recorded and helps us maintain our 100/100 standard.",
+    "btn_nuevo": "Submit Another Review"
+  }
+}

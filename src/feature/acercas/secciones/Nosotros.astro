@@ -3,17 +3,19 @@
 // 🏛️ Página Nosotros (0 Imágenes · Puro Texto Estructurado + Gráficos CSS · 0ms · .conwii 85vw)
 
 import { app } from '@semillas';
+import { getFeatureLang, langPrincipal, type Idioma } from '@idioma';
 const datosApp: Record<string, any> = {};
-type Idioma = 'es' | 'en' | 'pt';
-import { tAcercas } from '../idioma/idioma.js';
-import '../acercas.css';
 
 interface Props {
   idioma?: Idioma;
 }
 
-const { idioma = 'es' } = Astro.props;
-const t = tAcercas('nosotros', idioma);
+const { idioma = langPrincipal } = Astro.props;
+const locales = import.meta.glob<Record<string, any>>('../idioma/*.json', {
+  eager: true,
+  import: 'default'
+});
+const t = getFeatureLang(locales, idioma).nosotros || {};
 
 // Cascada Sagrada: datosApp (Firestore) -> app (seowii.js) -> ""
 const marcaApp = (datosApp.marca || {}) as Record<string, any>;

@@ -3,17 +3,19 @@
 // ⚖️ Términos y Condiciones de Servicio (0 imágenes · Índice rápido · 8 cláusulas · .conwii 85vw)
 
 import { app } from '@semillas';
+import { getFeatureLang, langPrincipal, type Idioma } from '@idioma';
 const datosApp: Record<string, any> = {};
-type Idioma = 'es' | 'en' | 'pt';
-import { tAcercas } from '../idioma/idioma.js';
-import '../acercas.css';
 
 interface Props {
   idioma?: Idioma;
 }
 
-const { idioma = 'es' } = Astro.props;
-const t = tAcercas('terminos', idioma);
+const { idioma = langPrincipal } = Astro.props;
+const locales = import.meta.glob<Record<string, any>>('../idioma/*.json', {
+  eager: true,
+  import: 'default'
+});
+const t = getFeatureLang(locales, idioma).terminos || {};
 
 const marcaApp = (datosApp.marca || {}) as Record<string, any>;
 const contactoApp = (datosApp.contacto || {}) as Record<string, any>;

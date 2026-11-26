@@ -1,0 +1,59 @@
+---
+// src/feature/acercas/AcercasPage.astro
+// ⭐ Contenedor unificado bilingüe para las 6 secciones de Acerca (Nosotros, Contacto, Feedback, Privacidad, Términos, Cookies)
+import './acercas.css';
+import Nosotros from './secciones/Nosotros.astro';
+import Contacto from './secciones/Contacto.astro';
+import Feedback from './secciones/Feedback.astro';
+import Privacidad from './secciones/Privacidad.astro';
+import Terminos from './secciones/Terminos.astro';
+import Cookies from './secciones/Cookies.astro';
+import { configurar } from '@semillas/configurar.js';
+import { buildRuta, getCoreLang, langPrincipal, type Idioma } from '@idioma';
+
+interface Props {
+  idioma?: Idioma;
+  seccion: 'nosotros' | 'contacto' | 'feedback' | 'privacidad' | 'terminos' | 'cookies';
+}
+
+const { idioma = langPrincipal, seccion } = Astro.props;
+const tCore = getCoreLang(idioma);
+
+const SECCIONES = {
+  nosotros: Nosotros,
+  contacto: Contacto,
+  feedback: Feedback,
+  privacidad: Privacidad,
+  terminos: Terminos,
+  cookies: Cookies
+};
+
+const SeccionActiva = SECCIONES[seccion] || Nosotros;
+---
+
+<section class="dv-ac-shell">
+  <nav class="dv-card dv-ac-topbar" aria-label={tCore.util?.acerca || 'Acerca'}>
+    <a href={buildRuta('/', idioma)} class="dv-btn dv-btn-sm" data-astro-prefetch="hover">
+      <i class="fa-solid fa-arrow-left"></i>
+      <span>{tCore.nav?.general?.label || 'General'}</span>
+    </a>
+
+    <div class="dv-ac-tabs">
+      {configurar.enlacesAcerca.map((link) => {
+        const label = tCore.acerca?.enlaces?.[link.id] || link.id;
+        return (
+          <a
+            href={buildRuta(link.href, idioma)}
+            class={`dv-btn dv-btn-sm ${seccion === link.id ? 'dv-btn-pri' : ''}`}
+            data-astro-prefetch="hover"
+          >
+            <i class={link.icono}></i>
+            <span>{label}</span>
+          </a>
+        );
+      })}
+    </div>
+  </nav>
+
+  <SeccionActiva idioma={idioma} />
+</section>

@@ -1265,3 +1265,25 @@
     display: none !important;
   }
 }
+
+/* ─── Barra superior unificada AcercasPage ─── */
+.dv-ac-shell {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4vh;
+}
+
+.dv-ac-topbar {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8vh;
+  padding: 1vh 1.4vh;
+}
+
+.dv-ac-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6vh;
+}
