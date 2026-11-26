@@ -41,8 +41,8 @@ const { temaDefecto, storageKeys } = configurar;
     <script is:inline define:vars={{ temaDefecto, keyTema: storageKeys.tema, keySb: storageKeys.sidebar }}>
       (() => {
         try {
-          const t = localStorage.getItem(keyTema) || temaDefecto || 'luz';
-          document.documentElement.dataset.theme = t;
+          const sys = window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'noche' : temaDefecto || 'luz';
+          document.documentElement.dataset.theme = localStorage.getItem(keyTema) || sys;
           if (localStorage.getItem(keySb) === '1') {
             document.documentElement.classList.add('dv-collapsed');
           }

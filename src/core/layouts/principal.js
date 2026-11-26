@@ -4,15 +4,15 @@
 import { navigate } from 'astro:transitions/client';
 import { configurar } from '@semillas';
 import { esRutaActiva } from '@core/rutas.js';
+import { obtenerTema, aplicarTema, alternarTema, escucharTemaSistema } from '@widev/tema.js';
 import { getIdioma, getCoreLang, buildRuta, resolverRutaIdioma, getNextIdioma } from '@idioma';
 
-const { tema: KEY_TEMA, sidebar: KEY_SB } = configurar.storageKeys;
+const KEY_SB = configurar.storageKeys.sidebar;
 const TEMA_DEFECTO = configurar.temaDefecto || 'luz';
 
 function syncTemaUI() {
-  const tema = document.documentElement.dataset.theme || TEMA_DEFECTO;
-  const lang = getIdioma(window.location.pathname);
-  const t = getCoreLang(lang);
+  const tema = document.documentElement.dataset.theme || obtenerTema(TEMA_DEFECTO);
+  const t = getCoreLang(getIdioma(window.location.pathname));
   const key = tema === 'noche' ? 'temaNoche' : 'temaLuz';
 
   document.querySelectorAll('[data-tema-lbl]').forEach((el) => {
@@ -63,19 +63,9 @@ function syncRutaActiva() {
   });
 }
 
-function toggleTema() {
-  const actual = document.documentElement.dataset.theme || TEMA_DEFECTO;
-  const siguiente = actual === 'noche' ? 'luz' : 'noche';
-  document.documentElement.dataset.theme = siguiente;
-  try { localStorage.setItem(KEY_TEMA, siguiente); } catch {}
-  syncTemaUI();
-}
-
 function toggleIdioma() {
-  const actual = getIdioma(window.location.pathname);
-  const siguiente = getNextIdioma(actual);
-  const destino = resolverRutaIdioma(window.location.pathname, siguiente);
-  navigate(destino);
+  const siguiente = getNextIdioma(getIdioma(window.location.pathname));
+  navigate(resolverRutaIdioma(window.location.pathname, siguiente));
 }
 
 function toggleSidebar() {
@@ -93,11 +83,17 @@ function setAcerca(abierto) {
 if (!window.__dvPrincipalReady) {
   window.__dvPrincipalReady = true;
 
+  escucharTemaSistema(() => syncTemaUI());
+
   document.addEventListener('click', (e) => {
     const btn = e.target.closest('[data-action]');
     if (btn) {
       const accion = btn.getAttribute('data-action');
-      if (accion === 'toggle-tema') return toggleTema();
+      if (accion === 'toggle-tema') {
+        alternarTema();
+        syncTemaUI();
+        return;
+      }
       if (accion === 'toggle-idioma') return toggleIdioma();
       if (accion === 'toggle-sidebar') return toggleSidebar();
       if (accion === 'open-acerca') return setAcerca(true);
@@ -115,9 +111,8 @@ if (!window.__dvPrincipalReady) {
   });
 
   document.addEventListener('astro:after-swap', () => {
+    aplicarTema(obtenerTema(TEMA_DEFECTO), false);
     try {
-      const t = localStorage.getItem(KEY_TEMA) || TEMA_DEFECTO;
-      document.documentElement.dataset.theme = t;
       document.documentElement.classList.toggle('dv-collapsed', localStorage.getItem(KEY_SB) === '1');
     } catch {}
   });

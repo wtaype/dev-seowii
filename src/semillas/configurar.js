@@ -14,7 +14,7 @@ export const configurar = {
   dominioOficial: 'dev.seowii.com',
   temaDefecto: 'luz',
   storageKeys: {
-    tema: 'dv_tema',
+    tema: 'witema',
     sidebar: 'dv_sidebar_collapsed'
   },
 
